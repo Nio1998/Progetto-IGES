@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <parte_di videogioco='11' categoria='Avventura'/>
+    <parte_di videogioco='22' categoria='Arcade'/>
+    <parte_di videogioco='17' categoria='Avventura'/>
+</dataset>

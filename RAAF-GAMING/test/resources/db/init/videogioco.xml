@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<videogioco prodotto='2' dimensione='50.5' pegi='18' edizione_limitata='false' ncd='0' vkey='avchdcjjdeerju' software_house='Activision'/>
+    <videogioco prodotto='1' dimensione='50.5' pegi='18' edizione_limitata='true' ncd='1' software_house='Naughty Dog'/>   
+    <videogioco prodotto='3' dimensione='40' pegi='18' edizione_limitata='true' ncd='2' software_house='Epic Games'/>
+    <videogioco prodotto='4' dimensione='50' pegi='12' edizione_limitata='false' ncd='0' vkey='cxwdfc64fdbewa' software_house='Ubisoft'/>
+
+	<recensisce cliente='r.iuliano13@gmail.com' prodotto='1' voto='5' commento='abc'/>
+	<recensisce cliente='f.peluso25@gmail.com' prodotto='1' voto='10' commento='abc'/>
+	<recensisce cliente='r.iuliano13@gmail.com' prodotto='2' voto='8' commento='abc'/>
+	<recensisce cliente='f.peluso25@gmail.com' prodotto='2' voto='6' commento='abc'/>
+	<recensisce cliente='r.iuliano13@gmail.com' prodotto='3' voto='9' commento='abc'/>
+	<recensisce cliente='f.peluso25@gmail.com' prodotto='3' voto='10' commento='abc'/>
+	<recensisce cliente='r.iuliano13@gmail.com' prodotto='4' voto='5' commento='abc'/>
+	<recensisce cliente='f.peluso25@gmail.com' prodotto='4' voto='4' commento='abc'/>
+	
+	<prodotto codice_prodotto='1' prezzo='10' sconto='5' data_uscita='2021-02-05' nome='the last of us' quantita_fornitura='10' data_fornitura='2021-01-15'/>
+	<prodotto codice_prodotto='2' prezzo='10' sconto='5' data_uscita='2021-07-28' nome='halo' quantita_fornitura='10' data_fornitura='2021-01-15'/>
+	<prodotto codice_prodotto='3' prezzo='10' sconto='5' data_uscita='2021-05-20' nome='fortnite' quantita_fornitura='10' data_fornitura='2021-01-15'/>	
+	<prodotto codice_prodotto='4' prezzo='10' sconto='5' data_uscita='2021-01-20' nome='qualcosa' quantita_fornitura='10' data_fornitura='2021-01-15'/>
+</dataset>

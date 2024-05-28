@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <corriereespresso nome='bartolini' sito='bartolini.com'/>
+    <corriereespresso nome='ups' sito='ups.com'/>
+    <corriereespresso nome='dhl' sito='dhl.com'/>
+    <corriereespresso nome='lol' sito='lol.com'/>
+</dataset>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <ordine codice='15280754012' data_acquisto='2021-12-31' indirizzo_di_consegna='viale croce' cliente='f.peluso25@gmail.com' prezzo_totale='78.831' stato='elaborazione' metodo_di_pagamento='2134567891234567'/>
+	 <ordine codice='26134054612' data_acquisto='2021-12-30' indirizzo_di_consegna='viale croce' cliente='f.peluso25@gmail.com' prezzo_totale='80.5'  stato='elaborazione' metodo_di_pagamento='2134567891234567'/>
+	<ordine codice='15280754013' data_acquisto='2019-11-31' indirizzo_di_consegna='viale croce' cliente='a.maddaloni25@gmail.com' prezzo_totale='80'  stato='elaborazione' metodo_di_pagamento='2134567891234567'/>
+</dataset>

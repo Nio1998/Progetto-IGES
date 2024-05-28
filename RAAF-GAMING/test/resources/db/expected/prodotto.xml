@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <prodotto codice_prodotto='1' prezzo="10.5" sconto="0" data_uscita="2021-12-25" nome="FIFA" quantita_fornitura="12"
+    data_fornitura="2020-12-20" fornitore="Sony" gestore="prodotto@admin.com"/>
+    <prodotto codice_prodotto='2' prezzo="15.5" sconto="0" data_uscita="2020-12-22" nome="PES" quantita_fornitura="12"
+    data_fornitura="2019-12-20" fornitore="Activision" gestore="prodotto@admin.com"/>
+     <prodotto codice_prodotto='3' prezzo="11.0" sconto="0" data_uscita="2020-12-22" nome="WWE2K22" quantita_fornitura="100"
+    data_fornitura="2021-02-20" fornitore="2K" gestore="prodotto@admin.com"/>
+</dataset>

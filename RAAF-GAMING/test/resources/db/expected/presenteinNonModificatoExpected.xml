@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <presente_in magazzino='Italia,Nocera Superiore' prodotto='1' quantita_disponibile='197'/>
+    <presente_in magazzino='Italia,Nocera Superiore' prodotto='2' quantita_disponibile='19'/>
+    <presente_in magazzino='Italia,Solofra' prodotto='3' quantita_disponibile='50'/>
+</dataset>

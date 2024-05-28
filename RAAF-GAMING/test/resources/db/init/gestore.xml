@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <gestore email='gestore@hotmail.it' ruolo='ordine' password='123456789'/>
+    <gestore email='gestore2@hotmail.it' ruolo='ordine' password='987654321'/>
+    <gestore email='gestore3@hotmail.it' ruolo='prodotto' password='1234567888'/>
+</dataset>

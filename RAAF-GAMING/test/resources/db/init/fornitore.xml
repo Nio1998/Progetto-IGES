@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <fornitore nome='AMD' indirizzo="Giappone" telefono="089343743"/>
+    <fornitore nome='Nvidia' indirizzo="America" telefono="089343701"/>
+    <fornitore nome='Sony' indirizzo="Giappone" telefono="081931798"/>
+</dataset>

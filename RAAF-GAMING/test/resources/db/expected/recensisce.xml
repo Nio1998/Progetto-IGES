@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <recensisce cliente='a.delucia19@gmail.com' prodotto="1"  voto="10"  commento="bellissmo"/>
+	<recensisce cliente='a.maddaloni10@gmail.com' prodotto="2"  voto="7"  commento="vero veramente"/>
+	<recensisce cliente='r.iuliano13@gmail.com' prodotto="1"  voto="10"  commento="awesome"/>
+	<recensisce cliente='f.peluso25@gmail.com' prodotto="3"  voto="8"  commento="mi pace"/>
+</dataset>

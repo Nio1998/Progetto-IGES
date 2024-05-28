@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+<cliente email='antoniodelucia123@hotmail.com' nome='antonio' cognome='de lucia' data_di_nascita='1998-12-06'
+password='Zlatanpato1998' carta_fedelta='1234567899' cartadicredito='1234123412341235'/>
+<cliente email='antoniomaddaloni@hotmail.com' nome='antonio' cognome='maddaloni' data_di_nascita='1998-11-15'
+password='Nola123' carta_fedelta='1234567898' cartadicredito='1234123412341236'/>
+</dataset>

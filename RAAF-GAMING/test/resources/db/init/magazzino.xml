@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <magazzino indirizzo='Italia,Nocera Superiore' capienza='1000'/>
+    <magazzino indirizzo='Italia,Solofra' capienza='1000'/>
+</dataset>

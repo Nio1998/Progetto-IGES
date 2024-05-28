@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <dlc prodotto='1' dimensione='1.0' descrizione='bello'/>
+    <dlc prodotto='2' dimensione='2.0' descrizione='onesto'/>
+    <dlc prodotto='3' dimensione='3.0' descrizione='brutto'/>
+</dataset>

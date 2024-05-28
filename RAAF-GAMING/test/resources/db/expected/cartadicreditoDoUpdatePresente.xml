@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+<cartadicredito codicecarta='1234123412341234' data_scadenza='2025-11-12' codice_cvv='123'/>
+<cartadicredito codicecarta='1234123412341235' data_scadenza='2023-10-25' codice_cvv='789'/>
+<cartadicredito codicecarta='1234123412341230' data_scadenza='2028-12-25' codice_cvv='111'/>
+</dataset>

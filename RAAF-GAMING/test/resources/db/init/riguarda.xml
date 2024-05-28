@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <riguarda prodotto="1"  ordine="10"  quantita_acquistata="1"/>
+	<riguarda prodotto="2"  ordine="7"  quantita_acquistata="1"/>
+	<riguarda prodotto="5"  ordine="10"  quantita_acquistata="1"/>
+</dataset>
