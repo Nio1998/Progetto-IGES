@@ -35,7 +35,7 @@ Il nuovo sistema Raaf\_Gaming è costruito su uno stack moderno e robusto:
 | Componente | Tecnologia | Ruolo |
 | :--- | :--- | :--- |
 | **Backend** | PHP | Linguaggio di programmazione principale |
-| **Framework** | **Laravel**  |
+| **Framework** | **Laravel**  | Framework per la logica di business
 | **Database** | MySQL | Gestione persistente dei dati di catalogo, ordini e utenti |
 | **Frontend** | Blade | Interfaccia utente |
 
