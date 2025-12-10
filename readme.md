@@ -14,7 +14,7 @@ Questo progetto rappresenta l'iniziativa di ** Migrazione completa** del sistema
 
 ## ✨ Motivazione e Obiettivi della Migrazione
 
-La reingegnerizzazione è guidata dalla necessità di superare una marcata **obsolescenza tecnologica** e di sfruttare l'opportunità per ottimizzare l'architettura complessiva.
+La Migrazione è guidata dalla necessità di superare una marcata **obsolescenza tecnologica** e di sfruttare l'opportunità per ottimizzare l'architettura complessiva.
 
 ### 🎯 Obiettivi
 
@@ -34,10 +34,10 @@ Il nuovo sistema Raaf\_Gaming è costruito su uno stack moderno e robusto:
 
 | Componente | Tecnologia | Ruolo |
 | :--- | :--- | :--- |
-| **Backend** | PHP 8.x | Linguaggio di programmazione principale |
-| **Framework** | **Laravel** (Ultima LTS) | Framework **MVC** per la logica di business e API |
-| **Database** | [Specificare il tipo di DB, es. MySQL/PostgreSQL] | Gestione persistente dei dati di catalogo, ordini e utenti |
-| **Frontend** | [Specificare, es. Blade Templates / Livewire / Vue.js] | Interfaccia utente |
+| **Backend** | PHP | Linguaggio di programmazione principale |
+| **Framework** | **Laravel**  |
+| **Database** | MySQL | Gestione persistente dei dati di catalogo, ordini e utenti |
+| **Frontend** | Blade | Interfaccia utente |
 
 ---
 
@@ -59,8 +59,4 @@ La piattaforma distingue nettamente le funzionalità per quattro tipologie di ru
 | **Gestori Backoffice (Magazzino)** | Gestione Logistica, **Restock** (approvvigionamento stock), Inserimento Nuovi Prodotti. |
 | **Gestori Backoffice (Ordini)** | Gestione del ciclo di vita degli ordini e gestione delle **Spedizioni**. |
 
----
 
-## ⚙️ Setup Locale
-
-*Aggiungere qui le istruzioni dettagliate su come clonare, installare le dipendenze e avviare il progetto Laravel (vedi le istruzioni che ti ho fornito in precedenza).*
