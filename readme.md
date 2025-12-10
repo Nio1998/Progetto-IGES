@@ -8,7 +8,7 @@
 
 **Raaf\_Gaming** è una piattaforma di **e-commerce** specializzata nel settore del gaming. Offre un catalogo completo di prodotti, inclusi **videogiochi** (fisici e digitali/DLC), **console** e **abbonamenti** ai servizi di gioco.
 
-Questo progetto rappresenta l'iniziativa di **reingegnerizzazione e migrazione completa** del sistema da una piattaforma **Java Legacy** ad un'architettura moderna e scalabile basata su **PHP/Laravel**.
+Questo progetto rappresenta l'iniziativa di ** Migrazione completa** del sistema da una piattaforma **Java Legacy** ad un'architettura moderna e scalabile basata su **PHP/Laravel**.
 
 ---
 
