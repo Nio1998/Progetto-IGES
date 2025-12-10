@@ -54,8 +54,9 @@ Il sistema gestisce l'intero processo di vendita, dal catalogo al post-vendita, 
 La piattaforma distingue nettamente le funzionalità per quattro tipologie di ruoli:
 
 | Ruolo | Funzionalità Chiave |
-|  **Clienti (Registrati)** | Navigazione catalogo, gestione carrello. |
-| **Clienti (Registrati)** | Navigazione catalogo, gestione carrello, acquisto, tracking ordini, gestione profilo/carta fedeltà. |
+| :--- | :--- |
+| **Utenti (Visitatori)** | Navigazione catalogo, gestione carrello. |
+| **Utenti (Registrati)** | Navigazione catalogo, gestione carrello, acquisto, tracking ordini, gestione profilo/carta fedeltà. |
 | **Gestori Backoffice (Magazzino)** | Gestione Logistica, **Restock** (approvvigionamento stock), Inserimento Nuovi Prodotti. |
 | **Gestori Backoffice (Ordini)** | Gestione del ciclo di vita degli ordini e gestione delle **Spedizioni**. |
 
