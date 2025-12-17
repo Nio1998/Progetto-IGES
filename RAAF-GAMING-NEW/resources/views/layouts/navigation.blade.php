@@ -70,7 +70,7 @@
             </div>
             
             <!-- Shopping Cart -->
-            <a href="#" class="cart-icon mt-1.5 mr-2.5 focus-visible" aria-label="Carrello della spesa">
+            <a href="#" class="cart-icon mt-0.95 mr-2.5 focus-visible" aria-label="Carrello della spesa">
                 @if(empty($carrello))
                     <i id="sostituisciCarrello" class='fas fa-shopping-cart text-[27px] text-white hover:text-white/60' aria-hidden="true"></i>
                     <span class="sr-only">Carrello vuoto</span>
@@ -85,54 +85,54 @@
     <!-- Collapsible Menu -->
     <!-- Menu riempie la navbar in orizzontale, non verticale -->
     <div class="navbar-collapse" id="navbarSupportedContent">
-        <ul class="flex flex-row flex-wrap px-4 pb-4 gap-x-6 gap-y-2" role="menubar">
+        <ul class="flex flex-row flex-wrap pt-2 px-4 pb-2 gap-x-6 gap-y-2" role="menubar">
             <li role="none">
-                <a href="#" class="nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class='fas fa-book text-base' aria-hidden="true"></i>&nbsp;&nbsp;Catalogo
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class="fa fa-star text-base" aria-hidden="true"></i>&nbsp;&nbsp;Azione
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class='fab fa-phoenix-squadron text-base' aria-hidden="true"></i>&nbsp;&nbsp;Avventura
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class='fas fa-crosshairs text-base' aria-hidden="true"></i>&nbsp;&nbsp;Battle Royale
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class="fa fa-futbol text-base" aria-hidden="true"></i>&nbsp;&nbsp;Sport
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class='fas fa-ghost text-base' aria-hidden="true"></i>&nbsp;&nbsp;Horror
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class='fab fa-playstation text-base' aria-hidden="true"></i>&nbsp;&nbsp;Console
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class="fa fa-gamepad text-base" aria-hidden="true"></i>&nbsp;&nbsp;Videogiochi
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class="fa fa-calendar-check text-base" aria-hidden="true"></i>&nbsp;&nbsp;Abbonamenti
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class="fa fa-plus-circle text-base" aria-hidden="true"></i>&nbsp;&nbsp;DLC
                 </a>
             </li>
