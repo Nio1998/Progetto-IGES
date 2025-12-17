@@ -21,10 +21,3 @@
   margin: 0;
   margin-left: 0.25rem;
 }
-
-/* Responsive text alignment */
-@media (min-width: 992px) {
-  .footer-main {
-    text-align: left;
-  }
-}
