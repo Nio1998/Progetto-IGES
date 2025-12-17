@@ -1,0 +1,187 @@
+/* Navbar Styles */
+.navbar-bg {
+  background-color: rgba(35, 35, 35, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Hamburger Icon con 3 linee e senza bordo bianco */
+.hamburger-icon {
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"%3E%3Cpath stroke="rgba(255,255,255,1)" stroke-width="2" stroke-linecap="round" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 20px;
+  height: 20px; /* Updated from 12px to 20px */
+}
+
+/* Search Icon */
+.search-icon {
+  background-size: 23px 23px;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+}
+
+/* Dropdown Animations */
+.dropdown-menu {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.dropdown-menu.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Navbar Collapse riempie in orizzontale */
+.navbar-collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+}
+
+.navbar-collapse.active {
+  max-height: 200px; /* Updated from 800px to 200px */
+}
+
+/* User Avatar Styles */
+.user-avatar {
+  transition: all 0.3s ease;
+}
+
+.user-avatar:hover {
+  transform: scale(1.1);
+}
+
+/* Navigation Links Hover Effect */
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Cart Icon Animation */
+.cart-icon {
+  transition: all 0.3s ease;
+}
+
+.cart-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Toggle Button senza bordo */
+.navbar-toggler {
+  transition: all 0.3s ease;
+  border: none; /* Added border: none; */
+}
+
+.navbar-toggler:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Updated background-color */
+  transform: scale(1.05);
+}
+
+/* Side Panel Styles */
+.sidepanel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 250px;
+  background-color: rgb(20, 20, 20);
+  overflow-x: hidden;
+  transition: width 0.5s ease;
+  padding-top: 60px;
+  z-index: 10;
+}
+
+.sidepanel .closebtn {
+  display: block;
+  padding: 8px 32px;
+  font-size: 36px;
+  color: #818181;
+  transition: color 0.3s ease;
+}
+
+.sidepanel .closebtn:hover {
+  color: #f1f1f1;
+}
+
+/* Search Input Focus Effect */
+.search-input {
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+/* Dropdown Menu Items */
+.dropdown-item {
+  transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+  border-radius: 25px;
+  transform: translateX(5px);
+}
+
+/* Mobile Responsive per menu orizzontale */
+@media (max-width: 768px) {
+  .navbar-collapse.active {
+    max-height: 300px; /* Updated from 900px to 300px */
+  }
+
+  .search-form {
+    max-width: 100%;
+  }
+}
+
+/* Accessibility Improvements */
+.focus-visible:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Loading State for Cart */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.cart-loading {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Aggiunto stile per i link del menu mobile più grandi */
+.nav-link-mobile {
+  transition: all 0.3s ease;
+}
+
+.nav-link-mobile:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
