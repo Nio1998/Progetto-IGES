@@ -115,7 +115,16 @@ class ClienteService
         $item->setRelation('cartacredito', $cartadicredito);
     }
 
-
-
-    
+    /**
+	 * @param item L'oggetto {@link ClienteBean} contenente i nuovi dati del cliente. 
+	 * Non deve essere {@code null}
+	 * @throws \InvalidArgumentException Se l'oggetto {@code item} passato come parametro è {@code null}.
+	 */
+    public function doUpdate($item){
+        if($item == null)
+			throw new \InvalidArgumentException("Inserito un item null");
+        
+        $item->update();
+        Session::put('Cliente', $item);
+    }
 }

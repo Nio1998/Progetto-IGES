@@ -21,6 +21,13 @@ class Cliente extends Model
     protected $table = 'cliente';
 
     /**
+     * La chiave primaria associata alla tabella.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'email';
+    
+    /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
