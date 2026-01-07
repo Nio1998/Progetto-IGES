@@ -137,7 +137,11 @@ public class ClienteDAO {
 		connessione.close();
 	}
 
-
+	/**
+	 * @param item L'oggetto {@link ClienteBean} contenente i nuovi dati del cliente. 
+	 * Non deve essere {@code null}
+	 * @throws NullPointerException Se l'oggetto {@code item} passato come parametro è {@code null}.
+	 */
 	public void doUpdate(ClienteBean item) throws SQLException,NullPointerException {
 		
 		if(item==null)
