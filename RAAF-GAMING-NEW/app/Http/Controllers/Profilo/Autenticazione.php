@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Profilo\Cliente;
 use App\Models\Profilo\CartaDiCredito;
 use App\Models\Profilo\CartaFedelta;
+use App\Services\Profilo\CartaFedeltaService;
+use App\Services\Profilo\CartaDiCreditoService;
+use App\Services\Profilo\ClienteService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -19,7 +22,7 @@ class Autenticazione extends Controller
     public function login(Request $request)
     {
         //dd($request->all()); // Debug: mostra tutti i dati della richiesta
-        
+        $clienteService = new ClienteService();
         $email = $request->input('email');
         $password = $request->input('password');
 
@@ -32,7 +35,7 @@ class Autenticazione extends Controller
         }
 
         // Trova utente
-        $utente = Cliente::where('email', $email)->first();
+       $utente = $clienteService->ricercaPerChiave($email);
         //dd($utente);
         if (!$utente) {
             return view('profilo.login', [
@@ -50,9 +53,8 @@ class Autenticazione extends Controller
         }
 
         // Login corretto → salva sessione
-        $request->session()->put('log', true);
-        $request->session()->put('emailSession', $email);
-
+        $request->session()->put('Cliente', $utente);
+        
         return redirect()->route('home'); // route home/index
     }
 
@@ -92,7 +94,7 @@ class Autenticazione extends Controller
                 'data_scadenza_empty' => empty($data_scadenza)
             ]);
             
-            return view('profilo.registrazione', [
+            return view('PresentazioneProfilo.registrazione', [
                 'message' => 'Compila tutti i campi correttamente',
                 'visitato' => ''
             ]);
@@ -100,7 +102,8 @@ class Autenticazione extends Controller
         
         
         // Verifica se il cliente è già registrato
-        $clienteEsistente = Cliente::where('email', $email)->first();
+        $clienteService = new ClienteService();
+        $clienteEsistente = $clienteService->ricercaPerChiave($email);
         
         if ($clienteEsistente) {
             Log::warning('Cliente già registrato con email: ' . $email);
@@ -116,6 +119,7 @@ class Autenticazione extends Controller
             DB::beginTransaction();
             
             // 1. Inserisci la carta di credito
+            $cartaCreditoService = new CartaDiCreditoService();  
             $cartaCredito = new CartaDiCredito();
             $cartaCredito->codicecarta = $codicecarta;
             $cartaCredito->data_scadenza = $data_scadenza;
@@ -123,7 +127,7 @@ class Autenticazione extends Controller
             
             
             try {
-                $cartaCredito->save();
+                $cartaCreditoService->newInsert($cartaCredito);
             } catch (\Exception $e) {
                 Log::error('Errore salvataggio carta di credito: ' . $e->getMessage());
                 Log::error('Stack trace:', ['trace' => $e->getTraceAsString()]);
@@ -139,12 +143,13 @@ class Autenticazione extends Controller
             $codiceFedelta = $this->generaCodiceFedelta();
             
             // 3. Inserisci la carta fedeltà
+            $cartaFedeltaService = new CartaFedeltaService();
             $cartaFedelta = new CartaFedelta();
             $cartaFedelta->codice = $codiceFedelta;
             $cartaFedelta->punti = 0;
             
             try {
-                $cartaFedelta->save();
+               $cartaFedeltaService->newInsert($cartaFedelta);
             } catch (\Exception $e) {
                 Log::error('Errore salvataggio carta fedeltà: ' . $e->getMessage());
                 Log::error('Stack trace:', ['trace' => $e->getTraceAsString()]);
@@ -153,7 +158,7 @@ class Autenticazione extends Controller
             }
             
             // 4. Crea il nuovo cliente
-
+            $clienteService = new ClienteService();
             $nuovoCliente = new Cliente();
             $nuovoCliente->nome = $nome;
             $nuovoCliente->cognome = $cognome;
@@ -164,7 +169,7 @@ class Autenticazione extends Controller
             $nuovoCliente->carta_fedelta = $codiceFedelta;
             
             try {
-                $nuovoCliente->save();
+                $clienteService->newInsert($nuovoCliente, $cartaCredito, $cartaFedelta);
             } catch (\Exception $e) {
                 Log::error('Errore salvataggio cliente: ' . $e->getMessage());
                 Log::error('Stack trace:', ['trace' => $e->getTraceAsString()]);
@@ -199,6 +204,7 @@ class Autenticazione extends Controller
     private function generaCodiceFedelta()
     {
         $tentativo = 0;
+        $cartaFedeltaService = new CartaFedeltaService();
         
         do {
             $tentativo++;
@@ -208,7 +214,8 @@ class Autenticazione extends Controller
             Log::info("Tentativo #$tentativo - Codice generato: $codice");
             
             // Verifica se esiste già
-            $exists = CartaFedelta::where('codice', $codice)->exists();
+            $carta = $cartaFedeltaService->ricercaPerChiave($codice);
+            $exists = $carta !== null;
             
             if ($exists) {
                 Log::warning("Codice $codice già esistente, rigenero");
@@ -223,15 +230,14 @@ class Autenticazione extends Controller
     public function logout(Request $request)
     {
         // Ottengo la sessione
-        $log = $request->session()->get('log');
-        // Se non esiste 'log' (utente non loggato)
-        if ($log === null) {
+        $utente = $request->session()->get('Cliente');
+        // Se non esiste 'utente' (utente non loggato)
+        if ($utente === null) {
             return redirect()->route('home');
         }
         
         // Altrimenti rimuovo gli attributi della sessione
-        $request->session()->forget('log');
-        $request->session()->forget('emailSession');
+        $request->session()->forget('Cliente');
 
         // Redirect alla home
         return redirect()->route('login');

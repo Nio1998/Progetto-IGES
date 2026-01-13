@@ -26,14 +26,15 @@ class ClienteService
     public function ricercaPerChiave($id)
     {
         if($id == null || $id == "")
-			throw new \InvalidArgumentException("Inserito un id null o vuoto");
+            throw new \InvalidArgumentException("Inserito un id null o vuoto");
 
         $cliente = Session::get('Cliente');
 
         if(isset($cliente))
-            return $cliente;
+            if($cliente->email == $id)
+                return $cliente;
 
-        $cliente = Cliente::where('email',$id)->first();
+        $cliente = Cliente::where('email',$id)->first() ?? null;
 
         Session::put('Cliente',$cliente);
 
@@ -42,9 +43,9 @@ class ClienteService
 
     /**
      * Ritorna una Collection di Clienti (equivalente a ArrayList<ClienteBean>).
-     * * @param string $ordinamento La colonna su cui applicare l'ordinamento (es. 'cognome').
+     * @param string $ordinamento La colonna su cui applicare l'ordinamento (es. 'cognome').
      * @return \Illuminate\Support\Collection|\App\Models\Cliente[] Una collezione di oggetti Cliente.
-     * * @throws \InvalidArgumentException Se il parametro di ordinamento non è valido.
+     * @throws \InvalidArgumentException Se il parametro di ordinamento non è valido.
      */
     public function allElements($ordinamento)
     {
@@ -94,15 +95,13 @@ class ClienteService
 
         return $cliente;
         
-        
     }
 
     /**
      * Inserisce un nuovo cliente nel database (Equivalente a newInsert).
-     *
      * @param array $dati Un array associativo contenente i dati del cliente (es. dalla Request).
      * @return \App\Models\Cliente L'istanza del cliente appena creato.
-     * * @throws \InvalidArgumentException Se i dati forniti sono nulli o incompleti.
+     * @throws \InvalidArgumentException Se i dati forniti sono nulli o incompleti.
      */
     public function newInsert($item, $carta_fedelta, $cartadicredito)
     {

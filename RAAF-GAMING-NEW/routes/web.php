@@ -8,6 +8,7 @@ Route::get('/', function () {
     return view('layouts.appoggio');
 })->name('home');
 
+// LOGOUT
 Route::match(['GET', 'POST'], '/logout', [Autenticazione::class, 'logout'])->name('logout');
 
 // Tutte le rotte “guest” passano per il middleware
@@ -19,5 +20,6 @@ Route::middleware(['redirectIfAuthenticated'])->group(function () {
     // REGISTRAZIONE
     Route::get('/registrazione', [Autenticazione::class, 'registrazione'])->name('registrazione');
     Route::post('/registrazione', [Autenticazione::class, 'registrazioneStore'])->name('registrazione.store');
+
 });
 

@@ -10,7 +10,7 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next)
     {
         // Se l'utente è già loggato
-        if ($request->session()->get('log', false) === true) {
+        if ($request->session()->has('Cliente')) {
             // Redirect alla route index o home
             return redirect()->route('home'); 
         }
