@@ -4,6 +4,7 @@ namespace App\Services\Profilo;
 
 use App\Models\Profilo\CartaFedelta;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Session;
 
 class CartaFedeltaService
 {
@@ -27,7 +28,7 @@ class CartaFedeltaService
         if($id == null || $id == "")
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
 
-        return CartaFedelta::where('codice', $id)->first();
+        return CartaFedelta::where('codice', $id)->with('utente')->first();
     }
 
     /**
@@ -90,7 +91,43 @@ class CartaFedeltaService
         if($item == null || $item->codice == null)
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
 
-        $carta = CartaFedelta::where('codice', $item->codice)->first();
+        $carta = CartaFedelta::where('codice', $item->codice)->with('utente')->first();
         
+        if($carta) {
+            $carta->punti = $carta->punti + 1;
+            $carta->update();
+
+            $cliente = Session::get('Cliente');
+
+            if(isset($cliente))
+            {
+                if($cliente->cartafedelta && ($cliente->email == $carta->utente->email))
+                {
+                    $cliente->cartafedelta = $carta;
+                    Session::put('Cliente', $cliente);
+                }
+            }           
+        }
+    }
+
+    /**
+    * Genera un codice univoco per la carta fedeltà
+    */
+    public function generaCodiceFedelta()
+    {
+        $tentativo = 0;        
+        do {
+            $tentativo++;
+            // Genera un numero casuale fino a 9 cifre
+            $codice = (string) rand(100000000, 999999999);
+            
+            
+            // Verifica se esiste già
+            $carta = CartaFedelta::where('codice', $codice)->value('codice');
+            $exists = $carta !== null;
+            
+        } while ($exists);
+        
+        return $codice;
     }
 }

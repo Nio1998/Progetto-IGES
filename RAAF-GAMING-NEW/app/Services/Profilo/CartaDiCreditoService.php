@@ -3,6 +3,7 @@
 namespace App\Services\Profilo;
 
 use App\Models\Profilo\CartaDiCredito;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Collection;
 
 class CartaDiCreditoService
@@ -27,7 +28,7 @@ class CartaDiCreditoService
         if($id == null || $id == "")
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
 
-        return CartaDiCredito::where('codicecarta', $id)->first();
+        return CartaDiCredito::where('codicecarta', $id)->with('utente')->first();
     }
 
     /**
@@ -58,13 +59,25 @@ class CartaDiCreditoService
         if($item == null || $codice == null)
             throw new \InvalidArgumentException("Inserito un item null o codice null");
 
-        $cartaEsistente = CartaDiCredito::where('codicecarta', $codice)->first();
+        $cartaEsistente = CartaDiCredito::where('codicecarta', $codice)->with('utente')->first();
 
         if($cartaEsistente) {
             $cartaEsistente->codicecarta = $item->codicecarta;
             $cartaEsistente->data_scadenza = $item->data_scadenza;
             $cartaEsistente->codice_cvv = $item->codice_cvv;
-            $cartaEsistente->save();
+            $cartaEsistente->update();
+
+            $cliente = Session::get('Cliente');
+
+            if(isset($cliente))
+            {
+                if($cliente->cartacredito && ($cliente->email == $cartaEsistente->utente->email))
+                {
+                    
+                    $cliente->cartacredito = $cartaEsistente;
+                    Session::put('Cliente', $cliente);
+                }
+            }           
         }
     }
 }

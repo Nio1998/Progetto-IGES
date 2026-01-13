@@ -35,4 +35,11 @@ class CartaFedelta extends Model
         'codice',
         'punti',
     ];
+
+    //Relationship
+
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class, 'carta_fedelta', 'codice');
+    }
 }

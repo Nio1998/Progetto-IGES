@@ -23,10 +23,11 @@ class ClienteService
      * @return \App\Models\Profilo\Cliente Il modello Cliente trovato.
      * @throws \InvalidArgumentException Se l'id fornito è vuoto o non valido.
      */
-    public function ricercaPerChiave($id)
+    public function ricercaPerChiave($id, $save = true)
     {
         if($id == null || $id == "")
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
+        
 
         $cliente = Session::get('Cliente');
 
@@ -34,11 +35,47 @@ class ClienteService
             if($cliente->email == $id)
                 return $cliente;
 
-        $cliente = Cliente::where('email',$id)->first() ?? null;
+        $cliente = Cliente::where('email',$id)->with(['cartacredito', 'cartafedelta'])->first() ?? null;
 
-        Session::put('Cliente',$cliente);
+        if($save)
+            Session::put('Cliente',$cliente);
 
         return $cliente;
+    }
+
+    /**
+     * Restituisce il cliente attualmente autenticato.
+     *
+     * Pre-condizione:
+     *   - La sessione di Laravel è disponibile.
+     *   - Se l'utente non è presente in sessione, deve essere possibile recuperare l'utente loggato.
+     *
+     * Post-condizione:
+     *   - Restituisce un'istanza di \App\Models\Profilo\Cliente se l'utente è autenticato e presente nel database.
+     *   - Se l'utente non è autenticato, restituisce null.
+     *
+     * @return \App\Models\Profilo\Cliente|null
+     */
+    public function getUtenteAutenticato()
+    {
+        return Session::get('Cliente');
+    }
+
+    /**
+     * Rimuove il cliente attualmente memorizzato in sessione.
+     *
+     * Pre-condizione:
+     *   - La sessione di Laravel è disponibile.
+     *
+     * Post-condizione:
+     *   - Il cliente memorizzato in sessione sotto la chiave 'Cliente' viene rimosso.
+     *   - Eventuali richiami a getUtenteAutenticato() dopo questa chiamata restituiranno null.
+     *
+     * @return void
+     */
+    public function logoutUtente()
+    {
+        Session::forget('Cliente');
     }
 
     /**

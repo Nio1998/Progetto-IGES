@@ -10,7 +10,6 @@ use App\Models\Profilo\CartaFedelta;
 use App\Services\Profilo\CartaFedeltaService;
 use App\Services\Profilo\CartaDiCreditoService;
 use App\Services\Profilo\ClienteService;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class Autenticazione extends Controller
@@ -52,8 +51,7 @@ class Autenticazione extends Controller
             ]);
         }
 
-        // Login corretto → salva sessione
-        $request->session()->put('Cliente', $utente);
+        //dd(Session::get('Cliente');)
         
         return redirect()->route('home'); // route home/index
     }
@@ -103,7 +101,7 @@ class Autenticazione extends Controller
         
         // Verifica se il cliente è già registrato
         $clienteService = new ClienteService();
-        $clienteEsistente = $clienteService->ricercaPerChiave($email);
+        $clienteEsistente = $clienteService->ricercaPerChiave($email,false);
         
         if ($clienteEsistente) {
             Log::warning('Cliente già registrato con email: ' . $email);
@@ -113,10 +111,7 @@ class Autenticazione extends Controller
             ]);
         }
         
-        
-        // Usa una transaction per garantire consistenza dei dati
         try {
-            DB::beginTransaction();
             
             // 1. Inserisci la carta di credito
             $cartaCreditoService = new CartaDiCreditoService();  
@@ -131,7 +126,6 @@ class Autenticazione extends Controller
             } catch (\Exception $e) {
                 Log::error('Errore salvataggio carta di credito: ' . $e->getMessage());
                 Log::error('Stack trace:', ['trace' => $e->getTraceAsString()]);
-                DB::rollBack();
                 
                 return view('profilo.registrazione', [
                     'message' => 'Non puoi registrarti con questa carta',
@@ -139,12 +133,11 @@ class Autenticazione extends Controller
                 ]);
             }
             
-            // 2. Genera un codice univoco per la carta fedeltà
-            $codiceFedelta = $this->generaCodiceFedelta();
-            
-            // 3. Inserisci la carta fedeltà
+            // 2. Inserisci la carta fedeltà
             $cartaFedeltaService = new CartaFedeltaService();
             $cartaFedelta = new CartaFedelta();
+            // 3. Genera un codice univoco per la carta fedeltà
+            $codiceFedelta = $cartaFedeltaService->generaCodiceFedelta();
             $cartaFedelta->codice = $codiceFedelta;
             $cartaFedelta->punti = 0;
             
@@ -153,7 +146,6 @@ class Autenticazione extends Controller
             } catch (\Exception $e) {
                 Log::error('Errore salvataggio carta fedeltà: ' . $e->getMessage());
                 Log::error('Stack trace:', ['trace' => $e->getTraceAsString()]);
-                DB::rollBack();
                 throw $e;
             }
             
@@ -173,18 +165,14 @@ class Autenticazione extends Controller
             } catch (\Exception $e) {
                 Log::error('Errore salvataggio cliente: ' . $e->getMessage());
                 Log::error('Stack trace:', ['trace' => $e->getTraceAsString()]);
-                DB::rollBack();
                 throw $e;
             }
-            
-            DB::commit();
             
             // Redirect al login con messaggio di successo
             return redirect()->route('loginFirst')
                 ->with('success', 'Registrazione completata con successo!');
             
         } catch (\Exception $e) {
-            DB::rollBack();
             Log::error('=== ERRORE GENERALE REGISTRAZIONE ===');
             Log::error('Messaggio errore: ' . $e->getMessage());
             Log::error('File: ' . $e->getFile());
@@ -198,47 +186,17 @@ class Autenticazione extends Controller
         }
     }
 
-    /**
-     * Genera un codice univoco per la carta fedeltà
-     */
-    private function generaCodiceFedelta()
-    {
-        $tentativo = 0;
-        $cartaFedeltaService = new CartaFedeltaService();
-        
-        do {
-            $tentativo++;
-            // Genera un numero casuale fino a 9 cifre
-            $codice = (string) rand(100000000, 999999999);
-            
-            Log::info("Tentativo #$tentativo - Codice generato: $codice");
-            
-            // Verifica se esiste già
-            $carta = $cartaFedeltaService->ricercaPerChiave($codice);
-            $exists = $carta !== null;
-            
-            if ($exists) {
-                Log::warning("Codice $codice già esistente, rigenero");
-            }
-            
-        } while ($exists);
-        
-        Log::info("Codice fedeltà univoco trovato dopo $tentativo tentativi: $codice");
-        return $codice;
-    }
-
     public function logout(Request $request)
     {
         // Ottengo la sessione
-        $utente = $request->session()->get('Cliente');
+        $clienteService = new ClienteService();
+        $utente = $clienteService->getUtenteAutenticato();
         // Se non esiste 'utente' (utente non loggato)
         if ($utente === null) {
             return redirect()->route('home');
         }
-        
         // Altrimenti rimuovo gli attributi della sessione
-        $request->session()->forget('Cliente');
-
+        $clienteService->logoutUtente();
         // Redirect alla home
         return redirect()->route('login');
     }

@@ -48,4 +48,11 @@ class CartaDiCredito extends Model
             'data_scadenza' => 'datetime',
         ];
     }
+
+    //Relationship
+
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class, 'cartadicredito', 'codicecarta');
+    }
 }
