@@ -5,6 +5,8 @@ namespace App\Models\Profilo;
 
 use App\Models\Acquisto\Ordine;
 use App\Models\Prodotto\Recensisce;
+use App\Models\Profilo\CartaDiCredito;
+use App\Models\Profilo\CartaFedelta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,7 +14,9 @@ class Cliente extends Model
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
-
+    
+    public $timestamps = false;
+    
     /**
      * The table associated with the model.cliente freccia nome
      *

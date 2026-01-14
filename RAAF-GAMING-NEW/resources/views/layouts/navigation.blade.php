@@ -70,7 +70,7 @@
             </div>
             
             <!-- Shopping Cart -->
-            <a href="#" class="cart-icon mt-0.95 mr-2.5 focus-visible" aria-label="Carrello della spesa">
+            <a href="{{ route('logout') }}" class="cart-icon mt-0.95 mr-2.5 focus-visible" aria-label="Carrello della spesa">
                 @if(empty($carrello))
                     <i id="sostituisciCarrello" class='fas fa-shopping-cart text-[27px] text-white hover:text-white/60' aria-hidden="true"></i>
                     <span class="sr-only">Carrello vuoto</span>

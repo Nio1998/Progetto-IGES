@@ -23,28 +23,66 @@ class ClienteService
      * @return \App\Models\Profilo\Cliente Il modello Cliente trovato.
      * @throws \InvalidArgumentException Se l'id fornito è vuoto o non valido.
      */
-    public function ricercaPerChiave($id)
+    public function ricercaPerChiave($id, $save = true)
     {
         if($id == null || $id == "")
-			throw new \InvalidArgumentException("Inserito un id null o vuoto");
+            throw new \InvalidArgumentException("Inserito un id null o vuoto");
+        
 
         $cliente = Session::get('Cliente');
 
         if(isset($cliente))
-            return $cliente;
+            if($cliente->email == $id)
+                return $cliente;
 
-        $cliente = Cliente::where('email',$id)->first();
+        $cliente = Cliente::where('email',$id)->with(['cartacredito', 'cartafedelta'])->first() ?? null;
 
-        Session::put('Cliente',$cliente);
+        if($save)
+            Session::put('Cliente',$cliente);
 
         return $cliente;
     }
 
     /**
+     * Restituisce il cliente attualmente autenticato.
+     *
+     * Pre-condizione:
+     *   - La sessione di Laravel è disponibile.
+     *   - Se l'utente non è presente in sessione, deve essere possibile recuperare l'utente loggato.
+     *
+     * Post-condizione:
+     *   - Restituisce un'istanza di \App\Models\Profilo\Cliente se l'utente è autenticato e presente nel database.
+     *   - Se l'utente non è autenticato, restituisce null.
+     *
+     * @return \App\Models\Profilo\Cliente|null
+     */
+    public function getUtenteAutenticato()
+    {
+        return Session::get('Cliente');
+    }
+
+    /**
+     * Rimuove il cliente attualmente memorizzato in sessione.
+     *
+     * Pre-condizione:
+     *   - La sessione di Laravel è disponibile.
+     *
+     * Post-condizione:
+     *   - Il cliente memorizzato in sessione sotto la chiave 'Cliente' viene rimosso.
+     *   - Eventuali richiami a getUtenteAutenticato() dopo questa chiamata restituiranno null.
+     *
+     * @return void
+     */
+    public function logoutUtente()
+    {
+        Session::forget('Cliente');
+    }
+
+    /**
      * Ritorna una Collection di Clienti (equivalente a ArrayList<ClienteBean>).
-     * * @param string $ordinamento La colonna su cui applicare l'ordinamento (es. 'cognome').
+     * @param string $ordinamento La colonna su cui applicare l'ordinamento (es. 'cognome').
      * @return \Illuminate\Support\Collection|\App\Models\Cliente[] Una collezione di oggetti Cliente.
-     * * @throws \InvalidArgumentException Se il parametro di ordinamento non è valido.
+     * @throws \InvalidArgumentException Se il parametro di ordinamento non è valido.
      */
     public function allElements($ordinamento)
     {
@@ -94,15 +132,13 @@ class ClienteService
 
         return $cliente;
         
-        
     }
 
     /**
      * Inserisce un nuovo cliente nel database (Equivalente a newInsert).
-     *
      * @param array $dati Un array associativo contenente i dati del cliente (es. dalla Request).
      * @return \App\Models\Cliente L'istanza del cliente appena creato.
-     * * @throws \InvalidArgumentException Se i dati forniti sono nulli o incompleti.
+     * @throws \InvalidArgumentException Se i dati forniti sono nulli o incompleti.
      */
     public function newInsert($item, $carta_fedelta, $cartadicredito)
     {
