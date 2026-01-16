@@ -1,0 +1,414 @@
+@charset "UTF-8";
+
+/* Stili Base Body */
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: url(/immagini/sky.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container Profilo */
+.profilo-container {
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+/* === FLIP CARD STYLES === */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 450px;
+    perspective: 1000px;
+    margin: 0 auto;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, 
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.flip-card-front {
+    color: black;
+}
+
+.flip-card-back {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* Carta Fedeltà */
+.carta-fedelta {
+    border: none;
+    border-radius: 20px;
+    height: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.carta-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.carta-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.carta-info {
+    width: 100%;
+    max-width: 500px;
+}
+
+.info-item {
+    list-style: none;
+    padding: 8px 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.info-label {
+    color: #ffc107;
+    margin-right: 10px;
+    min-width: 180px;
+}
+
+.info-value {
+    color: white;
+    word-break: break-word;
+}
+
+/* Retro Carta */
+.carta-fedelta-back {
+    background: transparent;
+    border: none;
+    height: 100%;
+}
+
+/* === FORM MODIFICA CREDENZIALI === */
+.form-modifica {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: #333;
+}
+
+.form-header h2 {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.form-section {
+    padding: 20px;
+    background: rgba(240, 240, 240, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    color: #667eea;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+/* Stili Input */
+.form-control {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: #999;
+}
+
+label {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+/* Bottone Aggiorna */
+.btn-aggiorna {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    padding: 15px 40px;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-aggiorna:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.btn-aggiorna:active {
+    transform: translateY(-1px);
+}
+
+/* Notifiche */
+#notifica {
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* === RESPONSIVE DESIGN === */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .flip-card {
+        height: 400px;
+        margin-bottom: 30px;
+    }
+    
+    .carta-overlay {
+        padding: 15px;
+    }
+    
+    .info-item {
+        font-size: 0.85rem;
+    }
+    
+    .info-label {
+        min-width: 150px;
+    }
+    
+    .form-modifica {
+        padding: 25px;
+    }
+}
+
+/* Smartphone */
+@media (max-width: 768px) {
+    .profilo-container {
+        padding: 10px;
+    }
+    
+    .flip-card {
+        height: 380px;
+        margin-bottom: 20px;
+    }
+    
+    .carta-overlay {
+        padding: 10px;
+    }
+    
+    .carta-info {
+        padding: 10px;
+    }
+    
+    .info-item {
+        font-size: 0.75rem;
+        padding: 6px 0;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .info-label {
+        min-width: auto;
+        margin-bottom: 2px;
+        font-size: 0.7rem;
+    }
+    
+    .info-value {
+        font-size: 0.8rem;
+    }
+    
+    .form-modifica {
+        padding: 20px;
+    }
+    
+    .form-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1rem;
+    }
+    
+    .form-section {
+        padding: 15px;
+    }
+    
+    .btn-aggiorna {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+        width: 100%;
+    }
+    
+    /* Disabilita flip su mobile per migliore usabilità */
+    .flip-card:hover .flip-card-inner {
+        transform: none;
+    }
+}
+
+/* Schermi molto piccoli */
+@media (max-width: 480px) {
+    .flip-card {
+        height: 350px;
+    }
+    
+    .info-item {
+        font-size: 0.7rem;
+        padding: 4px 0;
+    }
+    
+    .info-label {
+        font-size: 0.65rem;
+    }
+    
+    .info-value {
+        font-size: 0.75rem;
+    }
+    
+    .form-modifica {
+        padding: 15px;
+    }
+    
+    .form-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .form-section {
+        padding: 12px;
+    }
+    
+    .form-control {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    label {
+        font-size: 0.85rem;
+    }
+    
+    .btn-aggiorna {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .flip-card {
+        height: 300px;
+    }
+    
+    .info-item {
+        padding: 3px 0;
+    }
+}
+
+/* Accessibilità - Riduzione movimento */
+@media (prefers-reduced-motion: reduce) {
+    .flip-card-inner {
+        transition: none;
+    }
+    
+    .btn-aggiorna {
+        transition: none;
+    }
+    
+    #notifica {
+        animation: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .flip-card-back,
+    .form-modifica {
+        display: none;
+    }
+}

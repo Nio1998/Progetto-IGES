@@ -22,4 +22,3 @@ Route::middleware(['redirectIfAuthenticated'])->group(function () {
     Route::post('/registrazione', [Autenticazione::class, 'registrazioneStore'])->name('registrazione.store');
 
 });
-
