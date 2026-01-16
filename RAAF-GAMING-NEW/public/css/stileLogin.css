@@ -1,65 +1,226 @@
 @charset "UTF-8";
 
-body{
-	width: 100%;
-	height: 100%;	
-	background: url(/immagini/theWitcher.jpg) no-repeat;
-	background-attachment: fixed;		
-	z-index: -1;	
-	-webkit-background-size: cover;	
-	-moz-background-size: cover;	
-	-o-background-size: cover;	
-	background-size: cover;
+body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: url(/immagini/theWitcher.jpg) no-repeat center center;
+  background-attachment: fixed;
+  z-index: -1;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /* Disabilita selezione testo e cursore di testo su body */
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-#divForm{
-	background-color: rgba(254,254,233,0.5); 
-	width:100%; 
-	height:110%;
+#divForm {
+  background-color: rgba(254, 254, 233, 0.5);
+  width: 100%;
+  min-height: 100%;
 }
 
-#stileForm{
-	padding-top:10px; 
-	padding-left:10px;
-	padding-right:10px;
-	color: black;
-	font-family: Acunim Variable Consent;
+#stileForm {
+  padding: 10px;
+  color: black;
+  font-family: Acumin Variable Concept, sans-serif;
 }
 
-#testoForm{
-	padding-top:5%;
-	text-align:center;	
-	font-weight: normal;
-	color: rgb(35,35,35);
+#testoForm {
+  padding-top: 5%;
+  text-align: center;
+  font-weight: normal;
+  color: rgb(35, 35, 35);
 }
 
-a{
-	font-family: Eras Demi ITC;
-	color:black;
+a {
+  font-family: "Eras Demi ITC", sans-serif;
+  color: black;
 }
 
-a:hover{
-	text-decoration: none;
-	color:#FF6600;
+a:hover {
+  text-decoration: none;
+  color: #ff6600;
 }
 
-p{
-	text-align:center;
+/* Permetti selezione solo sugli input e link */
+input,
+a {
+  cursor: pointer;
+  -webkit-user-select: auto;
+  -moz-user-select: auto;
+  -ms-user-select: auto;
+  user-select: auto;
+}
+
+input[type="email"],
+input[type="password"] {
+  cursor: text;
+}
+
+/* Disabilita cursore testo su immagini, titoli e paragrafi */
+img,
+h4,
+h5,
+p,
+span,
+label,
+.h4,
+.input-group-text {
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+p {
+  text-align: center;
 }
 
 /* Stili per il bottone di login */
 .invio {
-	font-family: 'Eras Demi ITC', sans-serif;
-	background-color: #FF6600;
-	width: 60%;
-	font-weight: bold;
-	color: white;
-	border-radius: 15px;
-	border: none;
-	padding: 10px;
-	cursor: pointer;
+  font-family: "Eras Demi ITC", sans-serif;
+  background-color: #ff6600;
+  width: 60%;
+  font-weight: bold;
+  color: white;
+  border-radius: 15px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .invio:hover {
-	background-color: #e55a00;
+  background-color: #e55a00;
+}
+
+/* ========== RESPONSIVE FIXES ========== */
+
+/* Container principale del form - responsive */
+.container.d-flex.justify-content-center {
+  width: 90% !important;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Logo container responsive */
+/* Logo allineato a sinistra di default, centrato solo su mobile piccoli */
+.container.ml-5.mb-3.mt-2 {
+  display: block;
+  text-align: left;
+  width: 100%;
+}
+
+.container.ml-5.mb-3.mt-2 img {
+  max-width: 150px;
+  width: auto;
+  height: auto;
+  display: inline-block;
+}
+
+/* Input group responsive */
+.input-group {
+  width: 100% !important;
+  margin-left: 0 !important;
+}
+
+/* Bottone responsive */
+.invio {
+  display: block;
+  margin: 0 auto 15px auto !important;
+  width: 80%;
+  max-width: 250px;
+}
+
+/* ========== MEDIA QUERIES ========== */
+
+/* Tablet */
+@media (min-width: 576px) and (max-width: 991px) {
+  .container.d-flex.justify-content-center {
+    width: 70% !important;
+  }
+
+  /* Logo rimane a sinistra su tablet */
+  .container.ml-5.mb-3.mt-2 {
+    text-align: left;
+  }
+
+  .container.ml-5.mb-3.mt-2 img {
+    max-width: 160px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  .container.d-flex.justify-content-center {
+    width: 50% !important;
+    max-width: 550px;
+  }
+
+  /* Logo rimane a sinistra su desktop */
+  .container.ml-5.mb-3.mt-2 {
+    text-align: left;
+  }
+
+  .container.ml-5.mb-3.mt-2 img {
+    max-width: 180px;
+  }
+
+  .invio {
+    width: 60%;
+  }
+}
+
+/* Mobile piccoli */
+@media (max-width: 575px) {
+  body {
+    background-position: center center;
+  }
+
+  .container.d-flex.justify-content-center {
+    width: 95% !important;
+    padding: 15px 10px;
+  }
+
+  /* Logo centrato SOLO su mobile piccoli */
+  .container.ml-5.mb-3.mt-2 {
+    text-align: center;
+    margin-left: 0 !important;
+    padding: 10px 0;
+  }
+
+  .container.ml-5.mb-3.mt-2 img {
+    max-width: 120px;
+  }
+
+  #stileForm h4 {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-left: 0 !important;
+  }
+
+  .input-group {
+    margin-left: 0 !important;
+    padding: 0 5px;
+  }
+
+  .invio {
+    width: 90%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
 }

@@ -12,7 +12,7 @@
   background-repeat: no-repeat;
   display: inline-block;
   width: 20px;
-  height: 20px; /* Updated from 12px to 20px */
+  height: 20px;
 }
 
 /* Search Icon */
@@ -23,18 +23,54 @@
   pointer-events: none;
 }
 
-/* Dropdown Animations */
+.dropdown {
+  position: relative;
+}
+
+/* Dropdown Menu - Migliorato con z-index alto */
 .dropdown-menu {
+  display: none;
   opacity: 0;
   transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
+  border: 2px solid rgba(210, 210, 210, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  z-index: 999999;
+  position: absolute;
 }
 
 .dropdown-menu.active {
+  display: block;
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+/* Dropdown Menu Items - Migliorati */
+.dropdown-item {
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+  border-radius: 0 0 13px 0;
+}
+
+.dropdown-item:first-child {
+  border-radius: 5px 0 0 0;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding-left: 1.25rem;
+  transform: translateX(3px);
+}
+
+.dropdown-item:active {
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 /* Navbar Collapse riempie in orizzontale */
@@ -45,12 +81,16 @@
 }
 
 .navbar-collapse.active {
-  max-height: 200px; /* Updated from 800px to 200px */
+  max-height: 200px;
 }
 
 /* User Avatar Styles */
 .user-avatar {
   transition: all 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .user-avatar:hover {
@@ -91,11 +131,11 @@
 /* Toggle Button senza bordo */
 .navbar-toggler {
   transition: all 0.3s ease;
-  border: none; /* Added border: none; */
+  border: none;
 }
 
 .navbar-toggler:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Updated background-color */
+  background-color: rgba(255, 255, 255, 0.1);
   transform: scale(1.05);
 }
 
@@ -134,24 +174,18 @@
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
 }
 
-/* Dropdown Menu Items */
-.dropdown-item {
-  transition: all 0.3s ease;
-}
-
-.dropdown-item:hover {
-  border-radius: 25px;
-  transform: translateX(5px);
-}
-
 /* Mobile Responsive per menu orizzontale */
 @media (max-width: 768px) {
   .navbar-collapse.active {
-    max-height: 300px; /* Updated from 900px to 300px */
+    max-height: 300px;
   }
 
   .search-form {
     max-width: 100%;
+  }
+  
+  .dropdown-menu {
+    min-width: 120px;
   }
 }
 
@@ -163,8 +197,7 @@
 
 /* Loading State for Cart */
 @keyframes pulse {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 1;
   }
   50% {
