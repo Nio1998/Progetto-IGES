@@ -19,7 +19,7 @@
                     <!-- Fronte della carta -->
                     <div class="flip-card-front">
                         <div class="card text-white carta-fedelta">
-                            <img src="{{ asset('immagini/cartafedelta.png') }}" 
+                            <img src="{{ asset('immagini/logo.png') }}" 
                                  class="card-img carta-img" 
                                  alt="Carta Fedeltà">
                             <div class="card-img-overlay carta-overlay">
@@ -60,7 +60,7 @@
                         <div class="card text-white carta-fedelta-back">
                             <div class="card-body d-flex flex-column justify-content-center align-items-center">
                                 <h3 class="mb-4">RAAF-GAMING</h3>
-                                <p class="text-center">Carta Fedeltà Premium</p>
+                                <p class="text-center">Carta Fedeltà</p>
                                 <p class="text-center">Accumula punti con ogni acquisto!</p>
                                 <div class="mt-3">
                                     <i class="fas fa-gamepad fa-3x"></i>
@@ -76,8 +76,7 @@
         <div class="col-lg-6 col-md-12">
             <div class="form-modifica">
                 <div class="form-header">
-                    <h2 class="text-center mb-4">Modifica Credenziali</h2>
-                    <p class="text-center subtitle">Aggiorna password e carta di credito</p>
+                    <h2 class="text-center mb-4">Vuoi cambiare password e/o IBAN?</h2>
                 </div>
 
                 <!-- Messaggio di notifica -->
@@ -98,7 +97,6 @@
                                    class="form-control" 
                                    id="inputPassword1" 
                                    placeholder="Minimo 8 caratteri">
-                            <small class="form-text text-muted">Minimo 8 caratteri</small>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="inputPassword2">Conferma password</label>
@@ -151,7 +149,7 @@
                         <button type="button" 
                                 class="btn btn-primary btn-lg btn-aggiorna" 
                                 onclick="aggiornamentoCredenziali()">
-                            <i class="fas fa-save mr-2"></i>AGGIORNA CREDENZIALI
+                            <i class="fas fa-save mr-2"></i>INVIA
                         </button>
                     </div>
                 </div>
