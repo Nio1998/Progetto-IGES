@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\Profilo\ClienteService;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsAutenticated
+class IsAuthenticated
 {
 
     public function handle(Request $request, Closure $next): Response

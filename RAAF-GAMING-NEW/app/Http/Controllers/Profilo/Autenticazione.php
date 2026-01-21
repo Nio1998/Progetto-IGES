@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Log;
 
 class Autenticazione extends Controller
 {
-    public function loginFirst(Request $request){
+    public function loginFirst(){
         return view('PresentazioneProfilo.login');
     }
 
@@ -27,7 +27,7 @@ class Autenticazione extends Controller
 
         // Se email o password mancanti → ritorna al form
         if (!$email || !$password) {
-            return view('profilo.login', [
+            return view('PresentazioneProfilo.login', [
                 'message' => 'Inserisci email e password',
                 'visita' => ''
             ]);
@@ -37,7 +37,7 @@ class Autenticazione extends Controller
        $utente = $clienteService->ricercaPerChiave($email);
         //dd($utente);
         if (!$utente) {
-            return view('profilo.login', [
+            return view('PresentazioneProfilo.login', [
                 'message' => 'Email non registrata',
                 'visita' => ''
             ]);
@@ -45,7 +45,7 @@ class Autenticazione extends Controller
 
         // Controllo password (MD5 per compatibilità)
         if (md5($password) !== $utente->password) {
-            return view('profilo.login', [
+            return view('PresentazioneProfilo.login', [
                 'message' => 'Password errata',
                 'visita' => ''
             ]);
@@ -56,7 +56,7 @@ class Autenticazione extends Controller
         return redirect()->route('home'); // route home/index
     }
 
-    public function registrazione(Request $request){
+    public function registrazione(){
         return view('PresentazioneProfilo.registrazione');
     }
 
@@ -186,7 +186,7 @@ class Autenticazione extends Controller
         }
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
         // Ottengo la sessione
         $clienteService = new ClienteService();

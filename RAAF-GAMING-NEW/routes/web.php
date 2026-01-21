@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Profilo\Autenticazione;
+use App\Http\Controllers\Profilo\AutenticazioneAdmin;
 
 // Home temporanea
 Route::get('/', function () {
@@ -21,4 +22,11 @@ Route::middleware(['redirectIfAuthenticated'])->group(function () {
     Route::get('/registrazione', [Autenticazione::class, 'registrazione'])->name('registrazione');
     Route::post('/registrazione', [Autenticazione::class, 'registrazioneStore'])->name('registrazione.store');
 
+
+});
+
+Route::middleware(['redirectIfAuthenticatedAdmin'])->group(function () { 
+    // LOGIN ADMIN
+    Route::get('/admin', [AutenticazioneAdmin::class, 'loginFirstAdmin'])->name('loginFirstAdmin');
+    Route::post('/admin', [AutenticazioneAdmin::class, 'loginAdmin'])->name('loginAdmin');
 });

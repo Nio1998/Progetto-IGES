@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\Profilo\gestoreService;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsAutenticatedAdmin
+class IsAuthenticatedAdmin
 {
     public function handle(Request $request, Closure $next): Response
     {
