@@ -9,7 +9,6 @@ class Profilo extends Controller
 {
     public function mostraProfilo()
     {
-        
         return view('PresentazioneProfilo.profilo');
     }
 }

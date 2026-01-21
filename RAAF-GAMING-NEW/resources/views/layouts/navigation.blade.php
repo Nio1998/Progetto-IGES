@@ -78,12 +78,12 @@ $carrello = Session::get('Carrello');
                             Registrati
                         </a>
                     @else
-                        <a href="#" 
+                        <a href="{{ route('logout') }}" 
                             class="dropdown-item block px-4 py-2 text-white hover:bg-gray-500 focus-visible"
                             role="menuitem">
                             LogOut
                         </a>
-                        <a href="#" 
+                        <a href="{{ route('mostraProfilo') }}" 
                             class="dropdown-item block px-4 py-2 text-white hover:bg-gray-500 focus-visible"
                             role="menuitem">
                             Profilo

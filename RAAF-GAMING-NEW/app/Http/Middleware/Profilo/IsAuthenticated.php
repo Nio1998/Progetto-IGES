@@ -17,7 +17,7 @@ class IsAuthenticated
         if ($clienteService->getUtenteAutenticato())
            return $next($request);
 
-         // Redirect alla route index o home
+        // Redirect alla route index o home
         return redirect()->route('home'); 
     }
 }
