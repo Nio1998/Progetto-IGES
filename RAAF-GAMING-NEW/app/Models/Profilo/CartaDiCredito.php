@@ -25,6 +25,8 @@ class CartaDiCredito extends Model
      * @var string
      */
     protected $primaryKey = 'codicecarta';
+    protected $keyType = 'string';
+    public $incrementing = false;
     
     /**
      * The attributes that are mass assignable.

@@ -25,6 +25,8 @@ class CartaFedelta extends Model
      * @var string
      */
     protected $primaryKey = 'codice';
+    protected $keyType = 'string';
+    public $incrementing = false;
     
     /**
      * The attributes that are mass assignable.

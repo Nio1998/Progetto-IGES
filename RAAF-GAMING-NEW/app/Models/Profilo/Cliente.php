@@ -30,6 +30,9 @@ class Cliente extends Model
      * @var string
      */
     protected $primaryKey = 'email';
+
+    protected $keyType = 'string';
+    public $incrementing = false;
     
     /**
      * The attributes that are mass assignable.

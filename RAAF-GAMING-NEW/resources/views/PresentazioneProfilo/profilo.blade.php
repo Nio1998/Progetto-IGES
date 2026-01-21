@@ -1,6 +1,6 @@
 @php
-    $utente = null;
-    $carta = null // Assumendo relazione con CartaFedelta
+    $utente = $data['cliente'] ?? null;
+    $carta =  $utente->cartafedelta ?? null;
 @endphp
 
 @extends('layouts.app')
@@ -26,29 +26,29 @@
                                 <div class="carta-info">
                                     <ul class="info-item">
                                         <li class="info-label">EMAIL:</li>
-                                        <li class="info-value">abcs</li>
+                                        <li class="info-value">{{ $utente->email }}</li>
                                     </ul>
                                     <ul class="info-item">
                                         <li class="info-label">NOME:</li>
-                                        <li class="info-value">seddgasdg</li>
+                                        <li class="info-value">{{ $utente->nome }}</li>
                                     </ul>
                                     <ul class="info-item">
                                         <li class="info-label">COGNOME:</li>
-                                        <li class="info-value">SDVSDGV</li>
+                                        <li class="info-value">{{ $utente->cognome }}</li>
                                     </ul>
                                     <ul class="info-item">
                                         <li class="info-label">CARTA DI CREDITO:</li>
                                         <li class="info-value" id="cartaAggiornata">
-                                            ****@php /*substr($utente->carta_credito, 12, 4)*/ @endphp
+                                            ****{{ substr($utente->cartadicredito, 12, 4) }}
                                         </li>
                                     </ul>
                                     <ul class="info-item">
                                         <li class="info-label">CODICE CARTA:</li>
-                                        <li class="info-value">dfhgszdfhsdfhsd</li>
+                                        <li class="info-value">{{ $carta->codice }}</li>
                                     </ul>
                                     <ul class="info-item">
                                         <li class="info-label">PUNTI CARTA:</li>
-                                        <li class="info-value">0</li>
+                                        <li class="info-value">{{ $carta->punti }}</li>
                                     </ul>
                                 </div>
                             </div>
