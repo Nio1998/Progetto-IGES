@@ -32,7 +32,7 @@ class AutenticazioneAdmin extends Controller
         //dd($utente);
         if (!$admin) {
             return view('PresentazioneProfilo.admin', [
-                'message' => 'Email non registrata',
+                'message' => '',
                 'visita' => ''
             ]);
         }
@@ -40,7 +40,7 @@ class AutenticazioneAdmin extends Controller
         // Controllo password
         if (!$gestoreService->checkPassword($password,$admin)) {
             return view('PresentazioneProfilo.admin', [
-                'message' => 'Password errata',
+                'message' => '',
                 'visita' => ''
             ]);
         }
