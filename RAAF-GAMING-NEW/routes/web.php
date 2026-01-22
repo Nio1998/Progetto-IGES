@@ -38,5 +38,6 @@ Route::middleware(['isAutenticated'])->group(function () {
 
     // PROFILO
     Route::get('/profilo', [Profilo::class, 'mostraProfilo'])->name('mostraProfilo');
+    Route::post('/profilo', [Profilo::class, 'modificaProfilo'])->name('modificaProfilo');
 
 });

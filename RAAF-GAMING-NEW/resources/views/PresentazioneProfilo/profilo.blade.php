@@ -157,9 +157,7 @@
         </div>
     </div>
 </div>
-@endsection
 
-@section('scripts')
 <script src="{{ asset('js/controlloCambio.js') }}"></script>
 <script>
     function aggiornamentoCredenziali() {
@@ -180,7 +178,7 @@
             
             $.ajax({
                 type: "POST",
-                url: "#",
+                url: "{{ route('modificaProfilo') }}",
                 data: dati,
                 dataType: "json",
                 success: function(risposta) {
