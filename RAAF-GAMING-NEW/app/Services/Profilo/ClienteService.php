@@ -79,6 +79,38 @@ class ClienteService
     }
 
     /**
+     * Restituisce la password criptata in MD5.
+     *
+     * @param string $password
+     * @return string
+     * @throws \InvalidArgumentException Se la password è null o vuota.
+     */
+    public function getCryptedPassword($password)
+    {
+        if ($password === null || $password === '')
+            throw new \InvalidArgumentException("Password null o vuota");
+
+        return md5($password);
+    }
+
+    /**
+     * Verifica se la password fornita corrisponde a quella dell'utente.
+     *
+     * @param string $password
+     * @param \App\Models\Profilo\Cliente $utente
+     * @return bool
+     * @throws \InvalidArgumentException Se i parametri sono null.
+     */
+    public function checkPassword($password, $utente)
+    {
+        if ($password === null || $utente === null)
+            throw new \InvalidArgumentException("Password o utente null");
+
+        return md5($password) === $utente->password;
+    }
+
+
+    /**
      * Ritorna una Collection di Clienti (equivalente a ArrayList<ClienteBean>).
      * @param string $ordinamento La colonna su cui applicare l'ordinamento (es. 'cognome').
      * @return \Illuminate\Support\Collection|\App\Models\Cliente[] Una collezione di oggetti Cliente.

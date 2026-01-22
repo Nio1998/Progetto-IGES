@@ -37,8 +37,8 @@ class AutenticazioneAdmin extends Controller
             ]);
         }
 
-        // Controllo password (MD5 per compatibilità)
-        if (md5($password) !== $admin->password) {
+        // Controllo password
+        if (!$gestoreService->checkPassword($password,$admin)) {
             return view('PresentazioneProfilo.admin', [
                 'message' => 'Password errata',
                 'visita' => ''

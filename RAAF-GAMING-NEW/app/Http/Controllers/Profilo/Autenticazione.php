@@ -38,20 +38,18 @@ class Autenticazione extends Controller
         //dd($utente);
         if (!$utente) {
             return view('PresentazioneProfilo.login', [
-                'message' => 'Email non registrata',
+                'message' => '',
                 'visita' => ''
             ]);
         }
 
-        // Controllo password (MD5 per compatibilità)
-        if (md5($password) !== $utente->password) {
+        // Controllo password
+        if (!$clienteService->checkPassword($password,$utente)) {
             return view('PresentazioneProfilo.login', [
-                'message' => 'Password errata',
+                'message' => '',
                 'visita' => ''
             ]);
         }
-
-        //dd(Session::get('Cliente');)
         
         return redirect()->route('home'); // route home/index
     }
@@ -157,7 +155,7 @@ class Autenticazione extends Controller
             $nuovoCliente->email = $email;
             $nuovoCliente->cartadicredito = $codicecarta;
             $nuovoCliente->data_di_nascita = $data;
-            $nuovoCliente->password = md5($password);
+            $nuovoCliente->password = $clienteService->getCryptedPassword($password);
             $nuovoCliente->carta_fedelta = $codiceFedelta;
             
             try {

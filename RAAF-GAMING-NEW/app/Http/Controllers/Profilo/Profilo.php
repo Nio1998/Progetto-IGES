@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Profilo;
 use App\Http\Controllers\Controller;
 use App\Services\Profilo\CartaDiCreditoService;
 use App\Services\Profilo\ClienteService;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
@@ -60,13 +61,12 @@ class Profilo extends Controller
         $cartaChanged = false;
 
         if ($request->filled('passwordNuova')) {
-            $newMd5 = md5($request->passwordNuova);
+            $newPassword = $request->passwordNuova;
             
-            if ($newMd5 === $cliente->password) {
+            if ($clienteService->checkPassword($newPassword,$cliente)) {
                 return response()->json(['errorMessage' => "LA PASSWORD COINCIDE CON QUELLO GIA' IN USO"]);
             }
 
-            $cliente->password = $newMd5;
             $passwordChanged = true;
         }
 
@@ -75,7 +75,7 @@ class Profilo extends Controller
         if ($request->filled(['cartaNuova', 'codiceNuovo', 'dataScadNuova'])) {
             $nuovaCartaCodice = $request->cartaNuova;
 
-            if ($nuovaCartaCodice == $cliente->cartadicredito->codicecarta) {
+            if ($nuovaCartaCodice == $cliente->cartadicredito) {
                 return response()->json(['errorMessage' => "LA CARTA COINCIDE CON QUELLA GIA' IN USO"]);
             }
             
@@ -85,6 +85,7 @@ class Profilo extends Controller
         try {
             // A. Salvo modifiche utente (Password)
             if ($passwordChanged) {
+                $cliente->password = $clienteService->getCryptedPassword($newPassword);
                 $clienteService->doUpdate($cliente);
                 $response['password'] = true;
             }
@@ -94,20 +95,20 @@ class Profilo extends Controller
                 
                 try {
                     $cartaService = new CartaDiCreditoService();
-                    $carta = $cliente->cartadicredito;
+                    $carta = $cliente->cartacredito;
 
-                    $vecchiacarta = $cliente->cartadicredito->codicecarta;
+                    $vecchiacarta = $cliente->cartadicredito;
                     $carta->codicecarta = $request->cartaNuova ?? $carta->codicecarta;
                     $carta->data_scadenza = $request->dataScadNuova ?? $carta->data_scadenza;
                     $carta->codice_cvv = $request->codiceNuovo ?? $carta->codice_cvv;
-
+                    
                     // Aggiorna carta
                     $cartaService->doUpdate($carta, $vecchiacarta);
-
+                    
                     // Prepara risposta carta mascherata
-                    $response['carta'] = "*****" . substr($request->cartaNuova, 12, 16);
+                    $response['carta'] = "****" . substr($request->cartaNuova, 12, 16);
 
-                } catch (QueryException $e) {
+                } catch (\Exception $e) {
                     // C. GESTIONE ERRORE SPECIFICA
                     
                     if ($passwordChanged) {
@@ -126,13 +127,13 @@ class Profilo extends Controller
                 // Se la carta non è cambiata, recupero quella attuale per la risposta 
                 $currentCard = $cliente->cartadicredito;
                 if(strlen($currentCard) >= 16) {
-                    $response['carta'] = "*****" . substr($currentCard, 12, 4);
+                    $response['carta'] = "****" . substr($currentCard, 12, 4);
                 }
             }
 
         } catch (\Exception $e) {
             // Catch generico per errori imprevisti
-            return response()->json(['errorMessage' => "Errore del server: " . $e->getMessage()], 500);
+            return response()->json(['errorMessage' => "Errore del servers"], 500);
         }
 
         return response()->json($response);

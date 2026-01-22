@@ -55,6 +55,6 @@ class CartaDiCredito extends Model
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'cartadicredito', 'codicecarta');
+        return $this->hasOne(Cliente::class, 'cartadicredito', 'codicecarta');
     }
 }

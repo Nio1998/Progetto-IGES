@@ -28,7 +28,7 @@ class CartaDiCreditoService
         if($id == null || $id == "")
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
 
-        return CartaDiCredito::where('codicecarta', $id)->with('utente')->first();
+        return CartaDiCredito::where('codicecarta', $id)->with('cliente')->first();
     }
 
     /**
@@ -59,7 +59,8 @@ class CartaDiCreditoService
         if($item == null || $codice == null)
             throw new \InvalidArgumentException("Inserito un item null o codice null");
 
-        $cartaEsistente = CartaDiCredito::where('codicecarta', $codice)->with('utente')->first();
+        $cartaEsistente = CartaDiCredito::where('codicecarta', $codice)->with('cliente')->first();
+        $emailclientecollegato = $cartaEsistente->cliente->email;
 
         if($cartaEsistente) {
             $cartaEsistente->codicecarta = $item->codicecarta;
@@ -71,10 +72,10 @@ class CartaDiCreditoService
 
             if(isset($cliente))
             {
-                if($cliente->cartacredito && ($cliente->email == $cartaEsistente->utente->email))
+                if($cliente->cartacredito && ($cliente->email == $emailclientecollegato))
                 {
-                    
-                    $cliente->cartacredito = $cartaEsistente;
+                    $cliente->setRelation('cartacredito', $cartaEsistente);
+                    $cliente->cartadicredito = $cartaEsistente->codicecarta;                
                     Session::put('Cliente', $cliente);
                 }
             }           

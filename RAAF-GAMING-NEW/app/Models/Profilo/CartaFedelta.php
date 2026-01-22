@@ -42,6 +42,6 @@ class CartaFedelta extends Model
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'carta_fedelta', 'codice');
+        return $this->hasOne(Cliente::class, 'carta_fedelta', 'codice');
     }
 }

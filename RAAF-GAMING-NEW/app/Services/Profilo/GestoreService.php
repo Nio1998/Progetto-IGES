@@ -76,4 +76,20 @@ class GestoreService
         Session::forget('Gestore');
     }
 
+    /**
+     * Verifica se la password fornita corrisponde a quella dell'utente.
+     *
+     * @param string $password
+     * @param \App\Models\Profilo\Cliente $utente
+     * @return bool
+     * @throws \InvalidArgumentException Se i parametri sono null.
+     */
+    public function checkPassword($password, $utente)
+    {
+        if ($password === null || $utente === null)
+            throw new \InvalidArgumentException("Password o utente null");
+
+        return md5($password) === $utente->password;
+    }
+
 }

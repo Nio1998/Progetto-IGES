@@ -194,7 +194,6 @@
                         }
                         if (risposta.carta != null) {
                             $("#cartaAggiornata").html(risposta.carta);
-                            messaggi.push("Carta di credito aggiornata!");
                         }
                         
                         if (messaggi.length > 0) {
