@@ -1,5 +1,15 @@
+@php
+
+$cliente = Session::get('Cliente');
+$carrello = Session::get('Carrello');
+//dd($cliente);
+
+//dd($cliente);
+
+@endphp
+
 <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
-<nav class="navbar-bg rounded-b-[40px] shadow-lg">
+<nav class="navbar-bg rounded-b-[40px] shadow-lg relative z-50 overflow-visible">
     <div class="flex items-center justify-between px-4 py-2">
         <!-- Logo and Toggler -->
         <div class="flex items-center gap-3">
@@ -47,7 +57,6 @@
                 <button 
                     type="button"
                     id="dropdownMenuButton"
-                    data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
                     aria-label="User menu"
@@ -55,22 +64,41 @@
                     <i class='fas fa-user-astronaut text-[27px] text-white hover:text-white/60' aria-hidden="true"></i>
                 </button>
                 <div class="dropdown-menu absolute right-0 mt-2 navbar-bg rounded-tl-[5px] rounded-br-[15px] shadow-lg min-w-[150px] z-50" 
-                     aria-labelledby="dropdownMenuButton"
-                     role="menu">
-                    @if(isset($impostazione) && isset($impostazione2))
-                        @foreach($impostazione as $index => $label)
-                            <a href="{{ route($impostazione2[$index]) }}" 
-                               class="dropdown-item block px-4 py-2 text-white hover:bg-gray-500 focus-visible"
-                               role="menuitem">
-                                {{ $label }}
-                            </a>
-                        @endforeach
+                    aria-labelledby="dropdownMenuButton"
+                    role="menu">
+                    @if(!isset($cliente))
+                        <a href="{{ route('loginFirst') }}" 
+                            class="dropdown-item block px-4 py-2 text-white hover:bg-gray-500 focus-visible"
+                            role="menuitem">
+                            Login
+                        </a>
+                        <a href="{{ route('registrazione') }}" 
+                            class="dropdown-item block px-4 py-2 text-white hover:bg-gray-500 focus-visible"
+                            role="menuitem">
+                            Registrati
+                        </a>
+                    @else
+                        <a href="{{ route('logout') }}" 
+                            class="dropdown-item block px-4 py-2 text-white hover:bg-gray-500 focus-visible"
+                            role="menuitem">
+                            LogOut
+                        </a>
+                        <a href="{{ route('mostraProfilo') }}" 
+                            class="dropdown-item block px-4 py-2 text-white hover:bg-gray-500 focus-visible"
+                            role="menuitem">
+                            Profilo
+                        </a>
+                        <a href="#" 
+                            class="dropdown-item block px-4 py-2 text-white hover:bg-gray-500 focus-visible"
+                            role="menuitem">
+                            I miei ordini
+                        </a>
                     @endif
                 </div>
             </div>
             
             <!-- Shopping Cart -->
-            <a href="{{ route('logout') }}" class="cart-icon mt-0.95 mr-2.5 focus-visible" aria-label="Carrello della spesa">
+            <a href="#" class="cart-icon mt-0.95 mr-2.5 focus-visible" aria-label="Carrello della spesa">
                 @if(empty($carrello))
                     <i id="sostituisciCarrello" class='fas fa-shopping-cart text-[27px] text-white hover:text-white/60' aria-hidden="true"></i>
                     <span class="sr-only">Carrello vuoto</span>

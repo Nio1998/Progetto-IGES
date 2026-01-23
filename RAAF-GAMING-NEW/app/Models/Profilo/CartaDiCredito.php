@@ -25,6 +25,8 @@ class CartaDiCredito extends Model
      * @var string
      */
     protected $primaryKey = 'codicecarta';
+    protected $keyType = 'string';
+    public $incrementing = false;
     
     /**
      * The attributes that are mass assignable.
@@ -53,6 +55,6 @@ class CartaDiCredito extends Model
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'cartadicredito', 'codicecarta');
+        return $this->hasOne(Cliente::class, 'cartadicredito', 'codicecarta');
     }
 }

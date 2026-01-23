@@ -25,6 +25,8 @@ class CartaFedelta extends Model
      * @var string
      */
     protected $primaryKey = 'codice';
+    protected $keyType = 'string';
+    public $incrementing = false;
     
     /**
      * The attributes that are mass assignable.
@@ -40,6 +42,6 @@ class CartaFedelta extends Model
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'carta_fedelta', 'codice');
+        return $this->hasOne(Cliente::class, 'carta_fedelta', 'codice');
     }
 }

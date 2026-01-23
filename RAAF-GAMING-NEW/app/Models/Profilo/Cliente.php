@@ -30,6 +30,9 @@ class Cliente extends Model
      * @var string
      */
     protected $primaryKey = 'email';
+
+    protected $keyType = 'string';
+    public $incrementing = false;
     
     /**
      * The attributes that are mass assignable.
@@ -71,12 +74,12 @@ class Cliente extends Model
 
     public function cartacredito()
     {
-        return $this->hasOne(CartaDiCredito::class,'codicecarta','cartadicredito');
+        return $this->belongsTo(CartaDiCredito::class, 'cartadicredito', 'codicecarta');
     }
 
     public function cartafedelta()
     {
-        return $this->hasOne(CartaFedelta::class,'codice','carta_fedelta');
+        return $this->belongsTo(CartaFedelta::class,'carta_fedelta','codice');
     }
 
     public function effettua()

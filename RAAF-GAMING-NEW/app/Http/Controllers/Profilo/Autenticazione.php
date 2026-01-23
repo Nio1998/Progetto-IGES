@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Log;
 
 class Autenticazione extends Controller
 {
-    public function loginFirst(Request $request){
+    public function loginFirst(){
         return view('PresentazioneProfilo.login');
     }
 
@@ -27,7 +27,7 @@ class Autenticazione extends Controller
 
         // Se email o password mancanti → ritorna al form
         if (!$email || !$password) {
-            return view('profilo.login', [
+            return view('PresentazioneProfilo.login', [
                 'message' => 'Inserisci email e password',
                 'visita' => ''
             ]);
@@ -37,26 +37,24 @@ class Autenticazione extends Controller
        $utente = $clienteService->ricercaPerChiave($email);
         //dd($utente);
         if (!$utente) {
-            return view('profilo.login', [
-                'message' => 'Email non registrata',
+            return view('PresentazioneProfilo.login', [
+                'message' => '',
                 'visita' => ''
             ]);
         }
 
-        // Controllo password (MD5 per compatibilità)
-        if (md5($password) !== $utente->password) {
-            return view('profilo.login', [
-                'message' => 'Password errata',
+        // Controllo password
+        if (!$clienteService->checkPassword($password,$utente)) {
+            return view('PresentazioneProfilo.login', [
+                'message' => '',
                 'visita' => ''
             ]);
         }
-
-        //dd(Session::get('Cliente');)
         
         return redirect()->route('home'); // route home/index
     }
 
-    public function registrazione(Request $request){
+    public function registrazione(){
         return view('PresentazioneProfilo.registrazione');
     }
 
@@ -157,7 +155,7 @@ class Autenticazione extends Controller
             $nuovoCliente->email = $email;
             $nuovoCliente->cartadicredito = $codicecarta;
             $nuovoCliente->data_di_nascita = $data;
-            $nuovoCliente->password = md5($password);
+            $nuovoCliente->password = $clienteService->getCryptedPassword($password);
             $nuovoCliente->carta_fedelta = $codiceFedelta;
             
             try {
@@ -186,7 +184,7 @@ class Autenticazione extends Controller
         }
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
         // Ottengo la sessione
         $clienteService = new ClienteService();

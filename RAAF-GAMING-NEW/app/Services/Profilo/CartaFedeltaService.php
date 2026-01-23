@@ -28,7 +28,7 @@ class CartaFedeltaService
         if($id == null || $id == "")
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
 
-        return CartaFedelta::where('codice', $id)->with('utente')->first();
+        return CartaFedelta::where('codice', $id)->with('cliente')->first();
     }
 
     /**
@@ -91,7 +91,8 @@ class CartaFedeltaService
         if($item == null || $item->codice == null)
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
 
-        $carta = CartaFedelta::where('codice', $item->codice)->with('utente')->first();
+        $carta = CartaFedelta::where('codice', $item->codice)->with('cliente')->first();
+        $emailclientecollegato = $carta->cliente->email;
         
         if($carta) {
             $carta->punti = $carta->punti + 1;
@@ -101,9 +102,10 @@ class CartaFedeltaService
 
             if(isset($cliente))
             {
-                if($cliente->cartafedelta && ($cliente->email == $carta->utente->email))
+                if($cliente->cartafedelta && ($cliente->email == $emailclientecollegato))
                 {
-                    $cliente->cartafedelta = $carta;
+                    $cliente->setRelation('cartafedelta', $carta);
+                    $cliente->carta_fedelta = $carta->codice;
                     Session::put('Cliente', $cliente);
                 }
             }           
