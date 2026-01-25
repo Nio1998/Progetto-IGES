@@ -37,7 +37,7 @@ class ClienteService
 
         $cliente = Cliente::where('email',$id)->with(['cartacredito', 'cartafedelta'])->first() ?? null;
 
-        if($save)
+        if($save && $cliente != null)
             Session::put('Cliente',$cliente);
 
         return $cliente;
