@@ -76,6 +76,9 @@ class CartaFedeltaService
         if($item == null)
             throw new \InvalidArgumentException("Inserito un item null");
 
+        if ($item->exists)
+            throw new \InvalidArgumentException("Inserito un item già esistente");
+        
         $item->save();
     }
 

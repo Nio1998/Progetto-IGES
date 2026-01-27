@@ -177,6 +177,9 @@ class ClienteService
         if($item == null || $carta_fedelta == null || $cartadicredito == null)
             throw new \InvalidArgumentException("Inserito un item o carta_fedelta o cartadicredito null");
 
+        if ($item->exists)
+            throw new \InvalidArgumentException("Inserito un item già esistente");
+
         $item->save();
         
         $item->setRelation('cartafedelta', $carta_fedelta);
@@ -191,7 +194,7 @@ class ClienteService
     public function doUpdate($item){
         if($item == null)
 			throw new \InvalidArgumentException("Inserito un item null");
-        
+
         $item->update();
         Session::put('Cliente', $item);
     }
