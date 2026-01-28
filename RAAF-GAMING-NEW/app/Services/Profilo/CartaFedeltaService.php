@@ -95,9 +95,9 @@ class CartaFedeltaService
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
 
         $carta = CartaFedelta::where('codice', $item->codice)->with('cliente')->first();
-        $emailclientecollegato = $carta->cliente->email;
         
         if($carta) {
+            $emailclientecollegato = $carta->cliente->email;
             $carta->punti = $carta->punti + 1;
             $carta->update();
 

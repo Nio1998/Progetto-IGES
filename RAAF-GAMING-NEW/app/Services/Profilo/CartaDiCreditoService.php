@@ -63,9 +63,9 @@ class CartaDiCreditoService
             throw new \InvalidArgumentException("Inserito un item null o codice null");
 
         $cartaEsistente = CartaDiCredito::where('codicecarta', $codice)->with('cliente')->first();
-        $emailclientecollegato = $cartaEsistente->cliente->email;
 
         if($cartaEsistente) {
+            $emailclientecollegato = $cartaEsistente->cliente->email;
             $cartaEsistente->codicecarta = $item->codicecarta;
             $cartaEsistente->data_scadenza = $item->data_scadenza;
             $cartaEsistente->codice_cvv = $item->codice_cvv;
