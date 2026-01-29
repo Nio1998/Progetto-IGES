@@ -84,7 +84,7 @@ class GestoreService
      * @return bool
      * @throws \InvalidArgumentException Se i parametri sono null.
      */
-    public function checkPassword(String  $password, Gestore $utente): bool
+    public function checkPassword(string  $password, Gestore $utente): bool
     {
         if ($password === null || $utente === null)
             throw new \InvalidArgumentException("Password o utente null");

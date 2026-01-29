@@ -22,10 +22,10 @@ class ClienteService
      * Cerca un cliente basandosi sulla chiave fornita.
      *
      * @param string $id.
-     * @return \App\Models\Profilo\Cliente Il modello Cliente trovato.
+     * @return \App\Models\Profilo\Cliente|null Il modello Cliente trovato o null.
      * @throws \InvalidArgumentException Se l'id fornito è vuoto o non valido.
      */
-    public function ricercaPerChiave(string $id, bool $save = true): Cliente
+    public function ricercaPerChiave(string $id, bool $save = true): ?Cliente
     {
         if($id == null || $id == "")
             throw new \InvalidArgumentException("Inserito un id null o vuoto");

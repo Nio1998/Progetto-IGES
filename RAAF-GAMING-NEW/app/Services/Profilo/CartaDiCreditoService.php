@@ -23,7 +23,7 @@ class CartaDiCreditoService
      * @return \App\Models\Profilo\CartaDiCredito|null Il modello CartaDiCredito trovato o null.
      * @throws \InvalidArgumentException Se l'id fornito è vuoto o non valido.
      */
-    public function ricercaPerChiave(String $id): CartaDiCredito
+    public function ricercaPerChiave(string $id): ?CartaDiCredito
     {
         if($id == null || $id == "")
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
@@ -57,7 +57,7 @@ class CartaDiCreditoService
      * @return void
      * @throws \InvalidArgumentException Se l'item o il codice sono null.
      */
-    public function doUpdate(CartaDiCredito $item, String $codice): void
+    public function doUpdate(CartaDiCredito $item, string $codice): void
     {
         if($item == null || $codice == null)
             throw new \InvalidArgumentException("Inserito un item null o codice null");
