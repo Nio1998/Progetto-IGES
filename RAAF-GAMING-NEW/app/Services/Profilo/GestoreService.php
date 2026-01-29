@@ -16,14 +16,14 @@ class GestoreService
     }
 
     /**
-     * Cerca un gestore basandosi sulla chiave fornita.
-     *
-     * @param string $id L'email del gestore da cercare.
-     * @param bool $save Se true, salva il gestore in sessione.
-     * @return \App\Models\Profilo\Gestore|null Il modello Gestore trovato o null.
-     * @throws \InvalidArgumentException Se l'id fornito è vuoto o non valido.
-     */
-    public function ricercaPerChiave($id, $save = true)
+ * Cerca un gestore basandosi sulla chiave fornita.
+ *
+ * @param string $id L'email del gestore da cercare.
+ * @param bool $save Se true, salva il gestore in sessione.
+ * @return \App\Models\Profilo\Gestore|null Il modello Gestore trovato o null.
+ * @throws \InvalidArgumentException Se l'id fornito è vuoto.
+ */
+    public function ricercaPerChiave(string $id, bool $save = true): ?Gestore
     {
         if($id == null || $id == "")
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
@@ -54,7 +54,7 @@ class GestoreService
      *
      * @return \App\Models\Profilo\Gestore|null
      */
-    public function getUtenteAutenticato()
+    public function getUtenteAutenticato(): ?Gestore
     {
         return Session::get('Gestore');
     }
@@ -71,7 +71,7 @@ class GestoreService
      *
      * @return void
      */
-    public function logoutUtente()
+    public function logoutUtente(): void
     {
         Session::forget('Gestore');
     }
@@ -84,7 +84,7 @@ class GestoreService
      * @return bool
      * @throws \InvalidArgumentException Se i parametri sono null.
      */
-    public function checkPassword($password, $utente)
+    public function checkPassword(String  $password, Gestore $utente): bool
     {
         if ($password === null || $utente === null)
             throw new \InvalidArgumentException("Password o utente null");
