@@ -2,6 +2,8 @@
 
 namespace App\Services\Profilo;
 
+use App\Models\Profilo\CartaDiCredito;
+use App\Models\Profilo\CartaFedelta;
 use App\Models\Profilo\Cliente;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Collection;
@@ -20,10 +22,10 @@ class ClienteService
      * Cerca un cliente basandosi sulla chiave fornita.
      *
      * @param string $id.
-     * @return \App\Models\Profilo\Cliente Il modello Cliente trovato.
+     * @return \App\Models\Profilo\Cliente|null Il modello Cliente trovato o null.
      * @throws \InvalidArgumentException Se l'id fornito è vuoto o non valido.
      */
-    public function ricercaPerChiave($id, $save = true)
+    public function ricercaPerChiave(string $id, bool $save = true): ?Cliente
     {
         if($id == null || $id == "")
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
@@ -56,7 +58,7 @@ class ClienteService
      *
      * @return \App\Models\Profilo\Cliente|null
      */
-    public function getUtenteAutenticato()
+    public function getUtenteAutenticato(): ?Cliente
     {
         return Session::get('Cliente');
     }
@@ -73,7 +75,7 @@ class ClienteService
      *
      * @return void
      */
-    public function logoutUtente()
+    public function logoutUtente(): void
     {
         Session::forget('Cliente');
     }
@@ -85,7 +87,7 @@ class ClienteService
      * @return string
      * @throws \InvalidArgumentException Se la password è null o vuota.
      */
-    public function getCryptedPassword($password)
+    public function getCryptedPassword(string $password): string
     {
         if ($password === null || $password === '')
             throw new \InvalidArgumentException("Password null o vuota");
@@ -101,7 +103,7 @@ class ClienteService
      * @return bool
      * @throws \InvalidArgumentException Se i parametri sono null.
      */
-    public function checkPassword($password, $utente)
+    public function checkPassword(string $password, Cliente $utente): bool
     {
         if ($password === null || $utente === null)
             throw new \InvalidArgumentException("Password o utente null");
@@ -115,8 +117,8 @@ class ClienteService
      * @param string $ordinamento La colonna su cui applicare l'ordinamento (es. 'cognome').
      * @return \Illuminate\Support\Collection|\App\Models\Cliente[] Una collezione di oggetti Cliente.
      * @throws \InvalidArgumentException Se il parametro di ordinamento non è valido.
-     */
-    public function allElements($ordinamento)
+     */ 
+    public function allElements(string $ordinamento): Collection
     {
         if($ordinamento == null || $ordinamento == "")
             throw new \InvalidArgumentException("Inserito un ordinamento null o vuoto");
@@ -172,7 +174,7 @@ class ClienteService
      * @return \App\Models\Cliente L'istanza del cliente appena creato.
      * @throws \InvalidArgumentException Se i dati forniti sono nulli o incompleti.
      */
-    public function newInsert($item, $carta_fedelta, $cartadicredito)
+    public function newInsert(Cliente $item, CartaFedelta $carta_fedelta, CartaDiCredito $cartadicredito): void
     {
         if($item == null || $carta_fedelta == null || $cartadicredito == null)
             throw new \InvalidArgumentException("Inserito un item o carta_fedelta o cartadicredito null");
@@ -187,11 +189,12 @@ class ClienteService
     }
 
     /**
-	 * @param item L'oggetto {@link ClienteBean} contenente i nuovi dati del cliente. 
+	 * @param item L'oggetto {@link Cliente} contenente i nuovi dati del cliente. 
 	 * Non deve essere {@code null}
 	 * @throws \InvalidArgumentException Se l'oggetto {@code item} passato come parametro è {@code null}.
 	 */
-    public function doUpdate($item){
+    public function doUpdate(Cliente $item): void
+    {
         if($item == null)
 			throw new \InvalidArgumentException("Inserito un item null");
 
