@@ -75,9 +75,6 @@ class CartaFedeltaService
     {
         if($item == null)
             throw new \InvalidArgumentException("Inserito un item null");
-
-        if ($item->exists)
-            throw new \InvalidArgumentException("Inserito un item già esistente");
         
         $item->save();
     }
@@ -89,7 +86,7 @@ class CartaFedeltaService
      * @return void
      * @throws \InvalidArgumentException Se il codice dell'item è null o vuoto.
      */
-    public function doUpdate(CartaFedelta $item): void
+    public function doUpdate(?CartaFedelta $item): void
     {
         if($item == null || $item->codice == null)
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
