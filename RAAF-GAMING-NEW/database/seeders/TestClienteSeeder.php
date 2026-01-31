@@ -15,11 +15,11 @@ class TestClienteSeeder extends Seeder
     {
         DB::table('cliente')->insert([
             [
-                'email' => 'antoniodelucia@hotmail.com',
-                'nome' => 'antonio',
-                'cognome' => 'de lucia',
-                'data_di_nascita' => '1998-12-06',
-                'password' => 'Zlatanpato98',
+                'email' => 'f.peluso25@gmail.com',
+                'nome' => 'Francesco',
+                'cognome' => 'Peluso',
+                'data_di_nascita' => '2000-08-24',
+                'password' => 'veloce123',
                 'carta_fedelta' => '1234567899',
                 'cartadicredito' => '1234123412341235',
             ],

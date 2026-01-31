@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Profilo\Cliente;
+use Illuminate\Support\Facades\Session;
+use App\Services\Profilo\ClienteService;
 use Database\Seeders\TestClienteSeeder;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
@@ -37,16 +39,27 @@ beforeEach(function () use (&$dbInitialized) {
     
     // Inizia transazione per ogni test
     DB::beginTransaction();
+    Session::flush();
 });
 
 afterEach(function () {
     DB::rollback();
+    Session::flush();
 });
 
 
 test('testRicercaPerChiavePresenteDBnoST', function () {
 
-    $clienti = Cliente::all();
-    expect($clienti)->toHaveCount(2);
+    $clienteService = new ClienteService();
+    $output = $clienteService->ricercaPerChiave("f.peluso25@gmail.com",true);
 
+    expect($output)
+    ->toBeInstanceOf(Cliente::class)
+    ->and($output->email)->toBe("f.peluso25@gmail.com")
+    ->and($output->nome)->toBe("Francesco")
+    ->and($output->cognome)->toBe("Peluso")
+    ->and($output->data_di_nascita)->toBe("2000-08-24")
+    ->and($output->password)->toBe("veloce123")
+    ->and($output->carta_fedelta)->toBe("1234567899")
+    ->and($output->cartadicredito)->toBe("1234123412341235");
 });
