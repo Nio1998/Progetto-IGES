@@ -13,7 +13,7 @@ class TestCartaFedeltaSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('cartadicredito')->insert([
+        DB::table('cartafedelta')->insert([
             [
                 'codice' => '1234567897',
                 'punti' => '0',

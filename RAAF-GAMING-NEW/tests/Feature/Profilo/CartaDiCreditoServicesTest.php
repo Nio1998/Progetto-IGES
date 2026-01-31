@@ -23,7 +23,7 @@ beforeEach(function () use (&$dbInitialized) {
     if (!$dbInitialized) {
         // Path delle singole tabelle che servono
         $schemaCarta = base_path('tests/resources/init/cartadicredito.sql');
-        $schemaCliente = base_path('tests/resources/init/cliente.sql'); // AGGIUNGI
+        $schemaCliente = base_path('tests/resources/init/cliente.sql'); 
         
         if (file_exists($schemaCarta)) {
             DB::unprepared(file_get_contents($schemaCarta));
@@ -61,3 +61,14 @@ test('testRicercaPerChiavePresenteDB', function () {
         // Verifica che il codice corrisponda
         ->and($output->codicecarta)->toBe('1234123412341235');
 });
+
+test('testRicercaPerChiaveNonPresenteDB', function () {
+    $cartaDiCreditoService = new CartaDiCreditoService();
+    $output = $cartaDiCreditoService->ricercaPerChiave('0');
+
+    // Verifica che il risultato non sia null
+    expect($output)->not->toBeNull();
+
+});
+
+
