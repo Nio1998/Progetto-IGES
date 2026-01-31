@@ -20,7 +20,7 @@ class TestClienteSeeder extends Seeder
                 'cognome' => 'Peluso',
                 'data_di_nascita' => '2000-08-24',
                 'password' => 'veloce123',
-                'carta_fedelta' => '1234567899',
+                'carta_fedelta' => '1234567897',
                 'cartadicredito' => '1234123412341235',
             ],
             [

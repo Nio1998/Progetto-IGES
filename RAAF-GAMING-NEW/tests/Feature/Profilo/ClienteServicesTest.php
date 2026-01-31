@@ -3,6 +3,8 @@
 use App\Models\Profilo\Cliente;
 use Illuminate\Support\Facades\Session;
 use App\Services\Profilo\ClienteService;
+use Database\Seeders\TestCartaDiCreditoSeeder;
+use Database\Seeders\TestCartaFedeltaSeeder;
 use Database\Seeders\TestClienteSeeder;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
@@ -22,16 +24,22 @@ beforeEach(function () use (&$dbInitialized) {
 
     if (!$dbInitialized) {
         // Path delle singole tabelle che servono
+        $schemaCartaC = base_path('tests/resources/init/cartadicredito.sql');
+        $schemaCartaF = base_path('tests/resources/init/cartafedelta.sql');
         $schemaCliente = base_path('tests/resources/init/cliente.sql');
         
         if (file_exists($schemaCliente)) {
             // Creazione delle tabelle in memoria
+            DB::unprepared(file_get_contents($schemaCartaC));
+            DB::unprepared(file_get_contents($schemaCartaF));
             DB::unprepared(file_get_contents($schemaCliente));
         } else {
             throw new \Exception("File SQL non trovato: {$schemaCliente}");
         }
         
-        // Esegui SOLO i seeder che ti servono
+        // Esegui SOLO i seeder che ti servono§
+        $this->seed(TestCartaDiCreditoSeeder::class);
+        $this->seed(TestCartaFedeltaSeeder::class);
         $this->seed(TestClienteSeeder::class);
         
         $dbInitialized = true;
