@@ -23,7 +23,7 @@ class GestoreService
  * @return \App\Models\Profilo\Gestore|null Il modello Gestore trovato o null.
  * @throws \InvalidArgumentException Se l'id fornito è vuoto.
  */
-    public function ricercaPerChiave(string $id, bool $save = true): ?Gestore
+    public function ricercaPerChiave(?string $id, bool $save = true): ?Gestore
     {
         if($id == null || $id == "")
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
