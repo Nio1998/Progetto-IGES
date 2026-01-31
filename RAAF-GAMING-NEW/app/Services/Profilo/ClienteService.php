@@ -25,7 +25,7 @@ class ClienteService
      * @return \App\Models\Profilo\Cliente|null Il modello Cliente trovato o null.
      * @throws \InvalidArgumentException Se l'id fornito è vuoto o non valido.
      */
-    public function ricercaPerChiave(string $id, bool $save = true): ?Cliente
+    public function ricercaPerChiave(?string $id, bool $save = true): ?Cliente
     {
         if($id == null || $id == "")
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
@@ -178,9 +178,6 @@ class ClienteService
     {
         if($item == null || $carta_fedelta == null || $cartadicredito == null)
             throw new \InvalidArgumentException("Inserito un item o carta_fedelta o cartadicredito null");
-
-        if ($item->exists)
-            throw new \InvalidArgumentException("Inserito un item già esistente");
 
         $item->save();
         
