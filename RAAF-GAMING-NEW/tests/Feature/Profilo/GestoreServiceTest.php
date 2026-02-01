@@ -120,24 +120,24 @@ test('testricercaPerChiaveVoidCT', function () {
 test('testricercaPerChiavePresenteDBSISCT', function () {
     $gestoreservice = new GestoreService();
     $gestore = new Gestore();
-    $gestore->email = "gestore1@hotmail.com";
+    $gestore->email = "gestore@hotmail.com";
     $gestore->ruolo = "ordine";
     $gestore->password = "123456789";
 
     Session::put('Gestore', $gestore);
 
-    $output = $gestoreservice->ricercaPerChiave("gestore1@hotmail.com",true);
+    $output = $gestoreservice->ricercaPerChiave("gestore@hotmail.com",true);
     $outputsessione = Session::get('Gestore');
 
     expect($output)
     ->toBeInstanceOf(Gestore::class)
-    ->and($output->email)->toBe("gestore1@hotmail.com")
+    ->and($output->email)->toBe("gestore@hotmail.com")
     ->and($output->ruolo)->toBe("ordine")
     ->and($output->password)->toBe("123456789");
 
     // Verifichiamo che la sessione contenga ancora i dati corretti
     expect($outputsessione)->not->toBeNull()
-    ->and($outputsessione->email)->toBe("gestore1@hotmail.com")
+    ->and($outputsessione->email)->toBe("gestore@hotmail.com")
     ->and($outputsessione->ruolo)->toBe("ordine")
     ->and($outputsessione->password)->toBe("123456789");
 });
@@ -171,7 +171,7 @@ test('testricercaPerChiaveNonPresenteDBSINSCT', function () {
 test('testgetUtenteAutenticatoGV', function () {
     $gestoreservice = new GestoreService();
     $gestore = new Gestore();
-    $gestore->email = "gestore1@hotmail.com";
+    $gestore->email = "gestore@hotmail.com";
     $gestore->ruolo = "ordine";
     $gestore->password = "123456789";
 
@@ -182,13 +182,13 @@ test('testgetUtenteAutenticatoGV', function () {
 
     expect($output)
     ->toBeInstanceOf(Gestore::class)
-    ->and($output->email)->toBe("gestore1@hotmail.com")
+    ->and($output->email)->toBe("gestore@hotmail.com")
     ->and($output->ruolo)->toBe("ordine")
     ->and($output->password)->toBe("123456789");
 
     // Verifichiamo che la sessione contenga ancora i dati corretti
     expect($outputsessione)->not->toBeNull()
-    ->and($outputsessione->email)->toBe("gestore1@hotmail.com")
+    ->and($outputsessione->email)->toBe("gestore@hotmail.com")
     ->and($outputsessione->ruolo)->toBe("ordine")
     ->and($outputsessione->password)->toBe("123456789");
 });
@@ -220,15 +220,113 @@ test('testgetUtenteAutenticatoGVNV', function () {
     $gestoreservice = new GestoreService();
     
     // Inseriamo un dato di tipo sbagliato (stringa invece di oggetto Gestore)
-    Session::put('Gestore', "ciao");
+    Session::put('Gestore', "nonvalido");
 
     // 1. Verifichiamo che il metodo ESPLODA (TypeError è un Throwable)
     expect(fn() => $gestoreservice->getUtenteAutenticato())
         ->toThrow(\TypeError::class); 
 
-    // 2. Verifichiamo che in sessione ci sia ancora la stringa "ciao"
+    // 2. Verifichiamo che in sessione ci sia ancora la stringa "nonvalido"
     // (L'errore avviene perché il dato c'è, ma è del tipo sbagliato!)
     $outputsessione = Session::get('Gestore');
-    expect($outputsessione)->toBe("ciao");
+    expect($outputsessione)->toBe("nonvalido");
 });
+
+// ----------------------LOGOUT UTENTE----------------------
+test('testlogoutUtenteGV', function () {
+
+    $gestoreService = new GestoreService();
+    $gestore = new Gestore();
+    $gestore->email = "gestore@hotmail.com";
+    $gestore->ruolo = "ordine";
+    $gestore->password = "123456789";
+    Session::put('Gestore',$gestore);
+
+    $gestoreService->logoutUtente();
+    $outputSessione = Session::get('Gestore');
+
+    expect($outputSessione)->toBeNull();
+});
+
+test('testlogoutUtenteGVN', function () {
+
+    $gestoreService = new GestoreService();
+    Session::put('Gestore',null);
+
+    $gestoreService->logoutUtente();
+    $outputSessione = Session::get('Gestore');
+
+    expect($outputSessione)->toBeNull();
+});
+
+test('testlogoutUtenteGN', function () {
+
+    $gestoreService = new GestoreService();
+
+    $gestoreService->logoutUtente();
+    $outputSessione = Session::get('Gestore');
+
+    expect($outputSessione)->toBeNull();
+});
+
+test('testlogoutUtenteGVNV', function () {
+
+    $gestoreService = new GestoreService();
+    Session::put('Gestore','nonvalido');
+
+    $gestoreService->logoutUtente();
+    $outputSessione = Session::get('Gestore');
+
+    expect($outputSessione)->toBeNull();
+});
+// ----------------------LOGOUT UTENTE----------------------
+
+// ----------------------CHECK PASSWORD----------------------
+test('testcheckPasswordSVUVT', function () {
+
+    $gestoreService = new GestoreService();
+    $gestore = new Gestore();
+    $gestore->email = "gestore@hotmail.com";
+    $gestore->ruolo = "ordine";
+    $gestore->password = "1ab87a36204a5e95185d26e913dfdfac";
+
+    $password = "gest123";
+    $output = $gestoreService->checkPassword($password,$gestore);
+    expect($output)->toBe(true);
+});
+
+test('testcheckPasswordSVUVF', function () {
+
+    $gestoreService = new GestoreService();
+    $gestore = new Gestore();
+    $gestore->email = "gestore@hotmail.com";
+    $gestore->ruolo = "ordine";
+    $gestore->password = "1ab87a36204a5e95185d26e913dfdfac";
+
+    $password = "gest1234";
+    $output = $gestoreService->checkPassword($password,$gestore);
+    expect($output)->toBe(false);
+});
+
+test('testcheckPasswordSVUN', function () {
+
+    $gestoreService = new GestoreService();
+    $gestore = null;
+    $password = "gest123";
+    expect(fn() => $gestoreService->checkPassword($password,$gestore))
+        ->toThrow(\InvalidArgumentException::class, "Password o utente null");
+});
+
+test('testcheckPasswordSNUVF', function () {
+
+    $gestoreService = new GestoreService();
+    $gestore = new Gestore();
+    $gestore->email = "gestore@hotmail.com";
+    $gestore->ruolo = "ordine";
+    $gestore->password = "1ab87a36204a5e95185d26e913dfdfac";
+    $password = null;
+    expect(fn() => $gestoreService->checkPassword($password,$gestore))
+        ->toThrow(\InvalidArgumentException::class, "Password o utente null");
+});
+// ----------------------CHECK PASSWORD----------------------
 
