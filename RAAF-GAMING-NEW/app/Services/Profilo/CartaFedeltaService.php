@@ -23,7 +23,7 @@ class CartaFedeltaService
      * @return \App\Models\Profilo\CartaFedelta|null Il modello CartaFedelta trovato o null.
      * @throws \InvalidArgumentException Se l'id fornito è vuoto o non valido.
      */
-    public function ricercaPerChiave(string $id): ?CartaFedelta
+    public function ricercaPerChiave(?string $id): ?CartaFedelta
     {
         if($id == null || $id == "")
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
@@ -38,7 +38,7 @@ class CartaFedeltaService
      * @return \Illuminate\Support\Collection|\App\Models\Profilo\CartaFedelta[] Una collezione di oggetti CartaFedelta.
      * @throws \InvalidArgumentException Se il parametro di ordinamento non è valido.
      */
-    public function allElements(string $ordinamento): Collection
+    public function allElements(?string $ordinamento): Collection
     {
         if($ordinamento == null || $ordinamento == "")
             throw new \InvalidArgumentException("Inserito un ordinamento null o vuoto");
@@ -71,7 +71,7 @@ class CartaFedeltaService
      * @return void
      * @throws \InvalidArgumentException Se l'item fornito è null.
      */
-    public function newInsert(CartaFedelta $item): void
+    public function newInsert(?CartaFedelta $item): void
     {
         if($item == null)
             throw new \InvalidArgumentException("Inserito un item null");
