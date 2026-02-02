@@ -5,7 +5,7 @@ namespace App\Services\Profilo;
 use App\Models\Profilo\CartaFedelta;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Session;
-
+use App\Models\Profilo\Cliente;
 class CartaFedeltaService
 {
     /**
@@ -92,7 +92,6 @@ class CartaFedeltaService
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
 
         $carta = CartaFedelta::where('codice', $item->codice)->with('cliente')->first();
-        
         if($carta) {
             $emailclientecollegato = $carta->cliente->email;
             $carta->punti = $carta->punti + 1;

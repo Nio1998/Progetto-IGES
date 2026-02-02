@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use App\Services\Profilo\CartaDiCreditoService;
 use Illuminate\Support\Facades\Session;
+use Database\Seeders\TestClienteSeeder;
 
 uses()->group('CartaDiCreditoUnit', 'Unit');
 
@@ -37,6 +38,7 @@ beforeEach(function () use (&$dbInitialized) {
         
         // Esegui i seeder
         $this->seed(TestCartaDiCreditoSeeder::class);
+         $this->seed(TestClienteSeeder::class);
         // Probabilmente serve anche un seeder per i clienti
         
         $dbInitialized = true;
@@ -121,46 +123,256 @@ test('testNewInsertGiaPresente', function () {
         ->toThrow(\Illuminate\Database\UniqueConstraintViolationException::class);
 });
 
-test('testDoUpdateNonPresenteCliente', function () {
+test('testDoUpdateCCPDBCODNULL', function () {
     $cartaDiCreditoService = new CartaDiCreditoService();
+
+    $cliente = new Cliente();
+    $cliente->email = "f.peluso25@gmail.com";
+    $cliente->nome = "Francesco";
+    $cliente->cognome = "Peluso";
+    $cliente->data_di_nascita = "2000-08-24";
+    $cliente->password = "05ec5bed5c2756b6b305b7fcd7e4b6df";
+    $cliente->carta_fedelta = "1234567897";
+    $cliente->cartadicredito = "1234123412341235";
     
-    // Assicurati che NON ci sia un cliente in sessione
-    Session::forget('Cliente');
-    expect(Session::has('Cliente'))->toBeFalse();
+    Session::put('Cliente',$cliente);
     
-    // Prepara i dati di una carta
+    // Prepara i dati della carta da aggiornare
+    $cartaDaAggiornare = new CartaDiCredito();
+    $cartaDaAggiornare->codicecarta = '1234123412341234';
+    $cartaDaAggiornare->data_scadenza = '2028-12-12';
+    $cartaDaAggiornare->codice_cvv = 012;
+
+    $codiceNonEsistente = null;
+    
+    expect(fn() => $cartaDiCreditoService->doUpdate($cartaDaAggiornare, $codiceNonEsistente))
+        ->toThrow(\InvalidArgumentException::class, "Inserito un item null o codice null");
+
+    $actual = DB::table('cartadicredito')->get()->toArray();
+
+    $expected = require base_path('tests/resources/expected/CartaDiCreditoDoUpdateNonPresente.php');
+
+    expect($actual)->toHaveCount(count($expected));
+    
+    foreach ($expected as $index => $expectedRow) {
+            foreach ($expectedRow as $campo => $valore) {
+                $actualValue = $actual[$index]->$campo;
+
+                if ($actualValue instanceof \Carbon\Carbon) {
+                    $actualValue = $actualValue->format('Y-m-d');
+                }
+
+                expect($actualValue)->toBe($valore);
+            }
+        }
+    
+    $outputSessione = Session::get('Cliente');
+
+    expect($outputSessione)->not->toBeNull()
+        ->and($outputSessione->email)->toBe("f.peluso25@gmail.com")
+        ->and($outputSessione->nome)->toBe("Francesco")
+        ->and($outputSessione->cognome)->toBe("Peluso")
+        ->and($outputSessione->data_di_nascita->format('Y-m-d'))->toBe("2000-08-24")
+        ->and($outputSessione->password)->toBe("05ec5bed5c2756b6b305b7fcd7e4b6df")
+        ->and($outputSessione->carta_fedelta)->toBe("1234567897")
+        ->and($outputSessione->cartadicredito)->toBe("1234123412341235");
+});
+
+test('testDoUpdateCCPDBCODNO', function () {
+    $cartaDiCreditoService = new CartaDiCreditoService();
+
+    $cliente = new Cliente();
+    $cliente->email = "f.peluso25@gmail.com";
+    $cliente->nome = "Francesco";
+    $cliente->cognome = "Peluso";
+    $cliente->data_di_nascita = "2000-08-24";
+    $cliente->password = "05ec5bed5c2756b6b305b7fcd7e4b6df";
+    $cliente->carta_fedelta = "1234567897";
+    $cliente->cartadicredito = "1234123412341235";
+    
+    Session::put('Cliente',$cliente);
+    
+    // Prepara i dati della carta da aggiornare
     $cartaDaAggiornare = new CartaDiCredito();
     $cartaDaAggiornare->codicecarta = '1234123412341234';
     $cartaDaAggiornare->data_scadenza = '2028-12-12';
     $cartaDaAggiornare->codice_cvv = '012';
+
+    $codiceNonEsistente = "1234123412341236";
     
-    // Tenta di aggiornare una carta che NON esiste nel DB
-    $codiceNonEsistente = '1234123412341239';
-    
-    // Esegui l'update - non deve lanciare eccezioni
     $cartaDiCreditoService->doUpdate($cartaDaAggiornare, $codiceNonEsistente);
+
+    $actual = DB::table('cartadicredito')->get()->toArray();
+
+    $expected = require base_path('tests/resources/expected/CartaDiCreditoDoUpdateNonPresente.php');
+
+    expect($actual)->toHaveCount(count($expected));
     
-    // Verifica che la carta NON sia stata creata nel database
-    $fetchedCarta = $cartaDiCreditoService->ricercaPerChiave($codiceNonEsistente);
-    expect($fetchedCarta)->toBeNull();
+    foreach ($expected as $index => $expectedRow) {
+        foreach ($expectedRow as $campo => $valore) {
+            $actualValue = $actual[$index]->$campo;            
+            expect($actualValue)->toBe($valore);
+        }
+    }
     
-    // Verifica che NON sia stata creata nemmeno con il nuovo codice
-    $fetchedCartaNuova = $cartaDiCreditoService->ricercaPerChiave('1234123341234');
-    expect($fetchedCartaNuova)->toBeNull();
-    
-    // Verifica che il Cliente NON sia in sessione
-    expect(Session::has('Cliente'))->toBeFalse();
+    $outputSessione = Session::get('Cliente');
+
+    expect($outputSessione)->not->toBeNull()
+        ->and($outputSessione->email)->toBe("f.peluso25@gmail.com")
+        ->and($outputSessione->nome)->toBe("Francesco")
+        ->and($outputSessione->cognome)->toBe("Peluso")
+        ->and($outputSessione->data_di_nascita->format('Y-m-d'))->toBe("2000-08-24")
+        ->and($outputSessione->password)->toBe("05ec5bed5c2756b6b305b7fcd7e4b6df")
+        ->and($outputSessione->carta_fedelta)->toBe("1234567897")
+        ->and($outputSessione->cartadicredito)->toBe("1234123412341235");
 });
 
-//test('testDoUpdatePresente', function () {
-
-//});
-
-test('testDoUpdateNull', function () {
+test('testDoUpdateCCNDBCODSI', function () {
     $cartaDiCreditoService = new CartaDiCreditoService();
+
+    $cliente = new Cliente();
+    $cliente->email = "f.peluso26@gmail.com";
+    $cliente->nome = "Francesco";
+    $cliente->cognome = "Peluso";
+    $cliente->data_di_nascita = "2000-08-24";
+    $cliente->password = "05ec5bed5c2756b6b305b7fcd7e4b6df";
+    $cliente->carta_fedelta = "1234567897";
+    $cliente->cartadicredito = "1234123412341239";
     
-    // Verifica che venga lanciata un'eccezione passando item null
-    expect(fn() => $cartaDiCreditoService->doUpdate(null, '1234123412341235'))
-        ->toThrow(\InvalidArgumentException::class); 
+    Session::put('Cliente',$cliente);
     
+    // Prepara i dati della carta da aggiornare
+    $cartaDaAggiornare = new CartaDiCredito();
+    $cartaDaAggiornare->codicecarta = '1234123412341234';
+    $cartaDaAggiornare->data_scadenza = '2028-12-12';
+    $cartaDaAggiornare->codice_cvv = 012;
+
+    $codiceNonEsistente = "1234123412341235";
+    
+    $cartaDiCreditoService->doUpdate($cartaDaAggiornare, $codiceNonEsistente);
+
+    $actual = DB::table('cartadicredito')->get()->toArray();
+
+    $expected = require base_path('tests/resources/expected/CartaDiCreditoDoUpdatePresente.php');
+
+    expect($actual)->toHaveCount(count($expected));
+    
+    foreach ($expected as $index => $expectedRow) {
+        foreach ($expectedRow as $campo => $valore) {
+            $actualValue = $actual[$index]->$campo;            
+            expect($actualValue)->toBe($valore);
+        }
+    }
+    
+    $outputSessione = Session::get('Cliente');
+
+    expect($outputSessione)->not->toBeNull()
+        ->and($outputSessione->email)->toBe("f.peluso26@gmail.com")
+        ->and($outputSessione->nome)->toBe("Francesco")
+        ->and($outputSessione->cognome)->toBe("Peluso")
+        ->and($outputSessione->data_di_nascita->format('Y-m-d'))->toBe("2000-08-24")
+        ->and($outputSessione->password)->toBe("05ec5bed5c2756b6b305b7fcd7e4b6df")
+        ->and($outputSessione->carta_fedelta)->toBe("1234567897")
+        ->and($outputSessione->cartadicredito)->toBe("1234123412341239");
+});
+
+test('testDoUpdateCCPDBCODSI', function () {
+    $cartaDiCreditoService = new CartaDiCreditoService();
+
+    $cliente = new Cliente();
+    $cliente->email = "f.peluso25@gmail.com";
+    $cliente->nome = "Francesco";
+    $cliente->cognome = "Peluso";
+    $cliente->data_di_nascita = "2000-08-24";
+    $cliente->password = "05ec5bed5c2756b6b305b7fcd7e4b6df";
+    $cliente->carta_fedelta = "1234567897";
+    $cliente->cartadicredito = "1234123412341235";
+
+    // Prepara i dati della carta da aggiornare
+    $cartaDaAggiornare = new CartaDiCredito();
+    $cartaDaAggiornare->codicecarta = '1234123412341234';
+    $cartaDaAggiornare->data_scadenza = '2028-12-12';
+    $cartaDaAggiornare->codice_cvv = 012;
+    $cliente->setRelation('cartacredito', $cartaDaAggiornare);
+    Session::put('Cliente',$cliente);
+
+    $codiceNonEsistente = "1234123412341235";
+
+    $cartaDiCreditoService->doUpdate($cartaDaAggiornare, $codiceNonEsistente);
+
+    $actual = DB::table('cartadicredito')->get()->toArray();
+
+    $expected = require base_path('tests/resources/expected/CartaDiCreditoDoUpdatePresente.php');
+
+    expect($actual)->toHaveCount(count($expected));
+    
+ foreach ($expected as $index => $expectedRow) {
+        foreach ($expectedRow as $campo => $valore) {
+            $actualValue = $actual[$index]->$campo;
+
+            if ($actualValue instanceof \Carbon\Carbon) {
+                $actualValue = $actualValue->format('Y-m-d');
+            }
+
+            expect($actualValue)->toBe($valore);
+        }
+    }
+    
+    $outputSessione = Session::get('Cliente');
+
+    expect($outputSessione)->not->toBeNull()
+        ->and($outputSessione->email)->toBe("f.peluso25@gmail.com")
+        ->and($outputSessione->nome)->toBe("Francesco")
+        ->and($outputSessione->cognome)->toBe("Peluso")
+        ->and($outputSessione->data_di_nascita->format('Y-m-d'))->toBe("2000-08-24")
+        ->and($outputSessione->password)->toBe("05ec5bed5c2756b6b305b7fcd7e4b6df")
+        ->and($outputSessione->carta_fedelta)->toBe("1234567897")
+        ->and($outputSessione->cartadicredito)->toBe("1234123412341234");
+});
+
+test('testDoUpdateCCNULLCODSI', function () {
+    $cartaDiCreditoService = new CartaDiCreditoService();
+
+    $cliente = new Cliente();
+    $cliente->email = "f.peluso25@gmail.com";
+    $cliente->nome = "Francesco";
+    $cliente->cognome = "Peluso";
+    $cliente->data_di_nascita = "2000-08-24";
+    $cliente->password = "05ec5bed5c2756b6b305b7fcd7e4b6df";
+    $cliente->carta_fedelta = "1234567897";
+    $cliente->cartadicredito = "1234123412341235";
+    
+    Session::put('Cliente',$cliente);
+    
+    // Prepara i dati della carta da aggiornare
+    $cartaDaAggiornare = null;
+
+    $codiceNonEsistente = "1234123412341235";
+
+    expect(fn() => $cartaDiCreditoService->doUpdate($cartaDaAggiornare, $codiceNonEsistente))
+        ->toThrow(\InvalidArgumentException::class, "Inserito un item null o codice null");
+
+    $actual = DB::table('cartadicredito')->get()->toArray();
+
+    $expected = require base_path('tests/resources/expected/CartaDiCreditoDoUpdateNonPresente.php');
+
+    expect($actual)->toHaveCount(count($expected));
+    
+    foreach ($expected as $index => $expectedRow) {
+        foreach ($expectedRow as $campo => $valore) {
+            $actualValue = $actual[$index]->$campo;            
+            expect($actualValue)->toBe($valore);
+        }
+    }
+    
+    $outputSessione = Session::get('Cliente');
+
+    expect($outputSessione)->not->toBeNull()
+        ->and($outputSessione->email)->toBe("f.peluso25@gmail.com")
+        ->and($outputSessione->nome)->toBe("Francesco")
+        ->and($outputSessione->cognome)->toBe("Peluso")
+        ->and($outputSessione->data_di_nascita->format('Y-m-d'))->toBe("2000-08-24")
+        ->and($outputSessione->password)->toBe("05ec5bed5c2756b6b305b7fcd7e4b6df")
+        ->and($outputSessione->carta_fedelta)->toBe("1234567897")
+        ->and($outputSessione->cartadicredito)->toBe("1234123412341235");
 });

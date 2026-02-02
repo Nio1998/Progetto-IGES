@@ -21,7 +21,7 @@ class TestCartaDiCreditoSeeder extends Seeder
             ],
             [
                 'codicecarta' => '4321123412341234',
-                'data_scadenza' => '12/12/2030',
+                'data_scadenza' => '2030-12-12',
                 'codice_cvv' => 666,
             ],
         ]);

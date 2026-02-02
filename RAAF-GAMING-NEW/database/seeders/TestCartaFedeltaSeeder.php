@@ -16,11 +16,11 @@ class TestCartaFedeltaSeeder extends Seeder
         DB::table('cartafedelta')->insert([
             [
                 'codice' => '1234567897',
-                'punti' => '0',
+                'punti' => 0,
             ],
             [
                 'codice' => '1234567898',
-                'punti' => '20',
+                'punti' => 20,
             ],
         ]);
     }
