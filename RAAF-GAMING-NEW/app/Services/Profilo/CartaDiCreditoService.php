@@ -54,7 +54,7 @@ class CartaDiCreditoService
      * @return void
      * @throws \InvalidArgumentException Se l'item o il codice sono null.
      */
-    public function doUpdate(?CartaDiCredito $item, string $codice): void
+    public function doUpdate(?CartaDiCredito $item, ?string $codice): void
     {
         if($item == null || $codice == null)
             throw new \InvalidArgumentException("Inserito un item null o codice null");
@@ -75,7 +75,7 @@ class CartaDiCreditoService
                 if($cliente->cartacredito && ($cliente->email == $emailclientecollegato))
                 {
                     $cliente->setRelation('cartacredito', $cartaEsistente);
-                    $cliente->cartadicredito = $cartaEsistente->codicecarta;                
+                    $cliente->cartadicredito = $cartaEsistente->codicecarta;            
                     Session::put('Cliente', $cliente);
                 }
             }           
