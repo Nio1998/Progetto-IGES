@@ -25,7 +25,7 @@ class ClienteService
      * @return \App\Models\Profilo\Cliente|null Il modello Cliente trovato o null.
      * @throws \InvalidArgumentException Se l'id fornito è vuoto o non valido.
      */
-    public function ricercaPerChiave(string $id, bool $save = true): ?Cliente
+    public function ricercaPerChiave(?string $id, bool $save = true): ?Cliente
     {
         if($id == null || $id == "")
             throw new \InvalidArgumentException("Inserito un id null o vuoto");
@@ -87,7 +87,7 @@ class ClienteService
      * @return string
      * @throws \InvalidArgumentException Se la password è null o vuota.
      */
-    public function getCryptedPassword(string $password): string
+    public function getCryptedPassword(?string $password): string
     {
         if ($password === null || $password === '')
             throw new \InvalidArgumentException("Password null o vuota");
@@ -103,7 +103,7 @@ class ClienteService
      * @return bool
      * @throws \InvalidArgumentException Se i parametri sono null.
      */
-    public function checkPassword(string $password, Cliente $utente): bool
+    public function checkPassword(?string $password, ?Cliente $utente): bool
     {
         if ($password === null || $utente === null)
             throw new \InvalidArgumentException("Password o utente null");
@@ -118,7 +118,7 @@ class ClienteService
      * @return \Illuminate\Support\Collection|\App\Models\Cliente[] Una collezione di oggetti Cliente.
      * @throws \InvalidArgumentException Se il parametro di ordinamento non è valido.
      */ 
-    public function allElements(string $ordinamento): Collection
+    public function allElements(?string $ordinamento): Collection
     {
         if($ordinamento == null || $ordinamento == "")
             throw new \InvalidArgumentException("Inserito un ordinamento null o vuoto");
@@ -174,13 +174,10 @@ class ClienteService
      * @return \App\Models\Cliente L'istanza del cliente appena creato.
      * @throws \InvalidArgumentException Se i dati forniti sono nulli o incompleti.
      */
-    public function newInsert(Cliente $item, CartaFedelta $carta_fedelta, CartaDiCredito $cartadicredito): void
+    public function newInsert(?Cliente $item, ?CartaFedelta $carta_fedelta, ?CartaDiCredito $cartadicredito): void
     {
         if($item == null || $carta_fedelta == null || $cartadicredito == null)
             throw new \InvalidArgumentException("Inserito un item o carta_fedelta o cartadicredito null");
-
-        if ($item->exists)
-            throw new \InvalidArgumentException("Inserito un item già esistente");
 
         $item->save();
         
@@ -193,7 +190,7 @@ class ClienteService
 	 * Non deve essere {@code null}
 	 * @throws \InvalidArgumentException Se l'oggetto {@code item} passato come parametro è {@code null}.
 	 */
-    public function doUpdate(Cliente $item): void
+    public function doUpdate(?Cliente $item): void
     {
         if($item == null)
 			throw new \InvalidArgumentException("Inserito un item null");

@@ -354,7 +354,6 @@ test('testDoUpdateCCNULLCODSI', function () {
     
     Session::put('Cliente',$cliente);
     
-    // Prepara i dati della carta da aggiornare
     $cartaDaAggiornare = null;
 
     $codiceNonEsistente = "1234123412341235";
