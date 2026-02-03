@@ -1,0 +1,220 @@
+@charset "ISO-8859-1";
+
+@font-face {
+  font-family: font-registrazione;
+  src: url(../fontCss/Vogue.otf);
+}
+
+/* Aggiungo cursor e user-select per evitare cursore a "I" */
+* {
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+label {
+  font-family: font-registrazione;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+/* Migliorato sfondo con center center e min-height */
+body {
+  width: 100%;
+  min-height: 100vh;
+  background: url(../immagini/theWitcher.jpg) no-repeat center center;
+  background-attachment: fixed;
+  z-index: -1;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* Stili per il container del logo usando il selettore dell'HTML esistente */
+.row {
+  width: 70%;
+  margin-left: 0;
+}
+
+.row .col-md-12 {
+  padding-left: 15px;
+}
+
+.row .col-md-12 img {
+  width: 180px;
+  cursor: default;
+}
+
+/* Container form responsive */
+.container {
+  background-color: rgba(254, 254, 233, 0.5);
+  width: 50%;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px auto;
+}
+
+/* Input e select con cursore testo */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+textarea,
+select {
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+/* Bottoni e link con cursore pointer */
+input[type="submit"],
+button,
+a,
+.btn {
+  cursor: pointer;
+}
+
+/* Fix input-group per evitare che le icone si spezzino */
+.input-group {
+  flex-wrap: nowrap !important;
+}
+
+.input-group-prepend {
+  flex-shrink: 0;
+}
+
+.input-group .form-control {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.input-group-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+}
+
+/* Bottone invio responsive */
+.invio {
+  font-family: "Eras Demi ITC", sans-serif;
+  background-color: #ff6600;
+  width: 60%;
+  font-weight: bold;
+  color: white;
+  border-radius: 15px;
+  padding: 10px 20px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.invio:hover {
+  background-color: #e55a00;
+}
+
+/* ==================== MEDIA QUERIES ==================== */
+
+/* Mobile - logo centrato, form più largo */
+@media (max-width: 575px) {
+  /* Logo centrato su mobile */
+  .row {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+    margin-left: 0 !important;
+  }
+
+  .row .col-md-12 {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    margin-left: 0 !important;
+  }
+
+  .row .col-md-12 img {
+    width: 140px;
+    float: none !important;
+  }
+
+  .container {
+    width: 95% !important;
+    padding: 15px;
+  }
+
+  label {
+    font-size: 16px;
+  }
+
+  .form-control {
+    width: 100% !important;
+  }
+
+  /* Input group full width su mobile */
+  .input-group {
+    width: 100% !important;
+  }
+
+  .invio {
+    width: 80% !important;
+  }
+
+  .h2 {
+    font-size: 1.3rem !important;
+  }
+
+  /* Colonne full width su mobile */
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Tablet */
+@media (min-width: 576px) and (max-width: 991px) {
+  .row {
+    width: 80%;
+    margin-left: 10px;
+  }
+
+  .row .col-md-12 img {
+    width: 160px;
+  }
+
+  .container {
+    width: 75% !important;
+  }
+
+  label {
+    font-size: 18px;
+  }
+
+  .form-control {
+    width: 90% !important;
+  }
+
+  .input-group {
+    width: 90% !important;
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  .row {
+    width: 70%;
+    margin-left: 0;
+  }
+
+  .row .col-md-12 img {
+    width: 180px;
+  }
+
+  .container {
+    width: 50% !important;
+  }
+}

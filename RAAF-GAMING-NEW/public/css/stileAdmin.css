@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'font-bello';
+    /* È buona norma mettere gli apici nei percorsi */
+    src: url('../fontCss/OriginTech.otf'); 
+}
+
+html, body {
+    /* Assicura che la pagina occupi sempre almeno il 100% dell'altezza */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* 1. Immagine di sfondo */
+    background-image: url('../immagini/tavolo.jpg');
+    
+    /* 2. Non ripetere l'immagine */
+    background-repeat: no-repeat;
+    
+    /* 3. Posiziona l'immagine sempre al centro dello schermo */
+    background-position: center center;
+    
+    /* 4. CHIAVE: L'immagine resta ferma mentre scrolli */
+    background-attachment: fixed;
+    
+    /* 5. Copri tutto lo spazio disponibile */
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    
+    /* Rimosso z-index: -1 perché sul body può causare problemi di click sui contenuti */
+}
