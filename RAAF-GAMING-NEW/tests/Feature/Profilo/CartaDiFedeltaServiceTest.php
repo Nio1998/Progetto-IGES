@@ -226,12 +226,7 @@ test('testDoUpdateNonPresenteNocliente', function () {
     
     foreach ($expected as $index => $expectedRow) {
         foreach ($expectedRow as $campo => $valore) {
-            $actualValue = $actual[$index]->$campo;
-            
-            if ($actualValue instanceof \Carbon\Carbon) {
-                $actualValue = $actualValue->format('Y-m-d');
-            }
-            
+            $actualValue = $actual[$index]->$campo;         
             expect($actualValue)->toBe($valore);
         }
     }
@@ -276,12 +271,7 @@ test('testDoUpdatePresente', function() {
     // Verifica campo per campo (identico al tuo esempio)
     foreach ($expected as $index => $expectedRow) {
         foreach ($expectedRow as $campo => $valore) {
-            $actualValue = $actual[$index]->$campo;
-            
-            if ($actualValue instanceof \Carbon\Carbon) {
-                $actualValue = $actualValue->format('Y-m-d');
-            }
-            
+            $actualValue = $actual[$index]->$campo;         
             expect($actualValue)->toBe($valore);
         }
     }
@@ -304,4 +294,86 @@ test('testDoUpdateNull', function () {
 
         expect(fn() => $cartaFedeltaService->doUpdate(null))
         ->toThrow(\InvalidArgumentException::class, "Inserito un id null o vuoto");
+});
+
+test('testDoUpdateNoPresenteSiCliente', function() {
+    $cartaFedeltaService = new CartaFedeltaService();
+
+    $cliente = new Cliente();
+    $cliente->email = "b.veluso25@gmail.com";
+    $cliente->nome = "Brancesco";
+    $cliente->cognome = "Veluso";
+    $cliente->data_di_nascita = "2000-08-24";
+    $cliente->password = "fdae384f2bd81b9d7ccb92acd17dd4d5";
+    $cliente->carta_fedelta = "1234567898";
+    $cliente->cartadicredito = "1234123412341237";
+    $cliente->save();
+    
+    // Carica la carta esistente
+    $cartaf = CartaFedelta::where('codice', '1234567898')->first();
+    $cliente->setRelation('cartafedelta', $cartaf);
+    
+    // Metti il cliente in sessione
+    Session::put('Cliente', $cliente);
+    
+    // Crea una carta che NON esiste nel DB
+    $cartaNonEsistente = new CartaFedelta();
+    $cartaNonEsistente->codice = "9999999999"; 
+    $cartaNonEsistente->punti = 100;
+    
+    // Tenta di aggiornare una carta che NON esiste
+    $cartaFedeltaService->doUpdate($cartaNonEsistente);
+    
+    // Verifica che il database non sia cambiato
+    $expected = require base_path('tests/resources/expected/CartaFedeltaDoUpdateNoPresente.php');
+    $actual = DB::table('cartafedelta')->get()->toArray();
+    
+    expect($actual)->toHaveCount(count($expected));
+    
+    foreach ($expected as $index => $expectedRow) {
+        foreach ($expectedRow as $campo => $valore) {
+            $actualValue = $actual[$index]->$campo;         
+            expect($actualValue)->toBe($valore);
+        }
+    }
+    
+    // Verifica che il Cliente in sessione sia rimasto invariato
+    $outputSessione = Session::get('Cliente');
+    expect($outputSessione)->not->toBeNull()
+        ->and($outputSessione->email)->toBe("b.veluso25@gmail.com")
+        ->and($outputSessione->nome)->toBe("Brancesco")
+        ->and($outputSessione->cognome)->toBe("Veluso")
+        ->and($outputSessione->data_di_nascita->format('Y-m-d'))->toBe("2000-08-24")
+        ->and($outputSessione->password)->toBe("fdae384f2bd81b9d7ccb92acd17dd4d5")
+        ->and($outputSessione->carta_fedelta)->toBe("1234567898")
+        ->and($outputSessione->cartadicredito)->toBe("1234123412341237");
+});
+
+test('testDoUpdatePresenteNoCliente', function() {
+    $cartaFedeltaService = new CartaFedeltaService();
+    
+    expect(Session::has('Cliente'))->toBeFalse();
+    
+    // Recupera una carta esistente dal DB
+    $cartaf = CartaFedelta::where('codice', '1234567898')->first();
+    expect($cartaf)->not->toBeNull();
+    
+    // Esegui l'update (incrementa i punti di 1)
+    $cartaFedeltaService->doUpdate($cartaf);
+    
+    // Verifica che il database sia stato aggiornato
+    $expected = require base_path('tests/resources/expected/CartaFedeltaDoUpdatePresente.php');
+    $actual = DB::table('cartafedelta')->get()->toArray();
+    
+    expect($actual)->toHaveCount(count($expected));
+    
+    foreach ($expected as $index => $expectedRow) {
+        foreach ($expectedRow as $campo => $valore) {
+            $actualValue = $actual[$index]->$campo;      
+            expect($actualValue)->toBe($valore);
+        }
+    }
+    
+    // Verifica che il Cliente NON sia ancora in sessione
+    expect(Session::has('Cliente'))->toBeFalse();
 });

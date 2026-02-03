@@ -97,18 +97,28 @@ test('testNewInsertSuccess', function () {
     $newCarta->codicecarta = '1234123412341234';
     $newCarta->data_scadenza = '2028-12-12';
     $newCarta->codice_cvv = 012;
-    
+
     $cartaDiCreditoService->newInsert($newCarta);
 
-    // Verifica che la carta sia effettivamente nel database
-    $fetchedCarta = $cartaDiCreditoService->ricercaPerChiave('1234123412341234');
+    $expected = require base_path('tests/resources/expected/CartaDiCreditoNewInsert.php');
+    $actual = DB::table('cartadicredito')->get()->toArray();
 
-    expect($fetchedCarta)->not->toBeNull()
-        ->and($fetchedCarta)->toBeInstanceOf(CartaDiCredito::class)
-        ->and($fetchedCarta->codicecarta)->toBe('1234123412341234')
-        ->and($fetchedCarta->data_scadenza->format('Y-m-d'))->toBe("2028-12-12")
-        ->and($fetchedCarta->codice_cvv)->toBe(012);
+    expect($actual)->toHaveCount(count($expected));
+
+    foreach ($expected as $index => $expectedRow) {
+        foreach ($expectedRow as $campo => $valore) {
+
+            if ($campo === 'data_scadenza') {
+                expect(
+                    \Carbon\Carbon::parse($actual[$index]->$campo)->toDateString()
+                )->toBe($valore);
+            } else {
+                expect($actual[$index]->$campo)->toBe($valore);
+            }
+        }
+    }
 });
+
 
 test('testNewInsertGiaPresente', function () {
     $cartaDiCreditoService = new CartaDiCreditoService();
