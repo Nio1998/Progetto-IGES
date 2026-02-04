@@ -2,7 +2,7 @@
 
 namespace App\Models\Magazzino;
 
-use App\Models\Prodotto\Prodotto;
+use App\Models\Prodotto;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,12 +26,12 @@ class PresenteIn extends Model
 
     // Relationship
 
-    public function magazzino()
+    public function getMagazzino()
     {
         return $this->belongsTo(Magazzino::class, 'magazzino', 'indirizzo');
     }
 
-    public function prodotto()
+    public function getProdotto()
     {
         return $this->belongsTo(Prodotto::class, 'prodotto', 'codice_prodotto');
     }
