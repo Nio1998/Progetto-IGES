@@ -2,7 +2,7 @@
 
 namespace App\Models\Magazzino;
 
-use App\Models\Prodotto;
+use App\Models\Prodotto\Prodotto;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
