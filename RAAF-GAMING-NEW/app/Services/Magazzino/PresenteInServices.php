@@ -10,20 +10,22 @@ use App\Models\Magazzino\Magazzino;
 class PresenteInServices
 {
     /**
-     * Create a new class instance.
+     * Costruttore del service PresenteInServices.
+     * 
+     * Attualmente non inizializza dipendenze,
+     * ma è presente per futura estendibilità.
      */
     public function __construct()
     {
         //
     }
 
-
     /**
      * Cerca un record PresenteIn basandosi sulla chiave composta fornita.
      *
      * @param int $id1 L'ID del prodotto.
      * @param string|null $id2 Il codice del magazzino.
-     * @return \App\Models\PresenteIn|null Il modello PresenteIn trovato o null.
+     * @return \App\Models\Magazzino\PresenteIn|null Il modello PresenteIn trovato o null.
      * @throws \InvalidArgumentException Se i parametri forniti non sono validi.
      */
     public function ricercaPerChiave(int $id1, ?string $id2): ?PresenteIn
@@ -31,20 +33,22 @@ class PresenteInServices
         if ($id1 < 0 || $id2 == null || $id2 == "")
             throw new \InvalidArgumentException("id1 negativo e/o id2 è null o id2 è stringa vuota");
         
-        $presenteIn = PresenteIn::where('prodotto', $id1)
-                                ->where('magazzino', $id2)
-                                ->first();
-        
-        return $presenteIn;
+        return PresenteIn::where('prodotto', $id1)
+                         ->where('magazzino', $id2)
+                         ->first();
     }
+
     /**
      * Calcola come distribuire una quantità di prodotto tra i magazzini disponibili.
      * 
-     * @param Prodotto|null $prodotto Il prodotto da rifornire oppure null
-     * @param int $quantita La quantità totale da distribuire
+     * La funzione tenta prima di rifornire i magazzini che già contengono il prodotto
+     * e successivamente quelli che non lo contengono ancora, rispettando la capienza.
+     *
+     * @param Prodotto|null $prodotto Il prodotto da rifornire.
+     * @param int $quantita La quantità totale da distribuire.
      * @return \Illuminate\Support\Collection<int, array{magazzino: Magazzino, quantita: int, presente: int}>
-     * @throws \InvalidArgumentException Se i parametri non sono validi
-     * @throws \Exception Se la somma delle quantità supera la capienza di un magazzino
+     * @throws \InvalidArgumentException Se i parametri non sono validi.
+     * @throws \Exception Se la capienza di un magazzino viene superata.
      */
     public function getMagazziniDaRifornire(?Prodotto $prodotto, int $quantita): Collection
     {
@@ -54,16 +58,15 @@ class PresenteInServices
         $presenteIn = $prodotto->presenteIn()->with('getMagazzino')->get();
         $cont = $quantita;
         $aggiornamenti = collect();
-        
         $sommeMagazzini = [];
-        
+
         foreach($presenteIn as $presente)
         {
-            if($cont <= 0)
-                break;
-            
+            if($cont <= 0) break;
+
             if(!isset($sommeMagazzini[$presente->magazzino]))
-                $sommeMagazzini[$presente->magazzino] = PresenteIn::where('magazzino', $presente->magazzino)->sum('quantita_disponibile');
+                $sommeMagazzini[$presente->magazzino] =
+                    PresenteIn::where('magazzino', $presente->magazzino)->sum('quantita_disponibile');
 
             $somma = $sommeMagazzini[$presente->magazzino];
             $capienza = $presente->getMagazzino->capienza;
@@ -71,28 +74,32 @@ class PresenteInServices
             if($somma > $capienza)
                 throw new \Exception("Qualcosa è andato storto");
 
-            $diff = (($somma + $cont) - $capienza);
-            $diff = ($diff <= 0) ? 0 : $diff;
-            $pago = ($cont - $diff);
-            
+            $diff = max(0, ($somma + $cont) - $capienza);
+            $pago = $cont - $diff;
+
             if($pago > 0)
-                $aggiornamenti->push(['magazzino' => $presente->getMagazzino, 'quantita' => $pago, 'presente' => 1]); 
-                
+                $aggiornamenti->push([
+                    'magazzino' => $presente->getMagazzino,
+                    'quantita' => $pago,
+                    'presente' => 1
+                ]);
+
             $cont = $diff;
         }
 
-        if($cont == 0)
-            return $aggiornamenti;
+        if($cont == 0) return $aggiornamenti;
 
-        $magazzini = Magazzino::whereDoesntHave('presenteIn', function ($q) use ($prodotto) {$q->where('prodotto', $prodotto->codice_prodotto);})->get();
+        $magazzini = Magazzino::whereDoesntHave('presenteIn', function ($q) use ($prodotto) {
+            $q->where('prodotto', $prodotto->codice_prodotto);
+        })->get();
 
         foreach($magazzini as $magazzino)
         {
-            if($cont <= 0)
-                break;
-            
+            if($cont <= 0) break;
+
             if(!isset($sommeMagazzini[$magazzino->indirizzo]))
-                $sommeMagazzini[$magazzino->indirizzo] = PresenteIn::where('magazzino', $magazzino->indirizzo)->sum('quantita_disponibile');
+                $sommeMagazzini[$magazzino->indirizzo] =
+                    PresenteIn::where('magazzino', $magazzino->indirizzo)->sum('quantita_disponibile');
 
             $somma = $sommeMagazzini[$magazzino->indirizzo];
             $capienza = $magazzino->capienza;
@@ -100,84 +107,135 @@ class PresenteInServices
             if($somma > $capienza)
                 throw new \Exception("Qualcosa è andato storto");
 
-            $diff = (($somma + $cont) - $capienza);
-            $diff = ($diff <= 0) ? 0 : $diff;
-            $pago = ($cont - $diff);
-            
+            $diff = max(0, ($somma + $cont) - $capienza);
+            $pago = $cont - $diff;
+
             if($pago > 0)
-                $aggiornamenti->push(['magazzino' => $magazzino, 'quantita' => $pago, 'presente' => 0]); 
-                
+                $aggiornamenti->push([
+                    'magazzino' => $magazzino,
+                    'quantita' => $pago,
+                    'presente' => 0
+                ]);
+
             $cont = $diff;
         }
 
         return $cont == 0 ? $aggiornamenti : collect();
     }
 
+    /**
+     * Calcola la disponibilità di un prodotto nei vari magazzini
+     * per soddisfare una richiesta di acquisto.
+     *
+     * I magazzini vengono considerati in ordine di quantità disponibile
+     * decrescente, fino a coprire la quantità richiesta.
+     *
+     * @param Prodotto $prodotto Il prodotto da acquistare.
+     * @param int $quantitaDaAcquistare La quantità richiesta.
+     * @return \Illuminate\Support\Collection<int, array{presente_in: PresenteIn, quantita: int}>
+     * @throws \InvalidArgumentException Se i parametri non sono validi.
+     */
     public function getDisponibilita(Prodotto $prodotto, int $quantitaDaAcquistare): Collection
+    {
+        if ($prodotto == null || $prodotto?->codice_prodotto == null || $prodotto?->codice_prodotto == "")
+            throw new \InvalidArgumentException("Inserire un prodotto valido.");
+
+        if($quantitaDaAcquistare <= 0)
+            throw new \InvalidArgumentException("La quantità da acquistare deve essere un numero positivo.");
+
+        $risultato = collect();
+        $quantitaRimanente = $quantitaDaAcquistare;
+
+        $presenteInList = PresenteIn::where('prodotto', $prodotto->codice_prodotto)
+                                    ->where('quantita_disponibile', '>', 0)
+                                    ->orderBy('quantita_disponibile', 'desc')
+                                    ->get();
+
+        foreach ($presenteInList as $presenteIn)
         {
-            if ($prodotto == null || $prodotto?->codice_prodotto == null || $prodotto?->codice_prodotto == "") {
-                throw new \InvalidArgumentException("Inserire un prodotto valido.");
-            }
+            if ($quantitaRimanente <= 0) break;
 
-            if($quantitaDaAcquistare <= 0) {
-                throw new \InvalidArgumentException("La quantità da acquistare deve essere un numero positivo.");
-            }
+            $quantitaDaTogliere = min($presenteIn->quantita_disponibile, $quantitaRimanente);
 
-            // Collection che conterrà il risultato finale
-            // Ogni elemento sarà un array associativo con 'presente_in' e 'quantita'
-            $risultato = collect();
-            
-            // Variabile che tiene traccia di quanta merce dobbiamo ancora trovare
-            // Inizialmente uguale alla quantità richiesta, diminuisce man mano che troviamo disponibilità
-            $quantitaRimanente = $quantitaDaAcquistare;
+            $risultato->push([
+                'presente_in' => $presenteIn,
+                'quantita' => $quantitaDaTogliere
+            ]);
 
-            // Query al database per recuperare tutti i magazzini che contengono questo prodotto
-            // Condizioni:
-            // 1. Il prodotto deve corrispondere (where 'prodotto')
-            // 2. La quantità deve essere maggiore di zero (magazzini non vuoti)
-            // 3. Ordinamento per quantità decrescente (prima i magazzini più forniti)
-            $presenteInList = PresenteIn::where('prodotto', $prodotto->codice_prodotto)
-                                        ->where('quantita_disponibile', '>', 0)  // Esclude magazzini vuoti
-                                        ->orderBy('quantita_disponibile', 'desc') // Ordina dal più fornito al meno fornito
-                                        ->get();
-
-            // Itera su ogni magazzino che contiene il prodotto
-            foreach ($presenteInList as $presenteIn) {
-                
-                // Se abbiamo già soddisfatto la richiesta, usciamo dal ciclo
-                // Questo evita iterazioni inutili
-                if ($quantitaRimanente <= 0) {
-                    break;
-                }
-
-                // Calcola quanto possiamo prendere da questo magazzino
-                // Usiamo il minimo tra:
-                // - La quantità disponibile in questo magazzino ($presenteIn->quantita)
-                // - La quantità che ci serve ancora ($quantitaRimanente)
-                // 
-                // Esempio 1: magazzino ha 100, ci servono 30 -> prendiamo 30
-                // Esempio 2: magazzino ha 20, ci servono 30 -> prendiamo 20
-                $quantitaDaTogliere = min($presenteIn->quantita_disponibile, $quantitaRimanente);
-
-                // Aggiungi questo magazzino alla Collection
-                // Salviamo sia il riferimento al magazzino (PresenteIn) che la quantità da prelevare
-                $risultato->push([
-                    'presente_in' => $presenteIn,  // Oggetto completo del model PresenteIn
-                    'quantita' => $quantitaDaTogliere  // Quantità da prelevare da questo magazzino
-                ]);
-
-                // Aggiorna la quantità rimanente da trovare
-                // Sottraiamo quanto abbiamo appena "prenotato" da questo magazzino
-                $quantitaRimanente -= $quantitaDaTogliere;
-            }
-
-            // Restituisce la Collection con tutti i magazzini e le relative quantità da prelevare
-            // NOTA: Se $quantitaRimanente > 0 significa che non c'è abbastanza disponibilità totale
-            //       ma restituiamo comunque tutto quello che abbiamo trovato
-            return $risultato;
+            $quantitaRimanente -= $quantitaDaTogliere;
         }
 
+        return $risultato;
+    }
+
+    /**
+     * Calcola la quantità totale disponibile di un prodotto
+     * sommando le giacenze di tutti i magazzini.
+     *
+     * @param int $codiceProdotto Il codice del prodotto.
+     * @return int La quantità totale disponibile.
+     */
     public function quantitaTotaleProdotto(int $codiceProdotto): int
-        {       
-        return PresenteIn::where('prodotto', $codiceProdotto)->sum('quantita_disponibile');}
-        }
+    {
+        return PresenteIn::where('prodotto', $codiceProdotto)
+                         ->sum('quantita_disponibile');
+    }
+
+    /**
+     * Inserisce un nuovo record PresenteIn nel database.
+     *
+     * @param PresenteIn $item L'oggetto PresenteIn da inserire.
+     * @return void
+     * @throws \InvalidArgumentException Se l'item fornito è null.
+     */
+    public function newInsert(?PresenteIn $item): void
+    {
+        if($item == null)
+            throw new \InvalidArgumentException("Inserito un item null");
+
+        $item->save();
+    }
+
+    /**
+     * Aggiorna un record PresenteIn esistente nel database,
+     * tipicamente utilizzato per operazioni di rifornimento.
+     *
+     * @param PresenteIn $item Il record PresenteIn da aggiornare.
+     * @return void
+     * @throws \InvalidArgumentException Se l'item fornito è null.
+     */
+    public function rifornitura(?PresenteIn $item): void
+    {
+        if ($item === null)
+            throw new \InvalidArgumentException("Inserito un item null");
+
+        $item->save();
+    }
+
+    /**
+     * Decrementa la quantità disponibile di un prodotto in un magazzino.
+     * @param PresenteIn|null $item L'oggetto PresenteIn contenente prodotto e magazzino.
+     * Non deve essere null.
+     * @param int $quantita La quantità da decrementare.
+     * @throws \InvalidArgumentException Se l'oggetto item è null, se la quantità è minore di 0 
+     * o maggiore della quantità disponibile.
+     */
+    public function doUpdate(?PresenteIn $item, int $quantita): void
+    {
+        if($item == null)
+            throw new \InvalidArgumentException("Inserito un item null");
+
+        if($quantita < 0)
+            throw new \InvalidArgumentException("La quantità non può essere negativa");
+
+        $presenteIn = PresenteIn::where('prodotto', $item->prodotto)->where('magazzino', $item->magazzino)->first();
+
+        if($presenteIn == null)
+            throw new \InvalidArgumentException("Prodotto non presente nel magazzino specificato");
+
+        if($quantita > $presenteIn->quantita_disponibile)
+            throw new \InvalidArgumentException("Quantità richiesta maggiore della quantità disponibile");
+
+        PresenteIn::where('prodotto', $item->prodotto)->where('magazzino', $item->magazzino)->decrement('quantita_disponibile', $quantita);
+    }
+}
