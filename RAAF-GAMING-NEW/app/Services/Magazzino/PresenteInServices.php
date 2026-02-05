@@ -238,4 +238,42 @@ class PresenteInServices
 
         PresenteIn::where('prodotto', $item->prodotto)->where('magazzino', $item->magazzino)->decrement('quantita_disponibile', $quantita);
     }
+
+    /**
+     * Ritorna una Collection di PresenteIn (equivalente a ArrayList<PresenteInBean>).
+     * @param string $ordinamento La colonna e direzione di ordinamento (es. 'magazzino asc').
+     * @return \Illuminate\Support\Collection|\App\Models\PresenteIn[] Una collezione di oggetti PresenteIn.
+     * @throws \InvalidArgumentException Se il parametro di ordinamento non Ã¨ valido.
+     */
+    public function allElements(?string $ordinamento): Collection
+    {
+        if($ordinamento == null || $ordinamento == "")
+            throw new \InvalidArgumentException("ordinamento vuoto o null");
+
+        switch($ordinamento)
+        {
+            case 'magazzino asc':
+                $presenteIn = PresenteIn::orderBy('magazzino', 'asc')->get();
+                break;
+            case 'magazzino desc':
+                $presenteIn = PresenteIn::orderBy('magazzino', 'desc')->get();
+                break;
+            case 'prodotto asc':
+                $presenteIn = PresenteIn::orderBy('prodotto', 'asc')->get();
+                break;
+            case 'prodotto desc':
+                $presenteIn = PresenteIn::orderBy('prodotto', 'desc')->get();
+                break;
+            case 'quantita_disponibile asc':
+                $presenteIn = PresenteIn::orderBy('quantita_disponibile', 'asc')->get();
+                break;
+            case 'quantita_disponibile desc':
+                $presenteIn = PresenteIn::orderBy('quantita_disponibile', 'desc')->get();
+                break;
+            default:
+                throw new \InvalidArgumentException("ordinamento non valido");
+        }
+
+        return $presenteIn;
+    }
 }
