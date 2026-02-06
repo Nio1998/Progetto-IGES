@@ -209,7 +209,7 @@ class PresenteInServices
         if ($item === null)
             throw new \InvalidArgumentException("Inserito un item null");
 
-        $item->save();
+        PresenteIn::where('prodotto',$item->prodotto)->where('magazzino',$item->magazzino)->update(['quantita_disponibile' => $item->quantità_disponibile]);
     }
 
     /**
