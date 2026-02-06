@@ -30,7 +30,7 @@ class PresenteInServices
      */
     public function ricercaPerChiave(int $id1, ?string $id2): ?PresenteIn
     {
-        if ($id1 < 0 || $id2 == null || $id2 == "")
+        if ($id1 <= 0 || $id2 == null || $id2 == "")
             throw new \InvalidArgumentException("id1 negativo e/o id2 è null o id2 è stringa vuota");
         
         return PresenteIn::where('prodotto', $id1)
@@ -52,7 +52,7 @@ class PresenteInServices
      */
     public function getMagazziniDaRifornire(?Prodotto $prodotto, int $quantita): Collection
     {
-        if($prodotto == null || $prodotto?->codice_prodotto == null || $quantita <= 0)
+        if($prodotto == null || $prodotto?->codice_prodotto == null || $prodotto?->codice_prodotto == "" || $quantita <= 0)
             throw new \InvalidArgumentException("Precondizione non rispettata");
 
         $presenteIn = $prodotto->presenteIn()->with('getMagazzino')->get();
@@ -135,7 +135,7 @@ class PresenteInServices
      * @return \Illuminate\Support\Collection<int, array{presente_in: PresenteIn, quantita: int}>
      * @throws \InvalidArgumentException Se i parametri non sono validi.
      */
-    public function getDisponibilita(Prodotto $prodotto, int $quantitaDaAcquistare): Collection
+    public function getDisponibilita(?Prodotto $prodotto, int $quantitaDaAcquistare): Collection
     {
         if ($prodotto == null || $prodotto?->codice_prodotto == null || $prodotto?->codice_prodotto == "")
             throw new \InvalidArgumentException("Inserire un prodotto valido.");
@@ -225,7 +225,7 @@ class PresenteInServices
         if($item == null)
             throw new \InvalidArgumentException("Inserito un item null");
 
-        if($quantita < 0)
+        if($quantita <= 0)
             throw new \InvalidArgumentException("La quantità non può essere negativa");
 
         $presenteIn = PresenteIn::where('prodotto', $item->prodotto)->where('magazzino', $item->magazzino)->first();
