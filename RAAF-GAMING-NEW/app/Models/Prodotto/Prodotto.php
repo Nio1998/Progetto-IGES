@@ -63,6 +63,6 @@ class Prodotto extends Model
 
     public function presenteIn()
     {
-        return $this->hasMany(PresenteIn::class, 'magazzino', 'indirizzo');
+        return $this->hasMany(PresenteIn::class, 'prodotto', 'codice_prodotto');
     }
 }

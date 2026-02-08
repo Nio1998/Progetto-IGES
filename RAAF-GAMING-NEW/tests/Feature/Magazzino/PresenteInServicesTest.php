@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Magazzino\PresenteIn;
+use App\Models\Prodotto\Prodotto;
 use App\Services\Magazzino\PresenteInServices;
 use Illuminate\Support\Facades\Session;
 use Database\Seeders\TestMagazzinoSeeder;
@@ -326,3 +327,281 @@ test('testDoUpdateINQV', function () {
         ->toThrow(\InvalidArgumentException::class, "Inserito un item null");
 });
 // ----------------------DOUPDATE----------------------
+
+//-----------------------ALLELEMENTS-------------------
+test('testAllElementsOASC', function () {    
+    $presenteinservice = new PresenteInServices();
+    $ordinamento = "magazzino asc";
+    $output = $presenteinservice->allElements($ordinamento);
+    $outputArray = $output->values()->all();
+    $expected = require base_path('tests/resources/expected/PresenteInMagazzinoAsc.php');
+
+    expect($output)->toHaveCount(count($expected));
+    
+    foreach ($expected as $index => $expectedRow) {
+        foreach ($expectedRow as $campo => $valore) {
+            $actualValue = $outputArray[$index]->$campo;
+            expect($actualValue)->toBe($valore);
+        }
+    }
+
+});
+
+test('testAllElementsODESC', function () {    
+    $presenteinservice = new PresenteInServices();
+    $ordinamento = "magazzino desc";
+    $output = $presenteinservice->allElements($ordinamento);
+    $outputArray = $output->values()->all();
+    $expected = require base_path('tests/resources/expected/PresenteInMagazzinoDesc.php');
+
+    expect($output)->toHaveCount(count($expected));
+    
+    foreach ($expected as $index => $expectedRow) {
+        foreach ($expectedRow as $campo => $valore) {
+            $actualValue = $outputArray[$index]->$campo;
+            expect($actualValue)->toBe($valore);
+        }
+    }
+
+});
+
+test('testAllElementsONONVAL', function () {
+
+    $presenteinservice = new PresenteInServices();
+    $ordinamento = "prova desc";
+
+    expect(fn() => $presenteinservice->allElements($ordinamento))
+        ->toThrow(\InvalidArgumentException::class, "ordinamento non valido");
+});
+
+
+test('testAllElementsOV', function () {
+    $presenteinservice = new PresenteInServices();
+    $ordinamento = "";
+
+    expect(fn() => $presenteinservice->allElements($ordinamento))
+        ->toThrow(\InvalidArgumentException::class, "ordinamento vuoto o null");
+});
+
+test('testAllElementsON', function () {
+    $presenteinservice = new PresenteInServices();
+    $ordinamento = null;
+
+    expect(fn() => $presenteinservice->allElements($ordinamento))
+        ->toThrow(\InvalidArgumentException::class, "ordinamento vuoto o null");
+});
+// ----------------------MAGAZZINI DA RIFORNIRE----------------------
+test('testGetMagazziniDaRifornirePVQVCD', function () {
+    $presenteinservice = new PresenteInServices();
+    
+    // Creo il prodotto con i dati specificati
+    $prodotto = Prodotto::where('codice_prodotto',1)->first();
+    
+    $quantita = 1000;
+    
+    $output = $presenteinservice->getMagazziniDaRifornire($prodotto, $quantita);
+    
+    $expected = require base_path('tests/resources/expected/MagazziniDaRifornire.php');
+    
+    $actual = $output->toArray();
+    
+    expect($actual)->toHaveCount(count($expected));
+    
+    foreach ($expected as $index => $expectedRow) {
+        expect($actual[$index]['magazzino']->indirizzo)->toBe($expectedRow['magazzino']);
+        expect($actual[$index]['quantita'])->toBe($expectedRow['quantita']);
+        expect($actual[$index]['presente'])->toBe($expectedRow['presente']);
+    }
+});
+
+test('testGetMagazziniDaRifornirePVQNVCD', function () {
+    $presenteinservice = new PresenteInServices();
+    
+    $prodotto = Prodotto::where('codice_prodotto', 1)->first();
+    
+    $quantita = 0;
+    
+    // Verifica che venga lanciata un'eccezione InvalidArgumentException
+    expect(fn() => $presenteinservice->getMagazziniDaRifornire($prodotto, $quantita))
+        ->toThrow(\InvalidArgumentException::class, "Precondizione non rispettata");
+});
+
+test('testGetMagazziniDaRifornirePVQVCS', function () {
+    // Creo una situazione inconsistente: prodotti in magazzino superano la capienza
+    DB::table('presente_in')->insert([
+        'magazzino' => 'Italia,Nocera Superiore',
+        'prodotto' => 4,
+        'quantita_disponibile' => 900,
+    ]);
+    
+    $presenteinservice = new PresenteInServices();
+    
+    $prodotto = Prodotto::where('codice_prodotto', 1)->first();
+    
+    $quantita = 1;
+    
+    expect(fn() => $presenteinservice->getMagazziniDaRifornire($prodotto, $quantita))
+        ->toThrow(\Exception::class, "Qualcosa è andato storto");
+});
+
+test('testGetMagazziniDaRifornirePVQVCND', function () {
+    $presenteinservice = new PresenteInServices();
+    
+    $prodotto = Prodotto::where('codice_prodotto', 1)->first();
+    
+    $quantita = 1456;
+    
+    $output = $presenteinservice->getMagazziniDaRifornire($prodotto, $quantita);
+    
+    expect($output)->toBeEmpty();
+});
+
+test('testGetMagazziniDaRifornirePNQVCD', function () {
+    $presenteinservice = new PresenteInServices();
+    
+    $prodotto = null;
+    $quantita = 1;
+    
+    expect(fn() => $presenteinservice->getMagazziniDaRifornire($prodotto, $quantita))
+        ->toThrow(\InvalidArgumentException::class, "Precondizione non rispettata");
+});
+
+test('testGetMagazziniDaRifornirePCPNQVCD', function () {
+    $presenteinservice = new PresenteInServices();
+    
+    $prodotto = new Prodotto([
+        'prezzo' => 10.5,
+        'sconto' => 0,
+        'data_uscita' => '2021-12-25',
+        'nome' => 'FIFA',
+        'quantita_fornitura' => 12,
+        'data_fornitura' => '2020-12-20',
+        'fornitore' => 'Sony',
+        'gestore' => 'prodotto@admin.com',
+    ]);
+    
+    $quantita = 1;
+    
+    expect(fn() => $presenteinservice->getMagazziniDaRifornire($prodotto, $quantita))
+        ->toThrow(\InvalidArgumentException::class, "Precondizione non rispettata");
+});
+
+test('testGetMagazziniDaRifornirePCPVQVCD', function () {
+    $presenteinservice = new PresenteInServices();
+    
+    $prodotto = new Prodotto([
+        'prezzo' => 10.5,
+        'sconto' => 0,
+        'data_uscita' => '2021-12-25',
+        'nome' => 'FIFA',
+        'quantita_fornitura' => 12,
+        'data_fornitura' => '2020-12-20',
+        'fornitore' => 'Sony',
+        'gestore' => 'prodotto@admin.com',
+    ]);
+    $prodotto->codice_prodotto = "";
+    
+    $quantita = 1;
+    
+    expect(fn() => $presenteinservice->getMagazziniDaRifornire($prodotto, $quantita))
+        ->toThrow(\InvalidArgumentException::class, "Precondizione non rispettata");
+});
+// ----------------------MAGAZZINI DA RIFORNIRE----------------------
+// ----------------------GET DISPONIBILITA----------------------
+test('testGetDisponibilitaPVQVPD', function () {
+    $presenteinservice = new PresenteInServices();
+    
+    $prodotto = Prodotto::where('codice_prodotto', 1)->first();
+    
+    $quantita = 275;
+    
+    $output = $presenteinservice->getDisponibilita($prodotto, $quantita);
+    
+    $expected = require base_path('tests/resources/expected/Disponibilita.php');
+    
+    $actual = $output->toArray();
+    
+    expect($actual)->toHaveCount(count($expected));
+    
+    foreach ($expected as $index => $expectedRow) {
+        expect($actual[$index]['presente_in']->magazzino)->toBe($expectedRow['magazzino']);
+        expect($actual[$index]['presente_in']->prodotto)->toBe($expectedRow['prodotto']);
+        expect($actual[$index]['quantita'])->toBe($expectedRow['quantita']);
+    }
+});
+
+test('testGetDisponibilitaPVQVPND', function () {
+    $presenteinservice = new PresenteInServices();
+    
+    $prodotto = Prodotto::where('codice_prodotto', 1)->first();
+    
+    $quantita = 276; // Supera la disponibilità totale di 275
+    
+    $output = $presenteinservice->getDisponibilita($prodotto, $quantita);
+    
+    expect($output)->toBeEmpty();
+    expect($output)->toHaveCount(0);
+});
+
+test('testGetDisponibilitaPVQNVPD', function () {
+    $presenteinservice = new PresenteInServices();
+    
+    $prodotto = Prodotto::where('codice_prodotto', 1)->first();
+    
+    $quantita = 0;
+    
+    expect(fn() => $presenteinservice->getDisponibilita($prodotto, $quantita))
+        ->toThrow(\InvalidArgumentException::class, "La quantità da acquistare deve essere un numero positivo.");
+});
+
+test('testGetDisponibilitaPNQVPD', function () {
+    $presenteinservice = new PresenteInServices();
+    
+    $prodotto = null;
+    $quantita = 1;
+    
+    expect(fn() => $presenteinservice->getDisponibilita($prodotto, $quantita))
+        ->toThrow(\InvalidArgumentException::class, "Inserire un prodotto valido.");
+});
+
+test('testGetDisponibilitaPCPNQVPD', function () {
+    $presenteinservice = new PresenteInServices();
+    
+    $prodotto = new Prodotto([
+        'prezzo' => 10.5,
+        'sconto' => 0,
+        'data_uscita' => '2021-12-25',
+        'nome' => 'FIFA',
+        'quantita_fornitura' => 12,
+        'data_fornitura' => '2020-12-20',
+        'fornitore' => 'Sony',
+        'gestore' => 'prodotto@admin.com',
+    ]);
+
+    $quantita = 1;
+    
+    expect(fn() => $presenteinservice->getDisponibilita($prodotto, $quantita))
+        ->toThrow(\InvalidArgumentException::class, "Inserire un prodotto valido.");
+});
+
+test('testGetDisponibilitaPCPVQVPD', function () {
+    $presenteinservice = new PresenteInServices();
+
+    $prodotto = new Prodotto([
+        'prezzo' => 10.5,
+        'sconto' => 0,
+        'data_uscita' => '2021-12-25',
+        'nome' => 'FIFA',
+        'quantita_fornitura' => 12,
+        'data_fornitura' => '2020-12-20',
+        'fornitore' => 'Sony',
+        'gestore' => 'prodotto@admin.com',
+    ]);
+    $prodotto->codice_prodotto = "";
+    
+    $quantita = 1;
+    
+    expect(fn() => $presenteinservice->getDisponibilita($prodotto, $quantita))
+        ->toThrow(\InvalidArgumentException::class, "Inserire un prodotto valido.");
+});
+// ----------------------GET DISPONIBILITA----------------------

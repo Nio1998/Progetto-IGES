@@ -216,7 +216,7 @@ test('testAllElementsONONVAL', function () {
     Cache::put('Magazzini', $magazzini, 60);
 
     $magazzinoService = new MagazzinoService();
-    $ordinamento = "prova dasc";
+    $ordinamento = "prova desc";
 
     expect(fn() => $magazzinoService->allElements($ordinamento))
         ->toThrow(\InvalidArgumentException::class, "Ordinamento scritto in modo errato");
