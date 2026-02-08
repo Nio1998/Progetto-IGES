@@ -55,7 +55,7 @@ class PresenteInServices
         if($prodotto == null || $prodotto?->codice_prodotto == null || $prodotto?->codice_prodotto == "" || $quantita <= 0)
             throw new \InvalidArgumentException("Precondizione non rispettata");
 
-        $presenteIn = $prodotto->presenteIn()->with('getMagazzino')->get();
+        $presenteIn = $prodotto?->presenteIn()?->with('getMagazzino')?->get();
         $cont = $quantita;
         $aggiornamenti = collect();
         $sommeMagazzini = [];
@@ -123,7 +123,7 @@ class PresenteInServices
         return $cont == 0 ? $aggiornamenti : collect();
     }
 
-    /**
+       /**
      * Calcola la disponibilità di un prodotto nei vari magazzini
      * per soddisfare una richiesta di acquisto.
      *
@@ -146,10 +146,7 @@ class PresenteInServices
         $risultato = collect();
         $quantitaRimanente = $quantitaDaAcquistare;
 
-        $presenteInList = PresenteIn::where('prodotto', $prodotto->codice_prodotto)
-                                    ->where('quantita_disponibile', '>', 0)
-                                    ->orderBy('quantita_disponibile', 'desc')
-                                    ->get();
+        $presenteInList = PresenteIn::where('prodotto', $prodotto->codice_prodotto)->where('quantita_disponibile', '>', 0)->orderBy('quantita_disponibile', 'desc')->get();
 
         foreach ($presenteInList as $presenteIn)
         {
@@ -165,7 +162,8 @@ class PresenteInServices
             $quantitaRimanente -= $quantitaDaTogliere;
         }
 
-        return $risultato;
+        // Se non c'è abbastanza disponibilità, ritorna collezione vuota
+        return $quantitaRimanente > 0 ? collect() : $risultato;
     }
 
     /**
@@ -209,7 +207,7 @@ class PresenteInServices
         if ($item === null)
             throw new \InvalidArgumentException("Inserito un item null");
 
-        PresenteIn::where('prodotto',$item->prodotto)->where('magazzino',$item->magazzino)->update(['quantita_disponibile' => $item->quantità_disponibile]);
+        PresenteIn::where('prodotto',$item->prodotto)->where('magazzino',$item->magazzino)->update(['quantita_disponibile' => $item->quantita_disponibile]);
     }
 
     /**
