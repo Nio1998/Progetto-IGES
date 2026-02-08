@@ -3,7 +3,7 @@
 namespace App\Services\Magazzino;
 
 use App\Models\Magazzino\Magazzino;
-use Ramsey\Collection\Collection;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
 class MagazzinoService
@@ -25,6 +25,7 @@ class MagazzinoService
      *
      * @return Collection<Magazzino>
      */
+    //deve essere private ora è public per testarlo
     private function loadMagazzini(): Collection
     {
         return Cache::remember(self::CACHE_KEY, self::CACHE_TTL, function () {
