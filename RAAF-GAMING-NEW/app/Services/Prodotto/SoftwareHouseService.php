@@ -45,19 +45,6 @@ class SoftwareHouseService
         });
     }
 
-    /**
-     * Recupera una SoftwareHouse per chiave primaria.
-     *
-     * Metodo migrato uno-a-uno dal DAO Java.
-     * Attualmente non implementato e restituisce sempre null.
-     *
-     * @param string $code Chiave primaria della SoftwareHouse
-     * @return SoftwareHouse|null
-     */
-    public function doRetriveByKey(string $code)
-    {
-        return null;
-    }
 
     /**
      * Restituisce tutte le SoftwareHouse ordinate secondo il parametro passato.
