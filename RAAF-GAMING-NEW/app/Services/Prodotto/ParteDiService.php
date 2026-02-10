@@ -44,7 +44,7 @@ public function ricercaParteDi(string $categoria, ?int $videogioco = null): Coll
 }
 
 
-    /**
+/**
  * Ritorna una Collection di ParteDi ordinati.
  *
  * @param string|null $ordinamento La colonna su cui applicare l'ordinamento (es. 'videogioco asc').

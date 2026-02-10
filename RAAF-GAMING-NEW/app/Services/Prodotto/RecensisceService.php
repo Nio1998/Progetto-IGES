@@ -50,21 +50,6 @@ class RecensisceService
     }
 
     /**
-     * Cerca tutte le recensioni per prodotto.
-     *
-     * @param int|null $id Il codice del prodotto.
-     * @return Collection<Recensisce> Una collezione di oggetti Recensisce filtrati per prodotto.
-     * @throws \InvalidArgumentException Se l'id non è valido.
-     */
-    public function ricercaPerProdotto(?int $id): Collection
-    {
-        if ($id === null || $id < 0)
-            throw new \InvalidArgumentException("id non valido");
-
-        return Recensisce::where('prodotto', $id)->get();
-    }
-
-    /**
      * Ritorna una Collection di Recensisce ordinati.
      *
      * @param string|null $ordinamento La colonna su cui applicare l'ordinamento (es. 'cliente asc').
