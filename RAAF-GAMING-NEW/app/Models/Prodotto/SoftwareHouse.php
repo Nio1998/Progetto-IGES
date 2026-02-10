@@ -12,9 +12,7 @@ class SoftwareHouse extends Model
     use HasFactory;
 
     public $timestamps = false;
-
     protected $table = 'softwarehouse';
-
     protected $primaryKey = 'nomesfh';
     protected $keyType = 'string';
     public $incrementing = false;
@@ -31,3 +29,4 @@ class SoftwareHouse extends Model
         return $this->hasMany(Videogioco::class, 'software_house', 'nomesfh');
     }
 }
+
