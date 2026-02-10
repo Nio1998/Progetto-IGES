@@ -5,37 +5,22 @@ namespace App\Models\Prodotto;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Magazzino\PresenteIn;
+use App\Models\Prodotto\Abbonamento;
+use App\Models\Prodotto\Console;
+use App\Models\Prodotto\Dlc;
+use App\Models\Prodotto\Videogioco;
+use App\Models\Prodotto\Fornitore;
+use App\Models\Prodotto\Recensisce;
+use App\Models\Profilo\Gestore;
 
 class Prodotto extends Model
 {
     use HasFactory;
 
-    /**
-     * La tabella associata al model.
-     *
-     * @var string
-     */
     protected $table = 'prodotto';
-
-    /**
-     * La chiave primaria della tabella.
-     *
-     * @var string
-     */
     protected $primaryKey = 'codice_prodotto';
-
-    /**
-     * Indica se il model dovrebbe avere i timestamp automatici.
-     *
-     * @var bool
-     */
     public $timestamps = true;
 
-    /**
-     * Gli attributi assegnabili in massa.
-     *
-     * @var array
-     */
     protected $fillable = [
         'prezzo',
         'copertina',
@@ -48,11 +33,6 @@ class Prodotto extends Model
         'gestore',
     ];
 
-    /**
-     * Gli attributi che devono essere castati a tipi nativi.
-     *
-     * @var array
-     */
     protected $casts = [
         'prezzo' => 'double',
         'sconto' => 'decimal:0',
@@ -61,8 +41,45 @@ class Prodotto extends Model
         'ultima_fornitura' => 'date',
     ];
 
+    // --- Relationships ---
+
     public function presenteIn()
     {
         return $this->hasMany(PresenteIn::class, 'prodotto', 'codice_prodotto');
+    }
+
+    public function abbonamenti()
+    {
+        return $this->hasMany(Abbonamento::class, 'prodotto', 'codice_prodotto');
+    }
+
+    public function console()
+    {
+        return $this->hasOne(Console::class, 'prodotto', 'codice_prodotto');
+    }
+
+    public function dlc()
+    {
+        return $this->hasOne(Dlc::class, 'prodotto', 'codice_prodotto');
+    }
+
+    public function videogioco()
+    {
+        return $this->hasOne(Videogioco::class, 'prodotto', 'codice_prodotto');
+    }
+
+    public function fornitore()
+    {
+        return $this->belongsTo(Fornitore::class, 'fornitore', 'nome');
+    }
+
+    public function recensioni()
+    {
+        return $this->hasMany(Recensisce::class, 'prodotto', 'codice_prodotto');
+    }
+
+    public function gestore()
+    {
+        return $this->belongsTo(Gestore::class, 'gestore', 'email');
     }
 }

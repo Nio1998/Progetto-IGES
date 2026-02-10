@@ -2,6 +2,7 @@
 
 namespace App\Models\Profilo;
 
+use App\Models\Prodotto\Prodotto;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -59,6 +60,8 @@ class Gestore extends Model
     protected $hidden = [
         'password',
     ];
-
-
+    public function prodotti()
+    {
+        return $this->hasMany(Prodotto::class, 'gestore', 'email');
+    }
 }
