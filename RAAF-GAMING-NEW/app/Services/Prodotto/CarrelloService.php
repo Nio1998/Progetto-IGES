@@ -5,7 +5,7 @@ namespace App\Services\Prodotto;
 use App\Models\Prodotto\Prodotto;
 use Illuminate\Support\Collection;
 
-class CarrelloServices
+class CarrelloService
 {
     /**
      * Create a new class instance.
