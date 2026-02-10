@@ -19,11 +19,11 @@ class RecensisceService
      * @param int $prodottoId   L'ID del prodotto
      * @param int $voto         Il voto (es. 1-5)
      * @param string $commento  Il testo della recensione
-     * * @return string           Il messaggio di successo
+     * * @return bool           restituisce true se inserisce la nuova recensione
      * @throws InvalidArgumentException Se la recensione esiste già
      */
 
-    public function pubblicaRecensione(string $cliente, int $prodottoId, int $voto, string $commento): string
+    public function pubblicaRecensione(string $cliente, int $prodottoId, int $voto, string $commento): bool
     {
         // 1. Logica di Controllo (ex ricercaPerChiave)
         // Verifichiamo se esiste già una recensione per questa coppia cliente/prodotto
@@ -33,7 +33,7 @@ class RecensisceService
 
         if ($esiste) {
             // Questo corrisponde al tuo blocco 'else' che restituiva il JSON di errore
-            throw new \InvalidArgumentException("Hai gia effettuato una recensione per questo prodotto");
+            return false;
         }
 
         // 2. Logica di Inserimento (ex newInsert)
@@ -45,8 +45,8 @@ class RecensisceService
             'commento' => $commento
         ]);
 
-        // Restituisce il messaggio di successo da mandare al frontend
-        return $voto;
+
+        return true;
     }
 
     /**

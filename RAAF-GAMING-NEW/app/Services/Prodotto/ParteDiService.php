@@ -14,36 +14,26 @@ class ParteDiService
     }
 
 
+
 /**
- * Cerca le relazioni parte_di filtrate per categoria e opzionalmente per videogioco.
- * Se viene passato solo $categoria restituisce tutte le relazioni per quella categoria.
- * Se viene passato anche $videogioco restituisce la relazione specifica per quel videogioco e quella categoria.
+ * Cerca una relazione parte_di per chiave composta (videogioco + categoria).
  *
- * @param string $categoria Il nome della categoria per cui filtrare.
- * @param int|null $videogioco Il codice del videogioco (opzionale).
- * @return Collection<ParteDi> Una collezione di oggetti ParteDi filtrati.
- * @throws \InvalidArgumentException Se la categoria fornita non è valida.
+ * @param int|null $id1 Il codice del videogioco.
+ * @param string|null $id2 Il nome della categoria.
+ * @return ParteDi|null Il modello trovato o null.
+ * @throws \InvalidArgumentException Se i parametri non sono validi.
  */
-public function ricercaParteDi(string $categoria, ?int $videogioco = null): Collection
+public function ricercaPerChiave(?int $id1, ?string $id2): ?ParteDi
 {
-    // Controlla che la categoria fornita sia tra quelle ammesse
-    $categorieValide = ['Azione', 'Avventura', 'Battle Royale', 'Sport', 'Survival horror'];
-    if (!in_array($categoria, $categorieValide)) {
-        throw new \InvalidArgumentException("Categoria non valida: {$categoria}");
-    }
+    if ($id1 === null || $id1 < 0)
+        throw new \InvalidArgumentException("id1 non valido o null");
+    if ($id2 === null || $id2 === '')
+        throw new \InvalidArgumentException("id2 null o vuoto");
 
-    // Filtra le relazioni parte_di per la categoria specificata
-    $query = ParteDi::where('categoria', $categoria);
-
-    // Se viene passato un videogioco, restringe la ricerca a quel videogioco specifico
-    if ($videogioco !== null) {
-        $query->where('videogioco', $videogioco);
-    }
-
-    return $query->get();
+    return ParteDi::where('videogioco', $id1)
+                  ->where('categoria', $id2)
+                  ->first();
 }
-
-
 /**
  * Ritorna una Collection di ParteDi ordinati.
  *
