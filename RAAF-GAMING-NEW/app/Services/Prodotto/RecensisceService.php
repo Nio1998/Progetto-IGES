@@ -46,7 +46,7 @@ class RecensisceService
         ]);
 
         // Restituisce il messaggio di successo da mandare al frontend
-        return "Recensione effettuata con voto " . $voto;
+        return $voto;
     }
 
     /**
