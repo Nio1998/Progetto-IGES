@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Prodotto\GestioneOrdiniAdmin;
+use App\Http\Controllers\Prodotto\GestioneProdottiAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Profilo\Autenticazione;
 use App\Http\Controllers\Profilo\AutenticazioneAdmin;
@@ -40,4 +42,20 @@ Route::middleware(['isAutenticated'])->group(function () {
     Route::get('/profilo', [Profilo::class, 'mostraProfilo'])->name('mostraProfilo');
     Route::post('/profilo', [Profilo::class, 'modificaProfilo'])->name('modificaProfilo');
 
+});
+
+// Tutte le rotte quando l'utente admin è autenticato
+Route::middleware(['isAutenticatedAdmin'])->group(function () {
+
+    //PER GESTORE ORDINI
+    Route::middleware(['GestoreOrdini'])->group(function () {
+
+        Route::get('/homeOrdine', [GestioneOrdiniAdmin::class, 'homeOrdine'])->name('homeOrdine');
+    });
+
+    //PER GESTORE PRODOTTO
+    Route::middleware(['GestoreProdotti'])->group(function () {
+
+        Route::get('/homeProdotto', [GestioneProdottiAdmin::class, 'homeProdotto'])->name('homeProdotto');
+    });
 });
