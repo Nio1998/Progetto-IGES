@@ -15,6 +15,8 @@ Route::get('/', function () {
 
 // LOGOUT
 Route::match(['GET', 'POST'], '/logout', [Autenticazione::class, 'logout'])->name('logout');
+// LOGOUTADMIN
+Route::match(['GET', 'POST'], '/logout', [AutenticazioneAdmin::class, 'logoutAdmin'])->name('logoutAdmin');
 
 // Tutte le rotte “guest” passano per il middleware
 Route::middleware(['redirectIfAuthenticated'])->group(function () {

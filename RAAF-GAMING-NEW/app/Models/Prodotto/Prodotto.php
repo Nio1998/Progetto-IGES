@@ -22,6 +22,7 @@ class Prodotto extends Model
     public $timestamps = true;
 
     protected $fillable = [
+        'codice_prodotto',
         'prezzo',
         'copertina',
         'sconto',
@@ -68,7 +69,7 @@ class Prodotto extends Model
         return $this->hasOne(Videogioco::class, 'prodotto', 'codice_prodotto');
     }
 
-    public function fornitore()
+    public function getFornitore()
     {
         return $this->belongsTo(Fornitore::class, 'fornitore', 'nome');
     }
@@ -78,7 +79,7 @@ class Prodotto extends Model
         return $this->hasMany(Recensisce::class, 'prodotto', 'codice_prodotto');
     }
 
-    public function gestore()
+    public function getGgestore()
     {
         return $this->belongsTo(Gestore::class, 'gestore', 'email');
     }
