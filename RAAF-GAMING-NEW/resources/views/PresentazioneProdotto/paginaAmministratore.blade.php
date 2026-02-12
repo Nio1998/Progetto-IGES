@@ -75,6 +75,17 @@ $softwarehouses = $data['softwarehouses'];
     <h4 style="color:green; text-align:center;" name="successo">{{ session('success') }}</h4>
 @endif
 
+@if($errors->any())
+    <div class="alert alert-danger" style="margin: 20px;">
+        <h4>Errori di validazione:</h4>
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 @if(session('error'))
     <h4 style="color:red; text-align:center;" name="errore">{{ session('error') }}</h4>
 @endif
@@ -125,7 +136,7 @@ $softwarehouses = $data['softwarehouses'];
 
         <!-- FORM NUOVO PRODOTTO -->
         <div id="nuovo" style="display:none">
-            <form action="#" method="POST" name="nuovoProdotto" enctype="multipart/form-data" onsubmit="return controlloProdNuovo();">
+            <form action="{{ route('formProdNuovo') }}" method="POST" name="nuovoProdotto" enctype="multipart/form-data" onsubmit="return controlloProdNuovo();">
                 @csrf
                 
                 <div class="form-group mt-3">

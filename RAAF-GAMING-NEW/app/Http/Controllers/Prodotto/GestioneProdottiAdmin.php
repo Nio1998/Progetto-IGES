@@ -64,11 +64,21 @@ class GestioneProdottiAdmin extends Controller
             'dataP' => 'required|date',
             'fornitoreP' => 'required|string|max:255',
             'quantitaP' => 'required|integer|min:1',
-            'copertina' => 'nullable|file|mimes:jpg,jpeg,png,gif,webp|max:10240',
+            'copertina' => 'required|file|max:10240',
             'sceltaP' => 'required|in:videogioco fisico,videogioco digitale,console,dlc,abbonamento',
         ]);
 
-        
+        // Validazione manuale del MIME type
+        if ($request->hasFile('copertina')) {
+            $file = $request->file('copertina');
+            $allowedMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/jpg', 'image/avif'];
+            if (!in_array($file->getMimeType(), $allowedMimes)) {
+                return redirect()->back()
+                    ->with('error', 'Il file deve essere un\'immagine (jpg, png, gif, webp)')
+                    ->withInput();
+            }
+        }
+
         $gestore = $gestoreService->getUtenteAutenticato();
         $nomeProd = $request->input('nomeP');
         $tipo = $request->input('sceltaP');
@@ -98,13 +108,9 @@ class GestioneProdottiAdmin extends Controller
         $prodotto->data_uscita = $request->input('dataP');
         $prodotto->fornitore = $request->input('fornitoreP');
         $prodotto->quantita_fornitura = $quantitaProd;
-        $prodotto->ultima_fornitura = now()->toDateString();
+        $prodotto->data_fornitura = now()->toDateString();
         $prodotto->gestore = $gestore->email;
-
-        // Copertina BLOB
-        if ($request->hasFile('copertina')) {
-            $prodotto->copertina = file_get_contents($request->file('copertina')->getRealPath());
-        }
+        $prodotto->copertina = fopen($request->file('copertina')->getRealPath(), 'rb');
 
         // Crea specializzazione
         if ($tipo === 'videogioco fisico') {
@@ -116,15 +122,15 @@ class GestioneProdottiAdmin extends Controller
             $videogioco->edizione_limitata = filter_var($request->input('limitata'), FILTER_VALIDATE_BOOLEAN);
             $videogioco->ncd = (int) $request->input('ncd');
             $videogioco->vkey = null;
-            
-            $prodotto->videogioco = $videogioco;
+
+            $prodotto->setRelation('videogioco', $videogioco);
             $prodottoService->newInsert($prodotto);
-            
+
             $parteDi = new ParteDi();
             $parteDi->videogioco = $prodotto->codice_prodotto;
             $parteDi->categoria = $request->input('categoria');
             $parteDiService->newInsert($parteDi);
-            
+
         } elseif ($tipo === 'videogioco digitale') {
             $videogioco = new Videogioco();
             $videogioco->prodotto = $prodotto->codice_prodotto;
@@ -134,40 +140,40 @@ class GestioneProdottiAdmin extends Controller
             $videogioco->edizione_limitata = filter_var($request->input('limitata'), FILTER_VALIDATE_BOOLEAN);
             $videogioco->vkey = $request->input('chiave');
             $videogioco->ncd = 0;
-            
-            $prodotto->videogioco = $videogioco;
+
+            $prodotto->setRelation('videogioco', $videogioco);
             $prodottoService->newInsert($prodotto);
-            
+
             $parteDi = new ParteDi();
             $parteDi->videogioco = $prodotto->codice_prodotto;
             $parteDi->categoria = $request->input('categoria');
             $parteDiService->newInsert($parteDi);
-            
+
         } elseif ($tipo === 'console') {
             $console = new Console();
             $console->prodotto = $prodotto->codice_prodotto;
             $console->specifica = $request->input('specifiche');
             $console->colore = $request->input('colore');
-            
-            $prodotto->console = $console;
+
+            $prodotto->setRelation('console', $console);
             $prodottoService->newInsert($prodotto);
-            
+
         } elseif ($tipo === 'dlc') {
             $dlc = new Dlc();
             $dlc->prodotto = $prodotto->codice_prodotto;
             $dlc->descrizione = $request->input('descrizione');
             $dlc->dimensione = (int) $request->input('dimensioneDlc');
-            
-            $prodotto->dlc = $dlc;
+
+            $prodotto->setRelation('dlc', $dlc);
             $prodottoService->newInsert($prodotto);
-            
+
         } elseif ($tipo === 'abbonamento') {
             $abbonamento = new Abbonamento();
             $abbonamento->prodotto = $prodotto->codice_prodotto;
             $abbonamento->codice = $request->input('codice');
             $abbonamento->durata_abbonamento = (int) $request->input('durata');
-            
-            $prodotto->abbonamento = $abbonamento;
+
+            $prodotto->setRelation('abbonamento', $abbonamento);
             $prodottoService->newInsert($prodotto);
         }
 
@@ -180,6 +186,6 @@ class GestioneProdottiAdmin extends Controller
             $presenteInService->newInsert($presenteIn);
         }
 
-        return redirect()->route('admin.gestione')->with('messageok', 'Prodotto inserito con successo!');
+        return redirect()->back()->with('success', 'Prodotto inserito con successo!');
     }
 }
