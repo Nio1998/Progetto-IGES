@@ -1,5 +1,8 @@
 @php
 $prodotti = $data['prodotti'];
+$fornitori = $data['fornitori'];
+$categorie = $data['categorie'];
+$softwarehouses = $data['softwarehouses'];
 @endphp
 
 <!DOCTYPE html>
@@ -86,7 +89,7 @@ $prodotti = $data['prodotti'];
 </div>
 
 <div class="container d-flex justify-content-center mb-5">
-    <div style="background-color: rgba(254,254,233,0.5);border-radius:20px; width: 100%; max-width: 1200px; padding: 20px;">
+    <div id="containerForm" style="background-color: rgba(254,254,233,0.5);border-radius:20px; width: 100%; max-width: 1200px; padding: 20px; display:none;">
     
         <!-- FORM PRODOTTI ESISTENTI -->
         <div id="esistente" style="display:none">
@@ -166,10 +169,8 @@ $prodotti = $data['prodotti'];
                     <div class="form-group col-md-4">
                         <label for="fornitoreP">Fornitore:</label>
                         <select class="form-control" style="border-radius:8px;" name="fornitoreP">
-                            @foreach($prodotti->unique('fornitore') as $prod)
-                                @if($prod->getFornitore)
-                                    <option value="{{ $prod->getFornitore->nome }}">{{ $prod->getFornitore->nome }}</option>
-                                @endif
+                            @foreach($fornitori as $fornitore)
+                                <option value="{{ $fornitore->nome }}">{{ $fornitore->nome }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -211,8 +212,9 @@ $prodotti = $data['prodotti'];
                             <div class="col-md-4 mb-2">
                                 <label>Software House:</label>
                                 <select class="form-control" style="border-radius:8px;" name="nomesfh">
-                                    <option value="SoftwareHouse1">SoftwareHouse1</option>
-                                    <option value="SoftwareHouse2">SoftwareHouse2</option>
+                                    @foreach($softwarehouses as $sfh)
+                                        <option value="{{ $sfh->nomesfh }}">{{ $sfh->nomesfh }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-4 mb-2">
@@ -222,9 +224,9 @@ $prodotti = $data['prodotti'];
                             <div class="col-md-4 mb-2">
                                 <label>Categoria:</label>
                                 <select class="form-control" style="border-radius:8px;" name="categoria">
-                                    <option value="Azione">Azione</option>
-                                    <option value="Avventura">Avventura</option>
-                                    <option value="RPG">RPG</option>
+                                    @foreach($categorie as $categoria)
+                                        <option value="{{ $categoria->nome }}">{{ $categoria->nome }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -321,9 +323,11 @@ function prodottoForm() {
 
 function formEsistente() {
     if(document.getElementById("esistenteProdotto").checked) {
+        document.getElementById("containerForm").style.display = "block";
         document.getElementById("esistente").style.display = "block";
         document.getElementById("nuovo").style.display = "none";
     } else if(document.getElementById("nuovoProdotto").checked) {
+        document.getElementById("containerForm").style.display = "block";
         document.getElementById("nuovo").style.display = "block";
         document.getElementById("esistente").style.display = "none";
     }
