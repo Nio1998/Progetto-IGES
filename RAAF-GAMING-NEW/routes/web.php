@@ -4,13 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Profilo\Autenticazione;
 use App\Http\Controllers\Profilo\AutenticazioneAdmin;
 use App\Http\Controllers\Profilo\Profilo;
+use App\Http\Controllers\Prodotto\Prodotto;
 
-// Home temporanea
-Route::get('/', function () {
-    return view('layouts.appoggio');
-})->name('home');
-// Home temporanea
-
+// Home 
+Route::get('/', [Prodotto::class, 'index'])->name('home');
 // LOGOUT
 Route::match(['GET', 'POST'], '/logout', [Autenticazione::class, 'logout'])->name('logout');
 
@@ -24,6 +21,9 @@ Route::middleware(['redirectIfAuthenticated'])->group(function () {
     Route::get('/registrazione', [Autenticazione::class, 'registrazione'])->name('registrazione');
     Route::post('/registrazione', [Autenticazione::class, 'registrazioneStore'])->name('registrazione.store');
 
+    Route::get('/ricerca', [Prodotto::class, 'ricercaProdotto'])->name('prodotto.ricerca');
+    Route::get('/prodotto/dettaglio', [Prodotto::class, 'show'])->name('prodotto.show');
+    
 
 });
 
@@ -39,5 +39,7 @@ Route::middleware(['isAutenticated'])->group(function () {
     // PROFILO
     Route::get('/profilo', [Profilo::class, 'mostraProfilo'])->name('mostraProfilo');
     Route::post('/profilo', [Profilo::class, 'modificaProfilo'])->name('modificaProfilo');
+    Route::post('/recensione',[Prodotto::class,'aggiungiRecensione'])->name('recensione.store');
+   
 
 });
