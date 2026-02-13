@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Prodotto;
 
 use App\Http\Controllers\Controller;
+use App\Services\Prodotto\CarrelloService;
 use Illuminate\Http\Request;
 use App\Services\Prodotto\ProdottoService;
 use App\Services\Prodotto\RecensisceService;
@@ -71,5 +72,35 @@ class Prodotto extends Controller
         
         return response($prodotto->copertina)
             ->header('Content-Type', 'image/jpeg');
+    }
+
+    public function aggiungiCarrello(Request $request)
+    {
+        $carrelloService = new CarrelloService();
+        $prodottoService = new ProdottoService();
+
+        $codiceProdotto = (int) $request->input('id');
+
+        // Verifica che il prodotto esista
+        $prodotto = $prodottoService->ricercaPerChiave($codiceProdotto);
+
+        if ($prodotto == null) {
+            return response()->json([
+                'message' => 'Prodotto non trovato'
+            ], 404);
+        }
+
+        // Prova ad aggiungere al carrello
+        $aggiunto = $carrelloService->aggiungiAlCarrello($prodotto);
+
+        if (!$aggiunto) {
+            return response()->json([
+                'message' => 'Aggiunta nel carrello fatta con successo!'
+            ]);
+        } else {
+            return response()->json([
+                'message' => 'Hai gia questo prodotto nell carrello'
+            ]);
+        }
     }
 }

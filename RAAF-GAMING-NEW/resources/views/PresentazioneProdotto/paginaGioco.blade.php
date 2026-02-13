@@ -161,7 +161,8 @@ function aggiungiCarrello() {
             $("#sostituisciCarrello").removeClass("fas fa-shopping-cart");
             $("#sostituisciCarrello").addClass("fa fa-cart-arrow-down");
         },
-        error: function() {
+        error: function(err) {
+            console.log(err);
             alert("Errore durante l'aggiunta al carrello");
         }
     });

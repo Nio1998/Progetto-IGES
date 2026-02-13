@@ -17,23 +17,29 @@ class CarrelloService
 
     /**
      * Aggiunge un prodotto al carrello nella sessione.
-     * 
-     * Recupera il carrello dalla sessione (se non esiste crea una collection vuota),
-     * aggiunge il prodotto alla collection e salva nella sessione.
-     * 
+     *
+     * Recupera il carrello dalla sessione (se non esiste crea una collection vuota).
+     * Verifica se il prodotto è già presente nel carrello:
+     * - Se NON è presente, lo aggiunge alla collection e aggiorna la sessione.
+     * - Se è già presente, non lo aggiunge nuovamente.
+     *
      * @param Prodotto $prodotto Il prodotto da aggiungere al carrello
-     * @return void
+     * @return bool Restituisce true se il prodotto era già presente, false se è stato aggiunto
      */
-    public function aggiungiAlCarrello(Prodotto $prodotto): void
+    public function aggiungiAlCarrello(Prodotto $prodotto): bool
     {
-        // Recupera il carrello dalla sessione o crea una collection vuota
         $carrello = session()->get('Carrello', collect());
 
-        // Aggiunge il prodotto al carrello
-        $carrello->push($prodotto);
+        $esiste = $carrello->contains(function ($item) use ($prodotto) {
+            return $item->id === $prodotto->id;
+        });
 
-        // Salva il carrello aggiornato nella sessione
-        session()->put('Carrello', $carrello);
+        if (!$esiste) {
+            $carrello->push($prodotto);
+            session()->put('Carrello', $carrello);
+        }
+
+        return $esiste;
     }
 
     /**
