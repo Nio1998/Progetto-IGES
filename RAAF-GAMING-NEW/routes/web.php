@@ -60,5 +60,6 @@ Route::middleware(['isAutenticatedAdmin'])->group(function () {
 
         Route::get('/homeProdotto', [GestioneProdottiAdmin::class, 'homeProdotto'])->name('homeProdotto');
         Route::post('/formProdNuovo', [GestioneProdottiAdmin::class, 'formProdNuovoAdmin'])->name('formProdNuovo');
+        Route::post('/formProdEsistenti', [GestioneProdottiAdmin::class, 'formProdEsistentiAdmin'])->name('formProdEsistenti');
     });
 });

@@ -188,4 +188,10 @@ class GestioneProdottiAdmin extends Controller
 
         return redirect()->back()->with('success', 'Prodotto inserito con successo!');
     }
+
+    public function formProdEsistentiAdmin(Request $request)
+    {
+
+    }
+    
 }
