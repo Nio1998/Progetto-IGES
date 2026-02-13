@@ -44,8 +44,7 @@ class CartaDiCreditoService
         if($item == null)
             throw new \InvalidArgumentException("Inserito un item null");
         
-        $result = $item->save();
-        Log::info($result);
+        $item->save();
     }
 
     /**

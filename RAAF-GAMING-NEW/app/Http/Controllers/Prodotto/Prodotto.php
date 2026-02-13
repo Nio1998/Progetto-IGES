@@ -57,9 +57,10 @@ class Prodotto extends Controller
         return redirect()->back()->with('error', 'Hai già recensito questo prodotto.');
     }
 
-    public function getImmagine($codice)
+    public function getImmagine(Request $request)
     {
         $prodottoService = new ProdottoService();
+        $codice = $request->codice;
         $prodotto = $prodottoService->ricercaPerChiave($codice);
         
         if (!$prodotto || !$prodotto->copertina) {
