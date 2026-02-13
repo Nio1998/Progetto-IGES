@@ -11,7 +11,7 @@ use App\Models\Prodotto\Categoria;
  *
  * Fornisce metodi per recuperare tutti i Categorie con caching integrato.
  */
-class FornitoreService
+class CategoriaService
 {
     /**
      * Tempo di vita della cache in minuti.

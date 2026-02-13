@@ -1,4 +1,4 @@
-package prodotto;
+package magazzino;
 
 import java.io.IOException;
 import java.sql.SQLException;

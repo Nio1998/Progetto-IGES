@@ -19,16 +19,17 @@ class Prodotto extends Model
 
     protected $table = 'prodotto';
     protected $primaryKey = 'codice_prodotto';
-    public $timestamps = true;
+    public $timestamps = false;
 
     protected $fillable = [
+        'codice_prodotto',
         'prezzo',
         'copertina',
         'sconto',
         'data_uscita',
         'nome',
         'quantita_fornitura',
-        'ultima_fornitura',
+        'data_fornitura',
         'fornitore',
         'gestore',
     ];
@@ -38,7 +39,7 @@ class Prodotto extends Model
         'sconto' => 'decimal:0',
         'data_uscita' => 'date',
         'quantita_fornitura' => 'integer',
-        'ultima_fornitura' => 'date',
+        'data_fornitura' => 'date',
     ];
 
     // --- Relationships ---
@@ -68,7 +69,7 @@ class Prodotto extends Model
         return $this->hasOne(Videogioco::class, 'prodotto', 'codice_prodotto');
     }
 
-    public function fornitore()
+    public function getFornitore()
     {
         return $this->belongsTo(Fornitore::class, 'fornitore', 'nome');
     }
@@ -78,7 +79,7 @@ class Prodotto extends Model
         return $this->hasMany(Recensisce::class, 'prodotto', 'codice_prodotto');
     }
 
-    public function gestore()
+    public function getGestore()
     {
         return $this->belongsTo(Gestore::class, 'gestore', 'email');
     }
