@@ -21,9 +21,9 @@
             {{-- Colonna immagine --}}
             <div class="col-md-6 mt-4 mb-2 d-flex justify-content-center align-items-start">
             {{-- Immagine temporaneamente rimossa per evitare errori sulla rotta servletcard --}}
-            <img src="" 
+            <img src="{{ route('prodotto.getImmagine', ['codice' => $prodotto->codice_prodotto]) }}" 
             style="border-radius:15px; height:auto; width:75%; max-height: 500px; object-fit: cover; background-color: #ccc;" 
-            alt="Immagine {{ $prodotto->nome }}">
+            alt="Copertina {{ $prodotto->nome }}">
             </div>
 
             {{-- Colonna dettagli --}}

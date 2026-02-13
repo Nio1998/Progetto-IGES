@@ -11,6 +11,8 @@ Route::get('/', [Prodotto::class, 'index'])->name('home');
 // LOGOUT
 Route::match(['GET', 'POST'], '/logout', [Autenticazione::class, 'logout'])->name('logout');
 
+Route::get('/prodotto/copertina/{codice}', [Prodotto::class, 'getImmagine'])->name('prodotto.getImmagine');
+
 // Tutte le rotte “guest” passano per il middleware
 Route::middleware(['redirectIfAuthenticated'])->group(function () {
     // LOGIN

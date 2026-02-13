@@ -14,6 +14,6 @@ class Ricerca extends Controller
         $stringa = $request->input('ricerca');
         $prodotti = $prodottoService->ricercaPerSottostringa($stringa);
 
-        return view ('prodotto.paginaRicerca',compact('prodotti'));
+        return view ('PresentazioneProdotto.paginaRicerca',compact('prodotti'));
     }
 }

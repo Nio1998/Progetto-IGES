@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Prodotto;
 
 use App\Http\Controllers\Controller;
@@ -14,7 +13,7 @@ class Prodotto extends Controller
             $prodottoService = new ProdottoService();
             $prodotti = $prodottoService->getTop6Home();
 
-            return view ('prodotto.homepage',compact('prodotti'));
+            return view ('PresentazioneProdotto.homepage',compact('prodotti'));
         }
 
     public function ricercaProdotto (Request $request)
@@ -23,7 +22,7 @@ class Prodotto extends Controller
             $stringa = $request->input('ricerca');
             $prodotti = $prodottoService->ricercaPerSottostringa($stringa);
 
-            return view ('prodotto.paginaRicerca',compact('prodotti'));
+            return view ('PresentazioneProdotto.paginaRicerca',compact('prodotti'));
         }
 
     public function show(Request $request)
@@ -32,13 +31,41 @@ class Prodotto extends Controller
             $prodottoService = new ProdottoService();
             $prodotto = $prodottoService->ricercaPerChiave($codice);
 
-            return view ("prodotto.paginaGioco",compact('prodotto'));
+            return view ("PresentazioneProdotto.paginaGioco",compact('prodotto'));
         }
 
     public function aggiungiRecensione(Request $request)
-        {
-            $recensioneService = new RecensisceService();
-            //$recensione = $recensioneService->pubblicaRecensione()
+    {
+        $clienteService = new \App\Services\Profilo\ClienteService();
+        $recensioneService = new RecensisceService();
+
         
+        $clienteLoggato = $clienteService->getUtenteAutenticato();
+
+        $successo = $recensioneService->pubblicaRecensione(
+            $clienteLoggato->email,      
+            $request->input('prodotto'),
+            $request->input('voto'),
+            $request->input('commento')
+        );
+
+        if ($successo) {
+            return redirect()->back()->with('success', 'Recensione pubblicata!');
         }
+
+        return redirect()->back()->with('error', 'Hai già recensito questo prodotto.');
+    }
+
+    public function getImmagine($codice)
+    {
+        $prodottoService = new ProdottoService();
+        $prodotto = $prodottoService->ricercaPerChiave($codice);
+        
+        if (!$prodotto || !$prodotto->copertina) {
+            abort(404, 'Immagine non trovata');
+        }
+        
+        return response($prodotto->copertina)
+            ->header('Content-Type', 'image/jpeg');
+    }
 }

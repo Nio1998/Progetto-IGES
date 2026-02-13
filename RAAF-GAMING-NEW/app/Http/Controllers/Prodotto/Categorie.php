@@ -13,7 +13,7 @@ class Categorie extends Controller
         $categoriaService = new CategoriaService();
         $prodotti = $categoriaService->allElements($nome, 'asc');
 
-        return view('prodotto.paginaRicerca',compact('prodotti'));
+        return view('PresentazioneProdotto.paginaRicerca',compact('prodotti'));
         
     }
 }
