@@ -37,7 +37,7 @@ class ProdottoService
                 'console',
                 'dlc',
                 'videogioco',
-                'fornitore',
+                'getFornitore',
                 'recensioni'
             ])->first();
 
@@ -98,7 +98,7 @@ class ProdottoService
             throw new \InvalidArgumentException("Nome null");
         
         $prodotto = Prodotto::where('nome', $nome)
-            ->with('fornitore') // Eager loading fornitore necessario per rifornimento
+            ->with('getFornitore') // Eager loading fornitore necessario per rifornimento
             ->first();
         
         // info utili per rifornimento
@@ -107,8 +107,8 @@ class ProdottoService
             $prodotto->necessita_rifornimento = $prodotto->quantita_fornitura < 10;
             
             // Calcola giorni dall'ultima fornitura
-            $prodotto->giorni_ultima_fornitura = $prodotto->ultima_fornitura
-                ? now()->diffInDays($prodotto->ultima_fornitura)
+            $prodotto->giorni_data_fornitura = $prodotto->data_fornitura
+                ? now()->diffInDays($prodotto->data_fornitura)
                 : null;
         }
         
