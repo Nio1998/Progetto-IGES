@@ -20,10 +20,9 @@
 
             {{-- Colonna immagine --}}
             <div class="col-md-6 mt-4 mb-2 d-flex justify-content-center align-items-start">
-            {{-- Immagine temporaneamente rimossa per evitare errori sulla rotta servletcard --}}
-            <img src="{{ route('prodotto.getImmagine', ['codice' => $prodotto->codice_prodotto]) }}" 
-            style="border-radius:15px; height:auto; width:75%; max-height: 500px; object-fit: cover; background-color: #ccc;" 
-            alt="Copertina {{ $prodotto->nome }}">
+                <img src="{{ route('prodotto.getImmagine', ['codice' => $prodotto->codice_prodotto]) }}" 
+                     style="border-radius:15px; height:auto; width:75%; max-height: 500px; object-fit: cover; background-color: #ccc;" 
+                     alt="Copertina {{ $prodotto->nome }}">
             </div>
 
             {{-- Colonna dettagli --}}
@@ -60,7 +59,7 @@
                                 </h6>
                             @elseif($prodotto->abbonamento)
                                 <h6>
-                                    <strong>Durata:</strong> {{ $prodotto->abbonamenti->durata_abbonamento }} mesi<br>
+                                    <strong>Durata:</strong> {{ $prodotto->abbonamento->durata_abbonamento }} mesi<br>
                                     <strong>Data Uscita:</strong> {{ $prodotto->data_uscita }}<br>
                                     <strong>Sconto:</strong> {{ $prodotto->sconto }}%
                                 </h6>
@@ -78,18 +77,23 @@
                             {{-- Prezzo e Carrello --}}
                             <div class="d-flex align-items-center">
                                 <h3 class="mb-0">
-                                    @if($prodotto->in_promozione)
+                                    @if($prodotto->sconto > 0)
                                         <span style="color:gray; text-decoration:line-through; font-size: 0.8em;">{{ number_format($prodotto->prezzo, 2) }}€</span>
                                         <span class="ml-2" style="font-weight:bold; color:red;">{{ number_format($prodotto->prezzo_effettivo, 2) }}€</span>
                                     @else
-                                        <span style="font-weight:bold;">{{ number_format($prodotto->prezzo_effettivo, 2) }}€</span>
+                                        <span style="font-weight:bold;">{{ number_format($prodotto->prezzo, 2) }}€</span>
                                     @endif
                                 </h3>
 
-                                <button class="btn ml-auto" style="background:transparent;" 
-                                        onclick="{{ $prodotto->disponibile ? 'aggiungiCarrello()' : 'nonPuoiAcquistare()' }}">
-                                    <i id="sostituisciCarrello" class='fas fa-shopping-cart' style='font-size:35px; color:black;'></i>
-                                </button>
+                                @if($prodotto->disponibile)
+                                    <button class="btn ml-auto" style="background:transparent;" onclick="aggiungiCarrello()">
+                                        <i id="sostituisciCarrello" class='fas fa-shopping-cart' style='font-size:35px; color:black;'></i>
+                                    </button>
+                                @else
+                                    <button class="btn ml-auto" style="background:transparent;" onclick="nonPuoiAcquistare()">
+                                        <i class='fas fa-shopping-cart' style='font-size:35px; color:gray;'></i>
+                                    </button>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -100,9 +104,14 @@
                     <h4 style="font-family:Impact; text-transform:uppercase;">Recensioni</h4>
                     
                     <div id="stampe" class="p-3 mb-3" style="height:150px; overflow-y:auto; background-color:rgba(240,240,230,0.8); border-radius:10px;">
-                        @foreach($prodotto->recensioni as $recensione)
-                            <div class="mb-2 border-bottom">{!! $recensione !!}</div>
-                        @endforeach
+                        @forelse($prodotto->recensioni as $recensione)
+                            <div class="mb-2 border-bottom pb-2">
+                                <strong>{{ $recensione->cliente }}</strong> - Voto: {{ $recensione->voto }}/10<br>
+                                <em>{{ $recensione->commento }}</em>
+                            </div>
+                        @empty
+                            <p class="text-muted">Nessuna recensione ancora. Sii il primo a recensire!</p>
+                        @endforelse
                     </div>
 
                     <div class="form-group">
@@ -115,9 +124,15 @@
                         </div>
                         <textarea class="form-control mb-2" id="commento" rows="3" placeholder="Lascia la tua opinione..." style="resize:none"></textarea>
                         
-                        <button type="button" class="btn btn-dark btn-block">
-                            INVIA RECENSIONE
-                        </button>
+                        @if(isset($cliente))
+                            <button type="button" class="btn btn-dark btn-block" onclick="recensione()">
+                                INVIA RECENSIONE
+                            </button>
+                        @else
+                            <button type="button" class="btn btn-dark btn-block" onclick="nonPuoiRecensire()">
+                                INVIA RECENSIONE
+                            </button>
+                        @endif
                     </div>
                 </div>
 
@@ -126,5 +141,107 @@
     @endif
 </div>
 
-{{-- Script JS mantenuti ma puliti --}}
+{{-- JavaScript --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+var flag = 0;
+
+// Aggiungi al carrello
+function aggiungiCarrello() {
+    $.ajax({
+        type: "POST",
+        url: "{{ route('prodotto.aggiungiCarrello') }}",
+        data: {
+            _token: "{{ csrf_token() }}",
+            id: {{ $prodotto->codice_prodotto }}
+        },
+        dataType: "json",
+        success: function(data) {
+            alert(data.message);
+            $("#sostituisciCarrello").removeClass("fas fa-shopping-cart");
+            $("#sostituisciCarrello").addClass("fa fa-cart-arrow-down");
+        },
+        error: function(err) {
+            console.log(err);
+            alert("Errore durante l'aggiunta al carrello");
+        }
+    });
+}
+
+// Invia recensione
+function recensione() {
+    // Trova quale stella è selezionata
+    var voto = null;
+    for(var i = 1; i <= 10; i++) {
+        if(document.getElementById("stella" + i).checked) {
+            voto = i;
+            break;
+        }
+    }
+    
+    // Validazione voto
+    if(!voto) {
+        alert("Non hai inserito il voto");
+        return;
+    }
+    
+    // Validazione commento
+    var commento = document.getElementById("commento").value;
+    if(!commento || commento.trim() === "") {
+        alert("Commento non inserito");
+        return;
+    }
+    
+    // Invia recensione
+    $.ajax({
+        type: "POST",
+        url: "{{ route('recensione.store') }}",
+        data: {
+            _token: "{{ csrf_token() }}",
+            prodotto: {{ $prodotto->codice_prodotto }},
+            voto: voto,
+            commento: commento
+        },
+        dataType: "json",
+        success: function(data) {
+            if(data.success) {
+                alert("Recensione pubblicata con successo!");
+                
+                // Aggiungi recensione alla lista (evita duplicati)
+                if(flag == 0) {
+                    var nuovaRecensione = '<div class="mb-2 border-bottom pb-2">' +
+                        '<strong>{{ auth()->user()->email ?? "Tu" }}</strong> - Voto: ' + voto + '/10<br>' +
+                        '<em>' + commento + '</em>' +
+                        '</div>';
+                    $("#stampe").prepend(nuovaRecensione);
+                    flag = 1;
+                    
+                    // Reset form
+                    document.getElementById("commento").value = "";
+                    $('input[name="rating"]').prop('checked', false);
+                }
+            } else {
+                alert(data.message || "Hai già recensito questo prodotto");
+            }
+        },
+        error: function(xhr) {
+            if(xhr.status === 422) {
+                alert("Hai già recensito questo prodotto");
+            } else {
+                alert("Errore durante l'invio della recensione");
+            }
+        }
+    });
+}
+
+// Prodotto non disponibile
+function nonPuoiAcquistare() {
+    alert("Prodotto non disponibile in magazzino");
+}
+
+// Non autenticato
+function nonPuoiRecensire() {
+    alert("Effettua l'accesso per recensire!");
+}
+</script>
 @endsection
