@@ -18,6 +18,7 @@ Route::match(['GET', 'POST'], '/logoutAdmin', [AutenticazioneAdmin::class, 'logo
 Route::get('/ricerca', [Prodotto::class, 'ricercaProdotto'])->name('prodotto.ricerca');
 Route::get('/prodotto/dettaglio', [Prodotto::class, 'show'])->name('prodotto.show');
 Route::get('/prodotto/copertina/{codice}', [Prodotto::class, 'getImmagine'])->name('prodotto.getImmagine');
+Route::get('/aggiungiCarrello',[Prodotto::class, 'aggiungiCarrelo'])->name('prodotto.aggiungiCarrello');
 
 // Tutte le rotte “guest” passano per il middleware
 Route::middleware(['redirectIfAuthenticated'])->group(function () {
@@ -43,7 +44,7 @@ Route::middleware(['isAutenticated'])->group(function () {
     Route::get('/profilo', [Profilo::class, 'mostraProfilo'])->name('mostraProfilo');
     Route::post('/profilo', [Profilo::class, 'modificaProfilo'])->name('modificaProfilo');
     Route::post('/recensione',[Prodotto::class,'aggiungiRecensione'])->name('recensione.store');
-   
+    
 
 });
 

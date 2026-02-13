@@ -30,9 +30,11 @@ class Prodotto extends Controller
         {
             $codice = $request->input('codice');
             $prodottoService = new ProdottoService();
+            $clienteService = new ClienteService();
+            $cliente = $clienteService->getUtenteAutenticato();
             $prodotto = $prodottoService->ricercaPerChiave($codice);
 
-            return view ("PresentazioneProdotto.paginaGioco",compact('prodotto'));
+            return view ("PresentazioneProdotto.paginaGioco",compact('prodotto','cliente'));
         }
 
     public function aggiungiRecensione(Request $request)
