@@ -13,7 +13,7 @@ $carrello = Session::get('Carrello');
     <div class="flex items-center justify-between px-4 py-2">
         <!-- Logo and Toggler -->
         <div class="flex items-center gap-3">
-            <a href="#" class="inline-block focus-visible" aria-label="RAAF-GAMING Home">
+            <a href="{{route('home') }}" class="inline-block focus-visible" aria-label="RAAF-GAMING Home">
                 <img src="{{ asset('immagini/logo.png') }}" alt="RAAF-GAMING" class="w-[75px] h-auto">
             </a>
             <!-- Burger menu senza border e con 3 linee -->
@@ -31,7 +31,7 @@ $carrello = Session::get('Carrello');
         
         <!-- Search Form -->
         <div class="flex-1 flex justify-center mx-4">
-            <form action="#" method="GET" class="search-form w-full max-w-md" role="search">
+            <form action="{{ route('prodotto.ricerca') }}" method="GET" class="search-form w-full max-w-md" role="search">
                 <div class="relative">
                     <label for="search-input" class="sr-only">Cerca giochi, console, abbonamenti</label>
                     <input 
