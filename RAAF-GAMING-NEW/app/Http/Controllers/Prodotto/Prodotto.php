@@ -40,24 +40,37 @@ class Prodotto extends Controller
 
     public function aggiungiRecensione(Request $request)
     {
-        $clienteService = new ClienteService();
-        $recensioneService = new RecensisceService();
+        try {
+            $clienteService = new ClienteService();
+            $recensioneService = new RecensisceService();
+            
+            $clienteLoggato = $clienteService->getUtenteAutenticato();
 
-        
-        $clienteLoggato = $clienteService->getUtenteAutenticato();
+            $successo = $recensioneService->pubblicaRecensione(
+                $clienteLoggato->email,      
+                $request->input('prodotto'),
+                $request->input('voto'),
+                $request->input('commento')
+            );
 
-        $successo = $recensioneService->pubblicaRecensione(
-            $clienteLoggato->email,      
-            $request->input('prodotto'),
-            $request->input('voto'),
-            $request->input('commento')
-        );
+            if ($successo) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Recensione pubblicata!'
+                ]);
+            }
 
-        if ($successo) {
-            return redirect()->back()->with('success', 'Recensione pubblicata!');
+            return response()->json([
+                'success' => false,
+                'message' => 'Hai già recensito questo prodotto.'
+            ], 422);
+            
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Errore: ' . $e->getMessage()
+            ], 500);
         }
-
-        return redirect()->back()->with('error', 'Hai già recensito questo prodotto.');
     }
 
     public function getImmagine(Request $request)
