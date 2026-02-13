@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\Prodotto\ProdottoService;
 use App\Services\Prodotto\RecensisceService;
+use App\Services\Profilo\ClienteService;
 
 class Prodotto extends Controller
 {
@@ -36,7 +37,7 @@ class Prodotto extends Controller
 
     public function aggiungiRecensione(Request $request)
     {
-        $clienteService = new \App\Services\Profilo\ClienteService();
+        $clienteService = new ClienteService();
         $recensioneService = new RecensisceService();
 
         
