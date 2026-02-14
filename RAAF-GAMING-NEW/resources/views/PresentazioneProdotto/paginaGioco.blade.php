@@ -100,7 +100,7 @@
                 </div>
 
                 {{-- Box Recensioni --}}
-                <div class="container mt-4 mb-5">
+                <div class="container mt-4" style="margin-bottom: 120px !important; padding-bottom: 30px;">
                     <h4 style="font-family:Impact; text-transform:uppercase;">Recensioni</h4>
                     
                     <div id="stampe" class="p-3 mb-3" style="height:150px; overflow-y:auto; background-color:rgba(240,240,230,0.8); border-radius:10px;">

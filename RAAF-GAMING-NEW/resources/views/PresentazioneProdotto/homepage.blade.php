@@ -23,7 +23,7 @@
                                 <a href="{{route('prodotto.show', ['codice'=> $prodotto->codice_prodotto])}}" class="card">
                                     
                                     {{-- Immagine --}}
-                                    <img src="#" 
+                                    <img src="{{ route('prodotto.getImmagine', ['codice' => $prodotto->codice_prodotto]) }}" 
                                          class="card__image" 
                                          alt="{{ $prodotto->nome }}" />
                                     
