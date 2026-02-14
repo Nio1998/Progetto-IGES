@@ -115,7 +115,7 @@ $carrello = Session::get('Carrello');
     <div class="navbar-collapse" id="navbarSupportedContent">
         <ul class="flex flex-row flex-wrap pt-2 px-4 pb-2 gap-x-6 gap-y-2" role="menubar">
             <li role="none">
-                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="{{ route('prodotto.ricercaCategoria', ['categoria' => 'catalogo']) }}" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class='fas fa-book text-base' aria-hidden="true"></i>&nbsp;&nbsp;Catalogo
                 </a>
             </li>
@@ -125,42 +125,42 @@ $carrello = Session::get('Carrello');
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="{{ route('prodotto.ricercaCategoria', ['categoria' => 'Avventura']) }}" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class='fab fa-phoenix-squadron text-base' aria-hidden="true"></i>&nbsp;&nbsp;Avventura
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="{{ route('prodotto.ricercaCategoria', ['categoria' => 'Battle Royale']) }}" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class='fas fa-crosshairs text-base' aria-hidden="true"></i>&nbsp;&nbsp;Battle Royale
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="{{ route('prodotto.ricercaCategoria', ['categoria' => 'Sport']) }}" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class="fa fa-futbol text-base" aria-hidden="true"></i>&nbsp;&nbsp;Sport
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="{{ route('prodotto.ricercaCategoria', ['categoria' => 'Horror']) }}" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class='fas fa-ghost text-base' aria-hidden="true"></i>&nbsp;&nbsp;Horror
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="{{ route('prodotto.ricercaCategoria', ['categoria' => 'console']) }}" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class='fab fa-playstation text-base' aria-hidden="true"></i>&nbsp;&nbsp;Console
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="{{ route('prodotto.ricercaCategoria', ['categoria' => 'videogioco']) }}" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class="fa fa-gamepad text-base" aria-hidden="true"></i>&nbsp;&nbsp;Videogiochi
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="{{ route('prodotto.ricercaCategoria', ['categoria' => 'abbonamento']) }}" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class="fa fa-calendar-check text-base" aria-hidden="true"></i>&nbsp;&nbsp;Abbonamenti
                 </a>
             </li>
             <li role="none">
-                <a href="#" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="{{ route('prodotto.ricercaCategoria', ['categoria' => 'dlc']) }}" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class="fa fa-plus-circle text-base" aria-hidden="true"></i>&nbsp;&nbsp;DLC
                 </a>
             </li>

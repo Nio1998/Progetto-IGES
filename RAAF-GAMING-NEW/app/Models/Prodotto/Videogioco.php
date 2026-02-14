@@ -40,7 +40,7 @@ class Videogioco extends Model
 
     // Relationships
 
-    public function prodotto()
+    public function getProdotto()
     {
         return $this->belongsTo(Prodotto::class, 'prodotto', 'codice_prodotto');
     }

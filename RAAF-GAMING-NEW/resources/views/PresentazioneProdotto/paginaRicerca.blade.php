@@ -29,12 +29,12 @@
                         <li style="height:250px; max-width:250px;" name="prodottoCard">
                         
                             {{-- Link alla pagina di dettaglio --}}
-                            <a href="#" class="card">
+                            <a href="{{route('prodotto.show', ['codice'=> $prodotto->codice_prodotto])}}" class="card" style="border-radius: 15px;">
                                 
                                 {{-- Immagine tramite rotta dedicata --}}
-                                <img src="#" 
-                                     class="card__image" 
-                                     alt="{{ $prodotto->nome }}" />
+                                <img src="{{ route('prodotto.getImmagine', ['codice' => $prodotto->codice_prodotto]) }}" 
+                                style="border-radius: 15px; height:auto; width:100%; max-height: 500px; object-fit: cover; background-color: #ccc;" 
+                                alt="Copertina {{ $prodotto->nome }}">
                                 
                                 <div class="card__overlay">
                                     <div class="card__header">                  

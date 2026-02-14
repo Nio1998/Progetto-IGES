@@ -30,12 +30,12 @@ class ParteDi extends Model
 
     // Relationships
 
-    public function videogioco()
+    public function getVideogioco()
     {
         return $this->belongsTo(Videogioco::class, 'videogioco', 'prodotto');
     }
 
-    public function categoria()
+    public function getCategoria()
     {
         return $this->belongsTo(Categoria::class, 'categoria', 'nome');
     }

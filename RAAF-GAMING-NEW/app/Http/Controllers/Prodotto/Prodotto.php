@@ -76,23 +76,84 @@ class Prodotto extends Controller
     {
         $categoria = $request->categoria;
 
-        $parteDiService = new ParteDiService();
+        $categoriaService = new CategoriaService();
         $prodottoService = new ProdottoService();
+        if($categoria=='catalogo')
+        {
+           $prodotti =  $prodottoService->allElements('codice_prodotto asc');
+           return view('PresentazioneProdotto.paginaRicerca', compact('prodotti'));
+        }
+        else if($categoria=='abbonamento')
+        {
+            $prodotti =  $prodottoService->allElements('codice_prodotto asc');
+            foreach($prodotti as $prodotto)
+            {
+                if(!$prodotto->abbonamento)
+                {
+                    $prodotti = $prodotti->reject(function($pd) use ($prodotto)
+                    {
+                        return $pd->codice_prodotto === $prodotto->codice_prodotto;
+                    }); 
+                }           
+            }
+           return view('PresentazioneProdotto.paginaRicerca', compact('prodotti'));
+        }
+        else if($categoria=='console')
+        {
+            $prodotti =  $prodottoService->allElements('codice_prodotto asc');
+            foreach($prodotti as $prodotto)
+            {
+                if(!$prodotto->console)
+                {
+                    $prodotti = $prodotti->reject(function($pd) use ($prodotto)
+                    {
+                        return $pd->codice_prodotto === $prodotto->codice_prodotto;
+                    }); 
+                }           
+            }
+           return view('PresentazioneProdotto.paginaRicerca', compact('prodotti'));
+        }
+        else if($categoria=='dlc')
+        {
+            $prodotti =  $prodottoService->allElements('codice_prodotto asc');
+            foreach($prodotti as $prodotto)
+            {
+                if(!$prodotto->dlc)
+                {
+                    $prodotti = $prodotti->reject(function($pd) use ($prodotto)
+                    {
+                        return $pd->codice_prodotto === $prodotto->codice_prodotto;
+                    }); 
+                }           
+            }
+           return view('PresentazioneProdotto.paginaRicerca', compact('prodotti'));
+        }
+        else if($categoria=='videogioco')
+        {
+            $prodotti =  $prodottoService->allElements('codice_prodotto asc');
+            foreach($prodotti as $prodotto)
+            {
+                if(!$prodotto->videogioco)
+                {
+                    $prodotti = $prodotti->reject(function($pd) use ($prodotto)
+                    {
+                        return $pd->codice_prodotto === $prodotto->codice_prodotto;
+                    }); 
+                }           
+            }
+           return view('PresentazioneProdotto.paginaRicerca', compact('prodotti'));
+        } 
+        else
+        {
+            $parteDi = $categoriaService->allElements('nome asc');
+            $tipoGioco = $parteDi->firstWhere('nome', $categoria);
+            if(!isset($tipoGioco))
+                return redirect()->route('home');
 
-        $parteDi = $parteDiService->allElements('categoria asc');
-
-        // Filtra per categoria
-        $azione = $parteDi->where('categoria', $categoria);
-
-        // Prende gli ID dei videogiochi
-        $videogiochiIds = $azione->pluck('videogioco');
-
-        // Prende solo i prodotti con codice_prodotto dentro quegli ID
-        $prodotti = $prodottoService
-            ->allElements('codice_prodotto asc')
-            ->whereIn('codice_prodotto', $videogiochiIds->toArray());
-        $primoProdotto = $prodotti->first();
-        dd($primoProdotto->prezzo);
-        return view('PresentazioneProdotto.homepage', compact('prodotti'));
+            $prodotti = collect();
+            foreach($tipoGioco->parteDi as $categoriaScelta)
+                $prodotti->push($categoriaScelta?->getVideogioco?->getProdotto);
+            return view('PresentazioneProdotto.paginaRicerca', compact('prodotti'));
+        }
     }  
 }
