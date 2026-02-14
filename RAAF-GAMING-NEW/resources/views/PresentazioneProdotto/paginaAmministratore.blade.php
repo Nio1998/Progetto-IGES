@@ -118,7 +118,7 @@ $softwarehouses = $data['softwarehouses'];
                     <tbody>
                         @foreach($prodotti as $prodotto)
                         <tr>
-                            <form action="#" method="POST">
+                            <form action="{{ route('formProdEsistenti') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="prod" id="prod" value="{{ $prodotto->codice_prodotto }}">
                                 <td>{{ $prodotto->nome }}</td>

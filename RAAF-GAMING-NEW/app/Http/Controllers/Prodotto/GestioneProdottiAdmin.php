@@ -191,7 +191,53 @@ class GestioneProdottiAdmin extends Controller
 
     public function formProdEsistentiAdmin(Request $request)
     {
+        $prodottoService = new ProdottoService();
+        $presenteInService = new PresenteInServices();
 
+        // Validazione
+        $codiceProdotto = $request->input('prod');
+        $quantitaDaRifornire = (int) $request->input('quantita');
+
+        // Controllo quantità valida (come Java)
+        if ($quantitaDaRifornire <= 0) {
+            return redirect()->back()->with('error', 'Quantita\' non valida');
+        }
+
+        // Recupera il prodotto
+        $daRifornire = $prodottoService->ricercaPerChiave($codiceProdotto);
+
+        if ($daRifornire == null) {
+            return redirect()->back()->with('error', 'Il prodotto che vuoi rifornire non esiste');
+        }
+
+        // trova lo spazio disponibile
+        $magazziniDisponibili = $presenteInService->getMagazziniDaRifornire($daRifornire, $quantitaDaRifornire);
+
+        if ($magazziniDisponibili->isEmpty()) {
+            return redirect()->back()->with('error', 'Capienza non disponibile');
+        }
+
+        // Distribuisci nei magazzini
+        foreach ($magazziniDisponibili as $magazzinoInfo) {
+            if ($magazzinoInfo['presente'] == 1) {
+                // Magazzino che già ha il prodotto - usa rifornitura
+                $presenteIn = $presenteInService->ricercaPerChiave($daRifornire->codice_prodotto, $magazzinoInfo['magazzino']->indirizzo);
+                
+                if ($presenteIn) {
+                    $presenteIn->quantita_disponibile += $magazzinoInfo['quantita'];
+                    $presenteInService->rifornitura($presenteIn);
+                }
+            } else {
+                // Nuovo magazzino - crea nuovo record usando service
+                $nuovoPresente = new PresenteIn();
+                $nuovoPresente->magazzino = $magazzinoInfo['magazzino']->indirizzo;
+                $nuovoPresente->prodotto = $daRifornire->codice_prodotto;
+                $nuovoPresente->quantita_disponibile = $magazzinoInfo['quantita'];
+                $presenteInService->newInsert($nuovoPresente);
+            }
+        }
+
+        return redirect()->back()->with('success', 'Prodotto Rifornito con Successo');
     }
-    
+
 }
