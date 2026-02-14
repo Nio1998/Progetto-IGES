@@ -14,6 +14,8 @@ Route::get('/', [Prodotto::class, 'index'])->name('home');
 Route::match(['GET', 'POST'], '/logout', [Autenticazione::class, 'logout'])->name('logout');
 // LOGOUTADMIN
 Route::match(['GET', 'POST'], '/logoutAdmin', [AutenticazioneAdmin::class, 'logoutAdmin'])->name('logoutAdmin');
+// Route per categoria con parametro dinamico
+Route::get('/prodotti/categoria/{categoria}', [Prodotto::class, 'ricercaPerCategoria'])->name('prodotto.ricercaCategoria');
 
 Route::get('/ricerca', [Prodotto::class, 'ricercaProdotto'])->name('prodotto.ricerca');
 Route::get('/prodotto/dettaglio', [Prodotto::class, 'show'])->name('prodotto.show');

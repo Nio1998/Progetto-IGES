@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\Prodotto\ProdottoService;
 use App\Services\Prodotto\RecensisceService;
+use App\Services\Prodotto\CategoriaService;
+use App\Services\Prodotto\ParteDiService;
 use App\Services\Profilo\ClienteService;
 
 class Prodotto extends Controller
@@ -69,4 +71,28 @@ class Prodotto extends Controller
         return response($prodotto->copertina)
             ->header('Content-Type', 'image/jpeg');
     }
+
+    public function ricercaPerCategoria(Request $request)
+    {
+        $categoria = $request->categoria;
+
+        $parteDiService = new ParteDiService();
+        $prodottoService = new ProdottoService();
+
+        $parteDi = $parteDiService->allElements('categoria asc');
+
+        // Filtra per categoria
+        $azione = $parteDi->where('categoria', $categoria);
+
+        // Prende gli ID dei videogiochi
+        $videogiochiIds = $azione->pluck('videogioco');
+
+        // Prende solo i prodotti con codice_prodotto dentro quegli ID
+        $prodotti = $prodottoService
+            ->allElements('codice_prodotto asc')
+            ->whereIn('codice_prodotto', $videogiochiIds->toArray());
+        $primoProdotto = $prodotti->first();
+        dd($primoProdotto->prezzo);
+        return view('PresentazioneProdotto.homepage', compact('prodotti'));
+    }  
 }
