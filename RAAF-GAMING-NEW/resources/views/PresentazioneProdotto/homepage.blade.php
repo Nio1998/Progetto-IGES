@@ -13,21 +13,21 @@
         
         {{-- Loop principale: Chunk divide la collection in gruppi da 3 per le righe --}}
         @foreach($prodotti->chunk(3) as $chunk)
-            <div class="row">
-                <div class="col-md-12 inline-block">
-                    <ul class="cards">
+            <div class="row justify-content-center">
+                <div class="col-md-12 inline-block" style="display: flex; justify-content: center;">
+                    <ul class="cards" style="display: flex; justify-content: center; gap: 4rem;">
                         @foreach($chunk as $prodotto)
-                            <li style="height:250px; max-width:250px;">
+                            <li style="height:250px; max-width:250px; min-width:250px; flex-shrink: 0;">
                                 
                                 {{-- Link al dettaglio prodotto --}}
-                                <a href="{{route('prodotto.show', ['codice'=> $prodotto->codice_prodotto])}}" class="card">
+                                <a href="{{route('prodotto.show', ['codice'=> $prodotto->codice_prodotto])}}" class="card" style="border-radius: 15px;">
                                     
                                     {{-- Immagine --}}
                                     <img src="{{ route('prodotto.getImmagine', ['codice' => $prodotto->codice_prodotto]) }}" 
-                                         class="card__image" 
-                                         alt="{{ $prodotto->nome }}" />
+                                    style="border-radius: 15px; height:auto; width:100%; max-height: 500px; object-fit: cover; background-color: #ccc;" 
+                                    alt="Copertina {{ $prodotto->nome }}">
                                     
-                                    <div class="card__overlay">
+                                    <div class="card__overlay" style="border-radius: 15px;">
                                         <div class="card__header">
                                             {{-- Icona Carrello: Puoi usare $prodotto->disponibile per cambiarne il colore se vuoi --}}
                                             <i class='fas fa-shopping-cart' 

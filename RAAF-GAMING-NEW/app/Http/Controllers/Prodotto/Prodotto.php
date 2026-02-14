@@ -6,6 +6,8 @@ use App\Services\Prodotto\CarrelloService;
 use Illuminate\Http\Request;
 use App\Services\Prodotto\ProdottoService;
 use App\Services\Prodotto\RecensisceService;
+use App\Services\Prodotto\CategoriaService;
+use App\Services\Prodotto\ParteDiService;
 use App\Services\Profilo\ClienteService;
 
 class Prodotto extends Controller
@@ -86,6 +88,91 @@ class Prodotto extends Controller
         return response($prodotto->copertina)
             ->header('Content-Type', 'image/jpeg');
     }
+
+    public function ricercaPerCategoria(Request $request)
+    {
+        $categoria = $request->categoria;
+
+        $categoriaService = new CategoriaService();
+        $prodottoService = new ProdottoService();
+        if($categoria=='catalogo')
+        {
+           $prodotti =  $prodottoService->allElements('codice_prodotto asc');
+           return view('PresentazioneProdotto.paginaRicerca', compact('prodotti'));
+        }
+        else if($categoria=='abbonamento')
+        {
+            $prodotti =  $prodottoService->allElements('codice_prodotto asc');
+            foreach($prodotti as $prodotto)
+            {
+                if(!$prodotto->abbonamento)
+                {
+                    $prodotti = $prodotti->reject(function($pd) use ($prodotto)
+                    {
+                        return $pd->codice_prodotto === $prodotto->codice_prodotto;
+                    }); 
+                }           
+            }
+           return view('PresentazioneProdotto.paginaRicerca', compact('prodotti'));
+        }
+        else if($categoria=='console')
+        {
+            $prodotti =  $prodottoService->allElements('codice_prodotto asc');
+            foreach($prodotti as $prodotto)
+            {
+                if(!$prodotto->console)
+                {
+                    $prodotti = $prodotti->reject(function($pd) use ($prodotto)
+                    {
+                        return $pd->codice_prodotto === $prodotto->codice_prodotto;
+                    }); 
+                }           
+            }
+           return view('PresentazioneProdotto.paginaRicerca', compact('prodotti'));
+        }
+        else if($categoria=='dlc')
+        {
+            $prodotti =  $prodottoService->allElements('codice_prodotto asc');
+            foreach($prodotti as $prodotto)
+            {
+                if(!$prodotto->dlc)
+                {
+                    $prodotti = $prodotti->reject(function($pd) use ($prodotto)
+                    {
+                        return $pd->codice_prodotto === $prodotto->codice_prodotto;
+                    }); 
+                }           
+            }
+           return view('PresentazioneProdotto.paginaRicerca', compact('prodotti'));
+        }
+        else if($categoria=='videogioco')
+        {
+            $prodotti =  $prodottoService->allElements('codice_prodotto asc');
+            foreach($prodotti as $prodotto)
+            {
+                if(!$prodotto->videogioco)
+                {
+                    $prodotti = $prodotti->reject(function($pd) use ($prodotto)
+                    {
+                        return $pd->codice_prodotto === $prodotto->codice_prodotto;
+                    }); 
+                }           
+            }
+           return view('PresentazioneProdotto.paginaRicerca', compact('prodotti'));
+        } 
+        else
+        {
+            $parteDi = $categoriaService->allElements('nome asc');
+            $tipoGioco = $parteDi->firstWhere('nome', $categoria);
+            if(!isset($tipoGioco))
+                return redirect()->route('home');
+
+            $prodotti = collect();
+            foreach($tipoGioco->parteDi as $categoriaScelta)
+                $prodotti->push($categoriaScelta?->getVideogioco?->getProdotto);
+            return view('PresentazioneProdotto.paginaRicerca', compact('prodotti'));
+        }
+    }  
 
     public function aggiungiCarrello(Request $request)
     {
