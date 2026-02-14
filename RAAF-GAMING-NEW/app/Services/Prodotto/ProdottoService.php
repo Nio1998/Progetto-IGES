@@ -33,7 +33,7 @@ class ProdottoService
         
         $prodotto = Prodotto::where('codice_prodotto', $code)->with([
                 'presenteIn',
-                'abbonamenti',
+                'abbonamento',
                 'console',
                 'dlc',
                 'videogioco',

@@ -140,7 +140,7 @@ $carrello = Session::get('Carrello');
                 </a>
             </li>
             <li role="none">
-                <a href="{{ route('prodotto.ricercaCategoria', ['categoria' => 'Horror']) }}" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
+                <a href="{{ route('prodotto.ricercaCategoria', ['categoria' => 'Survival horror']) }}" class="text-decoration-none nav-link-mobile inline-flex items-center px-3 py-2 text-white text-base hover:bg-white/10 rounded-lg focus-visible" role="menuitem">
                     <i class='fas fa-ghost text-base' aria-hidden="true"></i>&nbsp;&nbsp;Horror
                 </a>
             </li>

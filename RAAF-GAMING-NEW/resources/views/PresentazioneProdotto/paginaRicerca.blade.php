@@ -26,6 +26,11 @@
                 <ul class="cards ml-1 mr-1 pr-5">
                 
                     @foreach($prodotti as $prodotto)
+                        @php 
+                            $prodotto->prezzo_effettivo = $prodotto->sconto > 0 
+                            ? $prodotto->prezzo * (1 - $prodotto->sconto / 100)
+                            : $prodotto->prezzo;
+                        @endphp
                         <li style="height:250px; max-width:250px;" name="prodottoCard">
                         
                             {{-- Link alla pagina di dettaglio --}}

@@ -49,9 +49,9 @@ class Prodotto extends Model
         return $this->hasMany(PresenteIn::class, 'prodotto', 'codice_prodotto');
     }
 
-    public function abbonamenti()
+    public function abbonamento()
     {
-        return $this->hasMany(Abbonamento::class, 'prodotto', 'codice_prodotto');
+        return $this->hasOne(Abbonamento::class, 'prodotto', 'codice_prodotto');
     }
 
     public function console()

@@ -111,7 +111,7 @@ class Prodotto extends Controller
                     {
                         return $pd->codice_prodotto === $prodotto->codice_prodotto;
                     }); 
-                }           
+                }      
             }
            return view('PresentazioneProdotto.paginaRicerca', compact('prodotti'));
         }

@@ -31,7 +31,7 @@ class Abbonamento extends Model
 
     // Relationship
 
-    public function prodotto()
+    public function getProdotto()
     {
         return $this->belongsTo(Prodotto::class, 'prodotto', 'codice_prodotto');
     }
