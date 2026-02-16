@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Prodotto\GestioneOrdiniAdmin;
+use App\Http\Controllers\Acquisto\GestioneOrdiniAdmin;
 use App\Http\Controllers\Prodotto\GestioneProdottiAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Profilo\Autenticazione;
