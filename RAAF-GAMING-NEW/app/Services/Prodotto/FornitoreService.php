@@ -38,7 +38,7 @@ class FornitoreService
      *
      * @return Collection<int, Fornitore> Collection indicizzata automaticamente.
      */
-    public function loadFornitori(): Collection
+    private function loadFornitori(): Collection
     {
         return Cache::remember(self::CACHE_KEY, self::CACHE_TTL, function () {
             return Fornitore::all()->keyBy('nome'); // o altro campo se vuoi indicizzare per nome
