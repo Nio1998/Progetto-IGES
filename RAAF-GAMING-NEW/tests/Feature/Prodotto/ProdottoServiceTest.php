@@ -542,7 +542,6 @@ test('testDoUpdatePN', function () {
         ->toThrow(\InvalidArgumentException::class);
 });
 
-// 3.7.8.2 - PND, RV, RP: item valido con videogioco → update prodotto + videogioco + cache invalidata
 test('testDoUpdatePNDRVRP', function () {
 
     // Carica il prodotto esistente dal DB
@@ -709,7 +708,6 @@ test('testDoUpdatePPRVRP', function () {
     $prodottoService = new ProdottoService();
     $prodottoService->doUpdate($prodotto);
 
-    // Verifica che la tabella prodotto sia rimasta invariata (4 record originali)
     $expected = require base_path('tests/resources/expected/ProdottoDoUpdatePP.php');
     $output = Prodotto::all();
 
@@ -755,7 +753,6 @@ test('testDoUpdatePPRVRNP', function () {
     $prodottoService = new ProdottoService();
     $prodottoService->doUpdate($prodotto);
 
-    // Verifica che il DB sia rimasto invariato
     $expected = require base_path('tests/resources/expected/ProdottoDoUpdatePP.php');
     $output = Prodotto::all();
 
