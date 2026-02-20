@@ -1,9 +1,11 @@
 <?php
 
 use App\Models\Magazzino\PresenteIn;
+use App\Models\Prodotto\Abbonamento;
 use App\Models\Prodotto\Fornitore;
 use App\Models\Prodotto\Prodotto;
 use App\Models\Prodotto\Recensisce;
+use App\Models\Prodotto\Videogioco;
 use App\Models\Profilo\Cliente;
 use App\Services\Prodotto\ProdottoService;
 use Database\Seeders\TestClienteSeeder;
@@ -399,3 +401,138 @@ test('testGetTop6HomeCNVRSPN', function () {
         ->toThrow(\RuntimeException::class, "Nessun altro videogioco disponibile");
 });
 // ----------------------GET TOP6HOME----------------------
+
+// ----------------------NEW INSERT----------------------
+test('testNewInsertPN', function () {
+
+    $prodottoService = new ProdottoService();
+
+    expect(fn() => $prodottoService->newInsert(null))
+        ->toThrow(\InvalidArgumentException::class, "Il prodotto inserito è null");
+});
+
+test('testNewInsertPNDRV', function () {
+
+    $prodotto = new Prodotto();
+    $prodotto->codice_prodotto = 100;
+    $prodotto->prezzo = 80.00;
+    $prodotto->sconto = 0;
+    $prodotto->data_uscita = '2024-02-02';
+    $prodotto->nome = 'Death Stranding 2';
+    $prodotto->quantita_fornitura = 50;
+    $prodotto->data_fornitura = '2024-02-02';
+    $prodotto->fornitore = 'Sony';
+    $prodotto->gestore = 'prodotto@admin.com';
+
+    $videogioco = new Videogioco();
+    $videogioco->dimensione = 50;
+    $videogioco->pegi = 18;
+    $videogioco->edizione_limitata = false;
+    $videogioco->ncd = 1;
+    $videogioco->software_house = 'Activision';
+
+    $prodotto->setRelation('videogioco', $videogioco);
+
+    Cache::put('top6_home', collect([1,2,3]), now()->addMinutes(30));
+
+    $prodottoService = new ProdottoService();
+    $prodottoService->newInsert($prodotto);
+
+    $expected = require base_path('tests/resources/expected/ProdottoNewInsert.php');
+    $output = Prodotto::all();
+
+    expect($output)->toHaveCount(count($expected));
+
+    foreach ($expected as $expectedRow) {
+        $p = $output->firstWhere('codice_prodotto', $expectedRow['codice_prodotto']);
+        expect($p)->not->toBeNull();
+        foreach ($expectedRow as $campo => $valore) {
+            expect($p->$campo)->toBe($valore);
+        }
+    }
+
+    expect(Cache::get('top6_home'))->toBeNull();
+});
+
+test('testNewInsertPNDRNV', function () {
+
+    $prodotto = new Prodotto();
+    $prodotto->codice_prodotto = 100;
+    $prodotto->prezzo = 80.00;
+    $prodotto->sconto = 0;
+    $prodotto->data_uscita = '2024-02-02';
+    $prodotto->nome = 'Death Stranding 2';
+    $prodotto->quantita_fornitura = 50;
+    $prodotto->data_fornitura = '2024-02-02';
+    $prodotto->fornitore = 'Sony';
+    $prodotto->gestore = 'prodotto@admin.com';
+
+    $prodottoService = new ProdottoService();
+
+    expect(fn() => $prodottoService->newInsert($prodotto))
+        ->toThrow(\InvalidArgumentException::class, "Il prodotto deve avere esattamente una specializzazione");
+});
+
+test('testNewInsertPNDRT', function () {
+
+    $prodotto = new Prodotto();
+    $prodotto->codice_prodotto = 100;
+    $prodotto->prezzo = 80.00;
+    $prodotto->sconto = 0;
+    $prodotto->data_uscita = '2024-02-02';
+    $prodotto->nome = 'Death Stranding 2';
+    $prodotto->quantita_fornitura = 50;
+    $prodotto->data_fornitura = '2024-02-02';
+    $prodotto->fornitore = 'Sony';
+    $prodotto->gestore = 'prodotto@admin.com';
+
+    $videogioco = new Videogioco();
+    $videogioco->dimensione = 50;
+    $videogioco->pegi = 18;
+    $videogioco->edizione_limitata = false;
+    $videogioco->ncd = 1;
+    $videogioco->software_house = 'Activision';
+
+    $abbonamento = new Abbonamento();
+
+    $prodotto->setRelation('videogioco', $videogioco);
+    $prodotto->setRelation('abbonamento', $abbonamento);
+
+    $prodottoService = new ProdottoService();
+
+    expect(fn() => $prodottoService->newInsert($prodotto))
+        ->toThrow(\InvalidArgumentException::class, "Il prodotto deve avere esattamente una specializzazione");
+});
+
+test('testNewInsertPPRV', function () {
+
+    $prodotto = new Prodotto();
+    $prodotto->codice_prodotto = 1;
+    $prodotto->prezzo = 80.00;
+    $prodotto->sconto = 0;
+    $prodotto->data_uscita = '2024-02-02';
+    $prodotto->nome = 'Death Stranding 2';
+    $prodotto->quantita_fornitura = 50;
+    $prodotto->data_fornitura = '2024-02-02';
+    $prodotto->fornitore = 'Sony';
+    $prodotto->gestore = 'prodotto@admin.com';
+
+    $videogioco = new Videogioco();
+    $videogioco->dimensione = 50;
+    $videogioco->pegi = 18;
+    $videogioco->edizione_limitata = false;
+    $videogioco->ncd = 1;
+    $videogioco->software_house = 'Activision';
+
+    $prodotto->setRelation('videogioco', $videogioco);
+
+    $prodottoService = new ProdottoService();
+
+    expect(fn() => $prodottoService->newInsert($prodotto))
+        ->toThrow(\Illuminate\Database\UniqueConstraintViolationException::class);
+});
+// ----------------------NEW INSERT----------------------
+
+// ----------------------DO UPDATE----------------------
+
+// ----------------------DO UPDATE----------------------
