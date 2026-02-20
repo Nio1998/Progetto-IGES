@@ -534,5 +534,242 @@ test('testNewInsertPPRV', function () {
 // ----------------------NEW INSERT----------------------
 
 // ----------------------DO UPDATE----------------------
+test('testDoUpdatePN', function () {
 
+    $prodottoService = new ProdottoService();
+
+    expect(fn() => $prodottoService->doUpdate(null))
+        ->toThrow(\InvalidArgumentException::class);
+});
+
+// 3.7.8.2 - PND, RV, RP: item valido con videogioco → update prodotto + videogioco + cache invalidata
+test('testDoUpdatePNDRVRP', function () {
+
+    // Carica il prodotto esistente dal DB
+    $prodotto = Prodotto::find(1);
+    $prodotto->prezzo = 10.0;
+    $prodotto->sconto = 0;
+    $prodotto->data_uscita = '2024-02-02';
+    $prodotto->nome = 'Death Stranding 2';
+    $prodotto->quantita_fornitura = 50;
+    $prodotto->data_fornitura = '2024-02-02';
+    $prodotto->fornitore = 'Sony';
+    $prodotto->gestore = 'prodotto@admin.com';
+
+    $videogioco = new Videogioco();
+    $videogioco->dimensione = 50;
+    $videogioco->pegi = 18;
+    $videogioco->edizione_limitata = false;
+    $videogioco->ncd = 1;
+    $videogioco->software_house = 'Activision';
+
+    $prodotto->setRelation('videogioco', $videogioco);
+
+    Cache::put('top6_home', collect([1,2,3]), now()->addMinutes(30));
+
+    $prodottoService = new ProdottoService();
+    $prodottoService->doUpdate($prodotto);
+
+    $expected = require base_path('tests/resources/expected/ProdottoDoUpdate.php');
+    $output = Prodotto::all();
+
+    expect($output)->toHaveCount(count($expected));
+
+    foreach ($expected as $expectedRow) {
+        $p = $output->firstWhere('codice_prodotto', $expectedRow['codice_prodotto']);
+        expect($p)->not->toBeNull();
+        foreach ($expectedRow as $campo => $valore) {
+            expect($p->$campo)->toBe($valore);
+        }
+    }
+
+    expect(Cache::get('top6_home'))->toBeNull();
+});
+
+
+test('testDoUpdatePNDRVRNP', function () {
+
+    $prodotto = Prodotto::find(1);
+    $prodotto->prezzo = 10.0;
+    $prodotto->sconto = 0;
+    $prodotto->data_uscita = '2024-02-02';
+    $prodotto->nome = 'Death Stranding 2';
+    $prodotto->quantita_fornitura = 50;
+    $prodotto->data_fornitura = '2024-02-02';
+    $prodotto->fornitore = 'Sony';
+    $prodotto->gestore = 'prodotto@admin.com';
+
+    $videogioco = new Videogioco();
+    $videogioco->prodotto = 100; // non esiste nel DB
+    $videogioco->dimensione = 50;
+    $videogioco->pegi = 18;
+    $videogioco->edizione_limitata = false;
+    $videogioco->ncd = 1;
+    $videogioco->software_house = 'Activision';
+
+    $prodotto->setRelation('videogioco', $videogioco);
+
+    Cache::put('top6_home', collect([1,2,3]), now()->addMinutes(30));
+
+    $prodottoService = new ProdottoService();
+    $prodottoService->doUpdate($prodotto);
+
+    $expected = require base_path('tests/resources/expected/ProdottoDoUpdate.php');
+    $output = Prodotto::all();
+
+    expect($output)->toHaveCount(count($expected));
+
+    foreach ($expected as $expectedRow) {
+        $p = $output->firstWhere('codice_prodotto', $expectedRow['codice_prodotto']);
+        expect($p)->not->toBeNull();
+        foreach ($expectedRow as $campo => $valore) {
+            expect($p->$campo)->toBe($valore);
+        }
+    }
+
+    // Cache invalidata
+    expect(Cache::get('top6_home'))->toBeNull();
+});
+
+test('testDoUpdatePNDRNV', function () {
+
+    $prodotto = Prodotto::find(1);
+    $prodotto->prezzo = 10.0;
+    $prodotto->sconto = 0;
+    $prodotto->data_uscita = '2024-02-02';
+    $prodotto->nome = 'Death Stranding 2';
+    $prodotto->quantita_fornitura = 50;
+    $prodotto->data_fornitura = '2024-02-02';
+    $prodotto->fornitore = 'Sony';
+    $prodotto->gestore = 'prodotto@admin.com';
+
+    // Nessuna relazione impostata
+
+    $prodottoService = new ProdottoService();
+
+    expect(fn() => $prodottoService->doUpdate($prodotto))
+        ->toThrow(\InvalidArgumentException::class, 'Il prodotto deve avere esattamente una specializzazione');
+});
+
+test('testDoUpdatePNDRT', function () {
+
+    $prodotto = Prodotto::find(1);
+    $prodotto->prezzo = 10.0;
+    $prodotto->sconto = 0;
+    $prodotto->data_uscita = '2024-02-02';
+    $prodotto->nome = 'Death Stranding 2';
+    $prodotto->quantita_fornitura = 50;
+    $prodotto->data_fornitura = '2024-02-02';
+    $prodotto->fornitore = 'Sony';
+    $prodotto->gestore = 'prodotto@admin.com';
+
+    $videogioco = new Videogioco();
+    $videogioco->dimensione = 50;
+    $videogioco->pegi = 18;
+    $videogioco->edizione_limitata = false;
+    $videogioco->ncd = 1;
+    $videogioco->software_house = 'Activision';
+
+    $abbonamento = new Abbonamento();
+
+    $prodotto->setRelation('videogioco', $videogioco);
+    $prodotto->setRelation('abbonamento', $abbonamento);
+
+    $prodottoService = new ProdottoService();
+
+    expect(fn() => $prodottoService->doUpdate($prodotto))
+        ->toThrow(\InvalidArgumentException::class, 'Il prodotto deve avere esattamente una specializzazione');
+});
+
+test('testDoUpdatePPRVRP', function () {
+
+    $prodotto = new Prodotto();
+    $prodotto->codice_prodotto = 100;
+    $prodotto->prezzo = 10.0;
+    $prodotto->sconto = 0;
+    $prodotto->data_uscita = '2024-02-02';
+    $prodotto->nome = 'Death Stranding 2';
+    $prodotto->quantita_fornitura = 50;
+    $prodotto->data_fornitura = '2024-02-02';
+    $prodotto->fornitore = 'Sony';
+    $prodotto->gestore = 'prodotto@admin.com';
+
+    $videogioco = new Videogioco();
+    $videogioco->prodotto = 1; // esiste nel DB → verrà aggiornato
+    $videogioco->dimensione = 50;
+    $videogioco->pegi = 18;
+    $videogioco->edizione_limitata = false;
+    $videogioco->ncd = 1;
+    $videogioco->software_house = 'Activision';
+
+    $prodotto->setRelation('videogioco', $videogioco);
+
+    Cache::put('top6_home', collect([1,2,3]), now()->addMinutes(30));
+
+    $prodottoService = new ProdottoService();
+    $prodottoService->doUpdate($prodotto);
+
+    // Verifica che la tabella prodotto sia rimasta invariata (4 record originali)
+    $expected = require base_path('tests/resources/expected/ProdottoDoUpdatePP.php');
+    $output = Prodotto::all();
+
+    expect($output)->toHaveCount(count($expected));
+
+    foreach ($expected as $expectedRow) {
+        $p = $output->firstWhere('codice_prodotto', $expectedRow['codice_prodotto']);
+        expect($p)->not->toBeNull();
+        foreach ($expectedRow as $campo => $valore) {
+            expect($p->$campo)->toBe($valore);
+        }
+    }
+
+    // Cache invalidata
+    expect(Cache::get('top6_home'))->toBeNull();
+});
+
+test('testDoUpdatePPRVRNP', function () {
+
+    $prodotto = new Prodotto();
+    $prodotto->codice_prodotto = 100;
+    $prodotto->prezzo = 10.0;
+    $prodotto->sconto = 0;
+    $prodotto->data_uscita = '2024-02-02';
+    $prodotto->nome = 'Death Stranding 2';
+    $prodotto->quantita_fornitura = 50;
+    $prodotto->data_fornitura = '2024-02-02';
+    $prodotto->fornitore = 'Sony';
+    $prodotto->gestore = 'prodotto@admin.com';
+
+    $videogioco = new Videogioco();
+    $videogioco->prodotto = 100; // non esiste nel DB
+    $videogioco->dimensione = 50;
+    $videogioco->pegi = 18;
+    $videogioco->edizione_limitata = false;
+    $videogioco->ncd = 1;
+    $videogioco->software_house = 'Activision';
+
+    $prodotto->setRelation('videogioco', $videogioco);
+
+    Cache::put('top6_home', collect([1,2,3]), now()->addMinutes(30));
+
+    $prodottoService = new ProdottoService();
+    $prodottoService->doUpdate($prodotto);
+
+    // Verifica che il DB sia rimasto invariato
+    $expected = require base_path('tests/resources/expected/ProdottoDoUpdatePP.php');
+    $output = Prodotto::all();
+
+    expect($output)->toHaveCount(count($expected));
+
+    foreach ($expected as $expectedRow) {
+        $p = $output->firstWhere('codice_prodotto', $expectedRow['codice_prodotto']);
+        expect($p)->not->toBeNull();
+        foreach ($expectedRow as $campo => $valore) {
+            expect($p->$campo)->toBe($valore);
+        }
+    }
+
+    // Cache invalidata
+    expect(Cache::get('top6_home'))->toBeNull();
+});
 // ----------------------DO UPDATE----------------------
