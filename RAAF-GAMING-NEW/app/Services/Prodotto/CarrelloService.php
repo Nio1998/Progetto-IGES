@@ -31,7 +31,7 @@ class CarrelloService
         $carrello = session()->get('Carrello', collect());
 
         $esiste = $carrello->contains(function ($item) use ($prodotto) {
-            return $item->id === $prodotto->id;
+            return $item->codice_prodotto === $prodotto->codice_prodotto;
         });
 
         if (!$esiste) {
