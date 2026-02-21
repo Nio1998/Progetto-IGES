@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware\Prodotto;
+namespace App\Http\Middleware\Acquisto;
 
 use App\Services\Profilo\GestoreService;
 use Closure;
