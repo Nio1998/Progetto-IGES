@@ -18,6 +18,13 @@ class OrdineService
         //
     }
 
+    /**
+     * Restituisce tutti gli ordini non ancora consegnati.
+     * Un ordine è considerato non consegnato se il campo gestore è null,
+     * ovvero nessun gestore lo ha ancora preso in carico.
+     *
+     * @return Collection<Ordine> la collezione degli ordini non consegnati
+     */
     public function getOrdiniNonConsegnati(): Collection
     {
         return Ordine::whereNull('gestore')->get();
@@ -65,11 +72,29 @@ class OrdineService
         });
     }
 
-    public function doUpdate(?Ordine $item): void
+    /**
+     * Aggiorna un ordine esistente e inserisce la relativa spedizione in modo transazionale.
+     * Se uno dei due salvataggi fallisce, l'intera operazione viene annullata.
+     *
+     * @param Ordine  $ordine  il model dell'ordine da aggiornare
+     * @param Spedito $spedito il model della spedizione da inserire
+     * @return void
+     * @throws \InvalidArgumentException se uno dei due model è null
+     * @throws \Exception se uno dei due salvataggi fallisce
+     */
+    public function doUpdate(?Ordine $ordine, ?Spedito $spedito): void
     {
-        if ($item === null)
-            throw new \InvalidArgumentException("L'item è null");
+        if ($ordine === null)
+            throw new \InvalidArgumentException("L'ordine è null");
 
-        $item->save();
+        if ($spedito === null)
+            throw new \InvalidArgumentException("Lo spedito è null");
+
+        DB::transaction(function () use ($ordine, $spedito) {
+            $ordine->save();
+
+            $spedito->ordine = $ordine->codice;
+            $spedito->save();
+        });
     }
 }
