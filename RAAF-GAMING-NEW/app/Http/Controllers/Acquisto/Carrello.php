@@ -19,4 +19,22 @@ class Carrello extends Controller
 
         return view('PresentazioneAcquisto.paginaCarrello', compact('data'));
     }
+
+    public function eliminaCarrello(Request $request)
+    {
+        $carrelloService = new CarrelloService();
+        $id = $request->input('id');
+
+        if (empty($id))
+            return redirect()->route('carrello.show');
+
+        $carrello = $carrelloService->getProdottiCarrello();
+
+        if ($carrello->isEmpty())
+            return redirect()->route('carrello.show');
+
+        $carrelloService->rimuoviDalCarrello($id);
+
+        return redirect()->route('carrello.show');
+    }
 }
