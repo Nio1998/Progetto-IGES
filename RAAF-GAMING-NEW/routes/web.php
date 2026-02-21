@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Acquisto\GestioneOrdiniAdmin;
+use App\Http\Controllers\Acquisto\Ordini;
 use App\Http\Controllers\Prodotto\GestioneProdottiAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Profilo\Autenticazione;
@@ -46,7 +47,8 @@ Route::middleware(['isAutenticated'])->group(function () {
     Route::get('/profilo', [Profilo::class, 'mostraProfilo'])->name('mostraProfilo');
     Route::post('/profilo', [Profilo::class, 'modificaProfilo'])->name('modificaProfilo');
     Route::post('/recensione',[Prodotto::class,'aggiungiRecensione'])->name('recensione.store');
-    
+        
+    Route::get('/ordini', [Ordini::class, 'index'])->name('ordini.index');
 
 });
 
