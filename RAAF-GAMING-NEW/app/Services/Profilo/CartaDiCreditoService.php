@@ -5,6 +5,7 @@ namespace App\Services\Profilo;
 use App\Models\Profilo\CartaDiCredito;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 
 class CartaDiCreditoService
 {
@@ -42,7 +43,7 @@ class CartaDiCreditoService
     {
         if($item == null)
             throw new \InvalidArgumentException("Inserito un item null");
-
+        
         $item->save();
     }
 

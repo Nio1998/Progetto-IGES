@@ -125,7 +125,7 @@ class Autenticazione extends Controller
                 Log::error('Errore salvataggio carta di credito: ' . $e->getMessage());
                 Log::error('Stack trace:', ['trace' => $e->getTraceAsString()]);
                 
-                return view('profilo.registrazione', [
+                return view('PresentazioneProfilo.registrazione', [
                     'message' => 'Non puoi registrarti con questa carta',
                     'visitato' => ''
                 ]);
@@ -157,12 +157,12 @@ class Autenticazione extends Controller
             $nuovoCliente->data_di_nascita = $data;
             $nuovoCliente->password = $clienteService->getCryptedPassword($password);
             $nuovoCliente->carta_fedelta = $codiceFedelta;
-            
             try {
-                $clienteService->newInsert($nuovoCliente, $cartaCredito, $cartaFedelta);
+                $clienteService->newInsert($nuovoCliente, $cartaFedelta, $cartaCredito);
             } catch (\Exception $e) {
                 Log::error('Errore salvataggio cliente: ' . $e->getMessage());
                 Log::error('Stack trace:', ['trace' => $e->getTraceAsString()]);
+
                 throw $e;
             }
             

@@ -124,7 +124,7 @@ public class ServletFormProdEsistentiAdmin extends HttpServlet {
 										
 										presente.setQuantita_disponibile(presente.getQuantita_disponibile()+quantitaDaRifornire);//aggiorno la quantità
 										try {
-											presentedao.rifornitura(presente);;//salvo nel DB
+											presentedao.rifornitura(presente);//salvo nel DB
 										} catch (SQLException e) {
 											e.printStackTrace();
 										}

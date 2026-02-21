@@ -19,6 +19,6 @@ class IsAuthenticatedAdmin
 
         // Altrimenti lascia proseguire la richiesta
         
-        return redirect()->route('LoginAdmin');
+        return redirect()->route('loginAdmin');
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\Prodotto\GestoreOrdiniMiddleware;
+use App\Http\Middleware\Prodotto\GestoreProdottiMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -21,6 +23,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'isAutenticated' => IsAuthenticated::class,
             'isAutenticatedAdmin' => IsAuthenticatedAdmin::class,
             'redirectIfAuthenticatedAdmin' => RedirectAdminIfAuthenticated::class,
+            'GestoreOrdini' => GestoreOrdiniMiddleware::class,
+            'GestoreProdotti' => GestoreProdottiMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
