@@ -2,11 +2,11 @@
 
 namespace App\Services\Acquisto;
 
-
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-use App\Models\Acquisto\Ordine;
 use App\Models\Acquisto\Riguarda;
 use App\Models\Acquisto\Spedito;
+use App\Models\Acquisto\Ordine;
 
 class OrdineService
 {
@@ -16,6 +16,11 @@ class OrdineService
     public function __construct()
     {
         //
+    }
+
+    public function getOrdiniNonConsegnati(): Collection
+    {
+        return Ordine::whereNull('gestore')->get();
     }
 
     /**
@@ -58,5 +63,13 @@ class OrdineService
             $riguarda->ordine = $ordine->codice;
             $riguarda->save();
         });
+    }
+
+    public function doUpdate(?Ordine $item): void
+    {
+        if ($item === null)
+            throw new \InvalidArgumentException("L'item è null");
+
+        $item->save();
     }
 }
