@@ -57,6 +57,7 @@ Route::middleware(['isAutenticatedAdmin'])->group(function () {
     Route::middleware(['GestoreOrdini'])->group(function () {
 
         Route::get('/homeOrdine', [GestioneOrdiniAdmin::class, 'homeOrdine'])->name('homeOrdine');
+        Route::post('/formOrdini', [GestioneOrdiniAdmin::class, 'formOrdiniAdmin'])->name('formOrdini');
     });
 
     //PER GESTORE PRODOTTO

@@ -10,7 +10,7 @@ class CorriereEspresso extends Model
 {
     use HasFactory;
 
-    protected $table = 'corriere_espresso';
+    protected $table = 'corriereespresso';
     protected $primaryKey = 'nome';
     public $incrementing = false;
     protected $keyType = 'string';
