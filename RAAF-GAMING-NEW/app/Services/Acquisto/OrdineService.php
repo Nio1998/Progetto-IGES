@@ -49,26 +49,34 @@ class OrdineService
     }
 
     /**
-     * Inserisce un nuovo ordine in modo transazionale.
-     * Salva l'ordine, la spedizione e i prodotti acquistati.
-     * Se uno dei tre inserimenti fallisce, l'intera operazione viene annullata.
+     * Inserisce un nuovo ordine e i relativi prodotti acquistati in modo transazionale.
+     * Salva l'ordine e tutti i riguarda collegati.
+     * Se uno degli inserimenti fallisce, l'intera operazione viene annullata.
      *
-     * @param Ordine  $ordine  il model dell'ordine da salvare
-     * @param Spedito $spedito il model della spedizione da salvare
-     * @param Riguarda $riguarda il model del prodotto acquistato da salvare
+     * @param Ordine $ordine il model dell'ordine da salvare
+     * @param Collection $riguardaList la collezione di Riguarda da salvare
      * @return void
+     * @throws \InvalidArgumentException se l'ordine è null o la lista di riguarda è vuota o null
      * @throws \Exception se uno degli inserimenti fallisce
      */
-    public function newInsert(Ordine $ordine, Spedito $spedito, Riguarda $riguarda): void
+    public function newInsert(Ordine $ordine, Collection $riguardaList): void
     {
-        DB::transaction(function () use ($ordine, $spedito, $riguarda) {
+        if ($ordine === null)
+            throw new \InvalidArgumentException("L'ordine è null");
+
+        if ($riguardaList === null || $riguardaList->isEmpty())
+            throw new \InvalidArgumentException("La lista di riguarda è null o vuota");
+
+        DB::transaction(function () use ($ordine, $riguardaList) {
             $ordine->save();
 
-            $spedito->ordine = $ordine->codice;
-            $spedito->save();
+            foreach ($riguardaList as $riguarda) {
+                if (!$riguarda instanceof Riguarda)
+                    throw new \InvalidArgumentException("La lista contiene elementi non validi");
 
-            $riguarda->ordine = $ordine->codice;
-            $riguarda->save();
+                $riguarda->ordine = $ordine->codice;
+                $riguarda->save();
+            }
         });
     }
 

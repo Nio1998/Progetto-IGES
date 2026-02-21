@@ -23,7 +23,6 @@ Route::post('/aggiungiCarrello',[Prodotto::class, 'aggiungiCarrello'])->name('pr
 Route::get('/prodotto/categoria/{categoria}', [Prodotto::class, 'ricercaPerCategoria'])->name('prodotto.ricercaCategoria');
 Route::get('/carrello', [Carrello::class, 'carrello'])->name('carrello.show');
 Route::post('/carrello-delete', [Carrello::class, 'eliminaCarrello'])->name('carrello.delete');
-Route::get('/carrello-conferma-acquisto', [Carrello::class, 'confermaAcquisto'])->name('carrello.shop');
 
 // Tutte le rotte “guest” passano per il middleware
 Route::middleware(['redirectIfAuthenticated'])->group(function () {
@@ -49,6 +48,8 @@ Route::middleware(['isAutenticated'])->group(function () {
     Route::get('/profilo', [Profilo::class, 'mostraProfilo'])->name('mostraProfilo');
     Route::post('/profilo', [Profilo::class, 'modificaProfilo'])->name('modificaProfilo');
     Route::post('/recensione',[Prodotto::class,'aggiungiRecensione'])->name('recensione.store');
+
+    Route::post('/carrello-conferma-acquisto', [Carrello::class, 'confermaAcquisto'])->name('carrello.shop');
     
 
 });

@@ -117,7 +117,8 @@ $prodotti = $data['prodotti'];
                                     <span class="text">Totale</span>
                                     <span class="price">{{ number_format($totale, 2) }}&euro;</span>
                                 </div>
-                                <form action="{{ route('carrello.shop') }}" method="GET" onsubmit="return controllo(this);">
+                                <form action="{{ route('carrello.shop') }}" method="POST" onsubmit="return controllo(this);">
+                                    @csrf
                                     <div class="summary-item mb-4">
                                         <span class="text mr-4">Indirizzo di consegna:</span>
                                         <input type="text" name="indirizzodiconsegna" required maxlength="200" class="form-control mt-2" style="border-radius:8px;">
