@@ -229,3 +229,94 @@ test('getProdottiCN', function () {
     expect($output)->toHaveCount(0);
     expect($output->isEmpty())->toBeTrue();
 });
+
+test('rimuoviDalCarrelloCV', function () {
+
+    $carrelloService = new CarrelloService();
+
+    // Popolo il carrello con due prodotti
+    $prodotto1 = new Prodotto([
+        'prezzo'             => 10.5,
+        'sconto'             => 0,
+        'data_uscita'        => '2021-12-25',
+        'nome'               => 'FIFA',
+        'quantita_fornitura' => 12,
+        'data_fornitura'     => '2020-12-20',
+        'fornitore'          => 'Sony',
+        'gestore'            => 'prodotto@admin.com',
+    ]);
+    $prodotto1->codice_prodotto = 1;
+
+    $prodotto2 = new Prodotto([
+        'prezzo'             => 15.5,
+        'sconto'             => 0,
+        'data_uscita'        => '2020-12-22',
+        'nome'               => 'PES',
+        'quantita_fornitura' => 12,
+        'data_fornitura'     => '2019-12-20',
+        'fornitore'          => 'Activision',
+        'gestore'            => 'prodotto@admin.com',
+    ]);
+    $prodotto2->codice_prodotto = 2;
+
+    $carrelloService->aggiungiAlCarrello($prodotto1);
+    $carrelloService->aggiungiAlCarrello($prodotto2);
+
+    $carrelloService->rimuoviDalCarrello(1);
+
+    $carrello = Session::get('Carrello');
+
+    expect($carrello)->not->toBeNull();
+    expect($carrello)->toHaveCount(1);
+    expect($carrello->first()->codice_prodotto)->toBe(2);
+});
+
+
+test('rimuoviDalCarrelloCN', function () {
+
+    $carrelloService = new CarrelloService();
+
+    // Popolo il carrello con due prodotti
+    $prodotto1 = new Prodotto([
+        'prezzo'             => 10.5,
+        'sconto'             => 0,
+        'data_uscita'        => '2021-12-25',
+        'nome'               => 'FIFA',
+        'quantita_fornitura' => 12,
+        'data_fornitura'     => '2020-12-20',
+        'fornitore'          => 'Sony',
+        'gestore'            => 'prodotto@admin.com',
+    ]);
+    $prodotto1->codice_prodotto = 1;
+
+    $prodotto2 = new Prodotto([
+        'prezzo'             => 15.5,
+        'sconto'             => 0,
+        'data_uscita'        => '2020-12-22',
+        'nome'               => 'PES',
+        'quantita_fornitura' => 12,
+        'data_fornitura'     => '2019-12-20',
+        'fornitore'          => 'Activision',
+        'gestore'            => 'prodotto@admin.com',
+    ]);
+    $prodotto2->codice_prodotto = 2;
+
+    $carrelloService->aggiungiAlCarrello($prodotto1);
+    $carrelloService->aggiungiAlCarrello($prodotto2);
+
+    $carrelloService->rimuoviDalCarrello(4);
+
+    $carrello = Session::get('Carrello');
+
+    expect($carrello)->not->toBeNull();
+    expect($carrello)->toHaveCount(2);
+    expect($carrello->first()->codice_prodotto)->toBe(1);
+    expect($carrello->last()->codice_prodotto)->toBe(2);
+});
+
+
+test('rimuoviDalCarrelloCNN', function () {
+
+    $carrelloService = new CarrelloService();
+    expect(fn() => $carrelloService->rimuoviDalCarrello(null))->toThrow(TypeError::class);
+});
