@@ -88,7 +88,7 @@ $carrello = Session::get('Carrello');
                             role="menuitem">
                             Profilo
                         </a>
-                        <a href="#" 
+                        <a href="{{ route('ordini.index') }}" 
                             class="dropdown-item block px-4 py-2 text-white hover:bg-gray-500 focus-visible"
                             role="menuitem">
                             I miei ordini

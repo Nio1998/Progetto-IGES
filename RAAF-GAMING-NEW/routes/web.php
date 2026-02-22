@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Acquisto\Carrello;
 use App\Http\Controllers\Acquisto\GestioneOrdiniAdmin;
+use App\Http\Controllers\Acquisto\Ordini;
 use App\Http\Controllers\Prodotto\GestioneProdottiAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Profilo\Autenticazione;
@@ -51,6 +52,8 @@ Route::middleware(['isAutenticated'])->group(function () {
 
     Route::post('/carrello-conferma-acquisto', [Carrello::class, 'confermaAcquisto'])->name('carrello.shop');
     
+        
+    Route::get('/ordini', [Ordini::class, 'index'])->name('ordini.index');
 
 });
 
