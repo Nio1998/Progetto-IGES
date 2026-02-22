@@ -65,4 +65,22 @@ class CarrelloService
         // Recupera il carrello dalla sessione o restituisce una collection vuota
         return session()->get('Carrello', collect());
     }
+
+    /**
+     * Rimuove un prodotto dal carrello nella sessione tramite il suo codice.
+     *
+     * @param int $codiceProdotto Il codice del prodotto da rimuovere
+     * @return void
+     */
+    public function rimuoviDalCarrello(int $codiceProdotto): void
+    {
+        $carrello = session()->get('Carrello', collect());
+
+        $carrello = $carrello->reject(fn($item) => $item->codice_prodotto == $codiceProdotto);
+
+        if ($carrello->isEmpty())
+            session()->forget('Carrello');
+        else
+            session()->put('Carrello', $carrello);
+    }
 }
