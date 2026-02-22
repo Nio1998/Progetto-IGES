@@ -99,7 +99,7 @@ class OrdineService
             throw new \InvalidArgumentException("Lo spedito è null");
 
         DB::transaction(function () use ($ordine, $spedito) {
-            $ordine->save();
+            $ordine->update();
 
             $spedito->ordine = $ordine->codice;
             $spedito->save();
