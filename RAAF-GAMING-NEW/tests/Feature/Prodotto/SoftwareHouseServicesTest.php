@@ -50,7 +50,7 @@ afterEach(function () {
     Session::flush();
     Cache::flush();
 });
-/* PER ESSERE ATTIVATO DOBBIMO CAMBIARE IL METODO LOADMAGAZZINI DA PRIVATE A PUBLIC
+/* PER ESSERE ATTIVATO DOBBIMO CAMBIARE IL METODO LoadSoftwareHouse DA PRIVATE A PUBLIC
 test('testLoadSoftwareHouseDCDID', function () {
     $SoftwareHouseCache = collect([
         new SoftwareHouse(['nomesfh' => 'Activision','logo' => null]),

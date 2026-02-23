@@ -50,7 +50,7 @@ afterEach(function () {
     Session::flush();
     Cache::flush();
 });
-/* PER ESSERE ATTIVATO DOBBIMO CAMBIARE IL METODO LOADMAGAZZINI DA PRIVATE A PUBLIC
+/* PER ESSERE ATTIVATO DOBBIMO CAMBIARE IL METODO LoadFornitori DA PRIVATE A PUBLIC
 test('testLoadFornitoriDCDID', function () {
     $FornitoriCache = collect([
         new Fornitore(['nome' => 'AMD','indirizzo' => 'Giappone', 'telefono' => '089343743']),
