@@ -48,6 +48,19 @@ class OrdineService
         return $codice;
     }
 
+    /* FUNZIONE CHE REPLICA QUELLA DI SOPRA, SI DEVE DECOMMENTARE SOLO PER I TEST DI UNITA
+    public function generaCodiceOrdine(callable $randFn = null): string 
+    {
+        $randFn = $randFn ?? fn() => rand(100000000, 999999999);
+        do {
+            $codice = (string) $randFn();
+            $exists = Ordine::where('codice', $codice)->exists();
+        } while ($exists);
+        
+        return $codice;
+    }
+    */
+
     /**
      * Inserisce un nuovo ordine e i relativi prodotti acquistati in modo transazionale.
      * Salva l'ordine e tutti i riguarda collegati.
@@ -59,7 +72,7 @@ class OrdineService
      * @throws \InvalidArgumentException se l'ordine è null o la lista di riguarda è vuota o null
      * @throws \Exception se uno degli inserimenti fallisce
      */
-    public function newInsert(Ordine $ordine, Collection $riguardaList): void
+    public function newInsert(?Ordine $ordine, ?Collection $riguardaList): void
     {
         if ($ordine === null)
             throw new \InvalidArgumentException("L'ordine è null");
