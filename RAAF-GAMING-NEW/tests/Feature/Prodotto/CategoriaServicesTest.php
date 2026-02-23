@@ -50,7 +50,7 @@ afterEach(function () {
     Session::flush();
     Cache::flush();
 });
-/* PER ESSERE ATTIVATO DOBBIMO CAMBIARE IL METODO LOADMAGAZZINI DA PRIVATE A PUBLIC
+/* PER ESSERE ATTIVATO DOBBIMO CAMBIARE IL METODO LoadCategorie DA PRIVATE A PUBLIC
 test('testLoadCategorieDCDID', function () {
     $categorieCache = collect([
         new Categoria(['nome' => 'Arcade']),
