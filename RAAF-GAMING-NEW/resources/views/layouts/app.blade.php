@@ -20,7 +20,7 @@
         <!-- Custom Styles -->
         <link rel="stylesheet" href="{{ asset('styles/navbar.css') }}">
         <link rel="stylesheet" href="{{ asset('styles/footer.css') }}">
-        
+        @yield('styles')
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <!-- jQuery -->

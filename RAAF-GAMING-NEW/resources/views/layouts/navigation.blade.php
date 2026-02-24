@@ -88,7 +88,7 @@ $carrello = Session::get('Carrello');
                             role="menuitem">
                             Profilo
                         </a>
-                        <a href="#" 
+                        <a href="{{ route('ordini.index') }}" 
                             class="dropdown-item block px-4 py-2 text-white hover:bg-gray-500 focus-visible"
                             role="menuitem">
                             I miei ordini
@@ -98,7 +98,7 @@ $carrello = Session::get('Carrello');
             </div>
             
             <!-- Shopping Cart -->
-            <a href="#" class="cart-icon mt-0.95 mr-2.5 focus-visible" aria-label="Carrello della spesa">
+            <a href="{{ route('carrello.show') }}" class="cart-icon mt-0.95 mr-2.5 focus-visible" aria-label="Carrello della spesa">
                 @if(empty($carrello))
                     <i id="sostituisciCarrello" class='fas fa-shopping-cart text-[27px] text-white hover:text-white/60' aria-hidden="true"></i>
                     <span class="sr-only">Carrello vuoto</span>

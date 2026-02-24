@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Middleware\Prodotto\GestoreOrdiniMiddleware;
+use App\Http\Middleware\Acquisto\GestoreOrdiniMiddleware;
 use App\Http\Middleware\Prodotto\GestoreProdottiMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
