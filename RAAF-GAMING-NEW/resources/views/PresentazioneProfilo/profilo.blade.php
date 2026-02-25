@@ -131,7 +131,7 @@
                                    class="form-control" 
                                    id="inputCarta2" 
                                    placeholder="123"
-                                   maxlength="3">
+                                   >
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="inputCarta3">Scadenza</label>

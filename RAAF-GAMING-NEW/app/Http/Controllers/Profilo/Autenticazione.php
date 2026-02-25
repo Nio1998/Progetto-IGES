@@ -20,38 +20,38 @@ class Autenticazione extends Controller
 
     public function login(Request $request)
     {
-        //dd($request->all()); // Debug: mostra tutti i dati della richiesta
         $clienteService = new ClienteService();
         $email = $request->input('email');
         $password = $request->input('password');
 
-        // Se email o password mancanti → ritorna al form
+        // 1. Controllo email o password mancanti
         if (!$email || !$password) {
-            return view('PresentazioneProfilo.login', [
-                'message' => 'Inserisci email e password',
-                'visita' => ''
-            ]);
+            return back()->withErrors(['messaggio' => 'Inserisci email e password']);
         }
 
-        // Trova utente
-       $utente = $clienteService->ricercaPerChiave($email);
-        //dd($utente);
-        if (!$utente) {
-            return view('PresentazioneProfilo.login', [
-                'message' => '',
-                'visita' => ''
-            ]);
-        }
-
-        // Controllo password
-        if (!$clienteService->checkPassword($password,$utente)) {
-            return view('PresentazioneProfilo.login', [
-                'message' => '',
-                'visita' => ''
-            ]);
-        }
+        // 2. Trova utente
+        $utente = $clienteService->ricercaPerChiave($email);
         
-        return redirect()->route('home'); // route home/index
+        if (!$utente) {
+            // L'utente non esiste: torniamo indietro con l'errore che la tua View aspetta
+            return back()->with('error', 'Email/Password errata!')
+                ->withInput();
+        }
+
+        // 3. Controllo password
+        if (!$clienteService->checkPassword($password, $utente)) {
+            $clienteService->logoutUtente(); // Assicurati di pulire la sessione se c'è un tentativo di login fallito
+            // Password errata: torniamo indietro
+            // withInput() serve a non far cancellare l'email che l'utente ha già scritto
+            return back()->with('error', 'Email/Password errata!')
+                ->withInput();
+        }
+
+        // 4. Se arriviamo qui, i dati sono giusti. 
+        // RICORDA: devi loggare l'utente in sessione, altrimenti al prossimo click risulterà ospite!
+        // Auth::login($utente); 
+
+        return redirect()->route('home');
     }
 
     public function registrazione(){
