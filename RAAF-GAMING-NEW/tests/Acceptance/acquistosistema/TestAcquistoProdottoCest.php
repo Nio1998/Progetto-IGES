@@ -148,5 +148,53 @@ final class TestAcquistoDeiProdottiCest
         $I->acceptPopup();
     }
 
+    public function testVisualizzaCarrelloNonAutenticato(AcceptanceTester $I): void
+    {
+        // 1 | Login
+        $I->amOnPage('/login');
+        $I->waitForElement(['name' => 'email'], 10);
+        $I->fillField(['name' => 'email'], 'f.peluso25@gmail.com');
+        $I->fillField(['name' => 'password'], 'veloce123');
+        $I->click('.invio');
+
+        // 2 | Click .fa-user-astronaut per aprire menu utente
+        $I->waitForElement('.fa-user-astronaut', 5);
+        $I->click('.fa-user-astronaut');
+
+        // 3 | Click LogOut
+        $I->click('LogOut');
+
+        // 5 | Click sul primo prodotto in home
+        $I->waitForElement('.row:nth-child(1) li:nth-child(1) .card__title', 10);
+        $I->click('.row:nth-child(1) li:nth-child(1) .card__title');
+
+        // 6 | Click icona carrello nella pagina del gioco (id="Carrello")
+        $I->waitForElement('#Carrello', 10);
+        $I->click('#Carrello');
+
+        // 7 | Gestione popup aggiunta carrello
+        $I->executeInSelenium(function ($webdriver) {
+            $webdriver->wait(10, 500)->until(
+                \Facebook\WebDriver\WebDriverExpectedCondition::alertIsPresent()
+            );
+        });
+        $I->seeInPopup('Aggiunta nel carrello fatta con successo!');
+        $I->acceptPopup();
+
+        // 8 | Click sul carrello nel navbar per andare alla pagina carrello
+        $I->waitForElement('#sostituisciCarrello', 5);
+        $I->click('#sostituisciCarrello');
+
+        // 9 | Inserimento indirizzo di consegna
+        $I->waitForElement(['name' => 'indirizzodiconsegna'], 5);
+        $I->fillField(['name' => 'indirizzodiconsegna'], 'viale croce');
+
+        // 10 | Conferma Acquisto
+        $I->waitForElement('.btn-outline-warning', 5);
+        $I->click('.btn-outline-warning');
+
+        $I->seeInCurrentUrl('/');
+    }
+
     
 }
