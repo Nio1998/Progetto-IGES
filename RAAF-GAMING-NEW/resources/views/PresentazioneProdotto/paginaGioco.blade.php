@@ -88,7 +88,7 @@
 
                                 @if($prodotto->disponibile)
                                     <button class="btn ml-auto" style="background:transparent;" onclick="aggiungiCarrello()">
-                                        <i id="sostituisciCarrello" class='fas fa-shopping-cart' style='font-size:35px; color:black;'></i>
+                                        <i id="Carrello" class='fas fa-shopping-cart' style='font-size:35px; color:black;'></i>
                                     </button>
                                 @else
                                     <button class="btn ml-auto" style="background:transparent;" onclick="nonPuoiAcquistare()">
