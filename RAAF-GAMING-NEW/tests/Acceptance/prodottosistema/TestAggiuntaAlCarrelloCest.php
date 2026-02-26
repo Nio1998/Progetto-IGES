@@ -22,7 +22,7 @@ final class TestAggiuntaAlCarrelloCest
         $I->click('.row:nth-child(1) li:nth-child(1) span:nth-child(1)');
 
         // 3. Clicca sul pulsante per aggiungere
-        $I->click('.btn > #sostituisciCarrello');
+        $I->click('.btn > #Carrello');
 
         // 4. Verifica il popup di successo e accettalo
         $I->wait(5);
@@ -36,7 +36,7 @@ final class TestAggiuntaAlCarrelloCest
         $I->click('.row:nth-child(1) li:nth-child(1) span:nth-child(1)');
 
         // 7. Clicca sull'icona del carrello per riaggiungerlo
-        $I->click('.btn > #sostituisciCarrello');
+        $I->click('.btn > #Carrello');
 
         // 8. Verifica l'alert che avvisa che il prodotto è già nel carrello
         $I->wait(5);
@@ -66,7 +66,7 @@ final class TestAggiuntaAlCarrelloCest
         $I->click('.row:nth-child(1) li:nth-child(1) span:nth-child(1)');
 
         // 3. Clicca sul pulsante per aggiungere
-        $I->click('.btn > #sostituisciCarrello');
+        $I->click('.btn > #Carrello');
 
         // 4. Verifica il popup di successo e accettalo
         $I->wait(5);
