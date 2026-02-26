@@ -48,7 +48,7 @@ final class TestLoginCest
         $I->see('Email/Password errata!');
     }
 
-        public function testLoginFallito(AcceptanceTester $I): void
+    public function testLoginFallito(AcceptanceTester $I): void
     {
         // 1 | vai alla pagina login
         $I->amOnPage('/login');
