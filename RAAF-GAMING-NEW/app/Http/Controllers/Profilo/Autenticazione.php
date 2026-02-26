@@ -196,6 +196,6 @@ class Autenticazione extends Controller
         // Altrimenti rimuovo gli attributi della sessione
         $clienteService->logoutUtente();
         // Redirect alla home
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
 }
