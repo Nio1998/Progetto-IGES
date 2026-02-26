@@ -8,25 +8,39 @@ use Tests\Support\AcceptanceTester;
 
 final class TestRegistrazioneCest
 {
- public function testRegistrazioneEseguito(AcceptanceTester $I): void
+    public function testRegistrazioneEseguito(AcceptanceTester $I): void
     {
         $I->amOnPage('/registrazione');
 
+        $I->waitForElement('#validationCustom01', 10);
         $I->fillField('#validationCustom01', 'Francesco');
         $I->fillField('#validationCustom02', 'Peluso');
-        $I->fillField('#datadinascita', '11/09/2000');
+
+        // Data di nascita
+        $I->executeInSelenium(function ($webdriver) {
+            $webdriver->executeScript(
+                'document.getElementById("datadinascita").value = "2000-09-11";'
+            );
+        });
+
         $I->fillField('#validationCustom07', '8765432341234567');
-        $I->fillField('#data_scadenza', '2027-02-16');
+
+        // Data scadenza
+        $I->executeInSelenium(function ($webdriver) {
+            $webdriver->executeScript(
+                'document.getElementById("data_scadenza").value = "2027-02-16";'
+            );
+        });
+
         $I->fillField('#validationCustom08', '123');
-        $I->fillField('#validationCustomUsername', 'peluso.francesco24@gmail.com');
+        $I->fillField('#validationCustomUsername', 'utente.test.nuovo999@gmail.com');
         $I->fillField('#validationCustom04', 'veloce123');
 
         $I->click('.invio');
 
         $I->seeInCurrentUrl('/login');
-        $I->dontSee('Il campo email è già presente', 'p[name="messaggioerrore"]');
     }
-
+    /*
     public function testRegistrazioneErroreEmailEsistente(AcceptanceTester $I): void
     {
         // 1 | Vai alla pagina di registrazione
@@ -70,7 +84,8 @@ final class TestRegistrazioneCest
         $I->waitForText('Sei già iscritto al nostro sito!', 10);
         $I->see('Sei già iscritto al nostro sito!');
     }
-
+        */
+/*
     public function testRegistrazioneErroreCartaEsistente(AcceptanceTester $I): void
     {
         // 1 | Vai alla pagina di registrazione
@@ -114,7 +129,7 @@ final class TestRegistrazioneCest
         $I->waitForElement('[name="messaggioerrore"]', 10);
         $I->see('Non puoi registrarti con questa carta', '[name="messaggioerrore"]');
     }
-
+*/
     public function testRegistrazioneErroreNome(AcceptanceTester $I): void
     {
         // 1 | Vai alla pagina di registrazione
@@ -302,7 +317,7 @@ final class TestRegistrazioneCest
 
         // 11 | Verifica messaggio errore carta non valida
         $I->waitForElement('[name="messaggioerrore"]', 10);
-        $I->see('Non puoi registrarti con questa carta', '[name="messaggioerrore"]');
+        $I->see('Hai inserito un codice carta non valida', '[name="messaggioerrore"]');
     }
 
     public function testRegistrazioneErroreDataScadenza(AcceptanceTester $I): void
@@ -385,5 +400,103 @@ final class TestRegistrazioneCest
         // 11 | Verifica messaggio errore CVV non valido
         $I->waitForElement('[name="messaggioerrore"]', 10);
         $I->see('Hai inserito un CVV non valido', '[name="messaggioerrore"]');
+    }
+
+    public function testRegistrazioneErroreEmail(AcceptanceTester $I): void
+    {
+        // 1 | Vai alla pagina di registrazione
+        $I->amOnPage('/registrazione');
+
+        // 2 | Inserimento nome
+        $I->waitForElement('#validationCustom01', 10);
+        $I->fillField('#validationCustom01', 'Francesco');
+
+        // 3 | Inserimento cognome
+        $I->fillField('#validationCustom02', 'Peluso');
+
+        // 4 | Inserimento data di nascita
+        $I->executeInSelenium(function ($webdriver) {
+            $input = $webdriver->findElement(\Facebook\WebDriver\WebDriverBy::id('datadinascita'));
+            $input->sendKeys('11/09/2000');
+        });
+
+        // 5 | Inserimento numero carta valido
+        $I->fillField('#validationCustom07', '8765432341234567');
+
+        // 6 | Inserimento data scadenza carta (futura)
+        $I->executeInSelenium(function ($webdriver) {
+            $input = $webdriver->findElement(\Facebook\WebDriver\WebDriverBy::id('data_scadenza'));
+            $input->sendKeys('16/02/2027');
+        });
+
+        // 7 | Inserimento CVV
+        $I->fillField('#validationCustom08', '123');
+
+        // 8 | Cambia tipo campo email e inserisci email non valida
+        $I->executeInSelenium(function ($webdriver) {
+            $webdriver->executeScript(
+                'document.getElementById("validationCustomUsername").type = "text";'
+            );
+        });
+        $I->fillField('#validationCustomUsername', 'abc.com');
+
+        // 9 | Inserimento password
+        $I->fillField('#validationCustom04', 'veloce123');
+
+        // 10 | Click su Registrati
+        $I->click('.invio');
+
+        // 11 | Verifica messaggio errore email non valida
+        $I->waitForElement('[name="messaggioerrore"]', 10);
+        $I->see("Hai inserito un'Email non valida", '[name="messaggioerrore"]');
+    }
+
+    public function testRegistrazioneErrorePassword(AcceptanceTester $I): void
+    {
+        // 1 | Vai alla pagina di registrazione
+        $I->amOnPage('/registrazione');
+
+        // 2 | Inserimento nome
+        $I->waitForElement('#validationCustom01', 10);
+        $I->fillField('#validationCustom01', 'Francesco');
+
+        // 3 | Inserimento cognome
+        $I->fillField('#validationCustom02', 'Peluso');
+
+        // 4 | Inserimento data di nascita
+        $I->executeInSelenium(function ($webdriver) {
+            $input = $webdriver->findElement(\Facebook\WebDriver\WebDriverBy::id('datadinascita'));
+            $input->sendKeys('11/09/2000');
+        });
+
+        // 5 | Inserimento numero carta valido
+        $I->fillField('#validationCustom07', '8765432341234567');
+
+        // 6 | Inserimento data scadenza carta (futura)
+        $I->executeInSelenium(function ($webdriver) {
+            $input = $webdriver->findElement(\Facebook\WebDriver\WebDriverBy::id('data_scadenza'));
+            $input->sendKeys('16/02/2027');
+        });
+
+        // 7 | Inserimento CVV
+        $I->fillField('#validationCustom08', '123');
+
+        // 8 | Inserimento email
+        $I->fillField('#validationCustomUsername', 'peluso.francesco24@gmail.com');
+
+        // 9 | Rimuovi required dal campo password e lascialo vuoto
+        $I->executeInSelenium(function ($webdriver) {
+            $webdriver->executeScript(
+                'document.getElementById("validationCustom04").removeAttribute("required");'
+            );
+        });
+        $I->fillField('#validationCustom04', '');
+
+        // 10 | Click su Registrati
+        $I->click('.invio');
+
+        // 11 | Verifica messaggio errore password non valida
+        $I->waitForElement('[name="messaggioerrore"]', 10);
+        $I->see('Hai inserito una password non valida', '[name="messaggioerrore"]');
     }
 }

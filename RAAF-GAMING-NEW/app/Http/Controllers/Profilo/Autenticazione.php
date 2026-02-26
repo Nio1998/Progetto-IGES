@@ -103,9 +103,9 @@ class Autenticazione extends Controller
         }
 
         // Validazione carta (16 cifre)
-        if (empty($codicecarta) || strlen($codicecarta) != 16) {
+        if (empty($codicecarta) || strlen($codicecarta) != 16 || !ctype_digit($codicecarta)) {
             return view('PresentazioneProfilo.registrazione', [
-                'message' => 'Hai inserito una carta non valida',
+                'message' => 'Hai inserito un codice carta non valida',
                 'visitato' => ''
             ]);
         }
@@ -135,7 +135,7 @@ class Autenticazione extends Controller
         }
 
         // Validazione email
-        if (empty($email)) {
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return view('PresentazioneProfilo.registrazione', [
                 'message' => 'Hai inserito un\'Email non valida',
                 'visitato' => ''
