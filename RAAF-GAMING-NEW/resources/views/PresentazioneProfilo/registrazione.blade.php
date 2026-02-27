@@ -45,7 +45,15 @@
             @if(session('error'))
                 <div class="form-row">
                     <div class="col-md-12 mb-1 mt-1 d-flex justify-content-center">
-                        <p class="h5" style="color:red;">{{ session('error') }}</p>
+                        <p name="messaggioerrore" class="h5" style="color:red;">{{ session('error') }}</p>
+                    </div>
+                </div>
+            @endif
+
+            @if(isset($message))
+                <div class="form-row">
+                    <div class="col-md-12 mb-1 mt-1 d-flex justify-content-center">
+                        <p name="messaggioerrore" class="h5" style="color:red;">{{ $message }}</p>
                     </div>
                 </div>
             @endif
