@@ -10,6 +10,8 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
     require $maintenance;
 }
 
+//require_once __DIR__.'/../c3.php';
+
 // Register the Composer autoloader...
 require __DIR__.'/../vendor/autoload.php';
 
