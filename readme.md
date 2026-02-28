@@ -60,4 +60,34 @@ La piattaforma distingue nettamente le funzionalità per quattro tipologie di ru
 | **Gestori Backoffice (Magazzino)** | Gestione Logistica, **Restock** (approvvigionamento stock), Inserimento Nuovi Prodotti. |
 | **Gestori Backoffice (Ordini)** | Gestione del ciclo di vita degli ordini e gestione delle **Spedizioni**. |
 
+## 🧪 Testing
+
+### Test di Unità (Pest)
+
+I test di unità sono scritti con **Pest** e si avviano tramite Artisan:
+```bash
+php artisan test
+```
+
+### Test di Sistema (Codeception)
+
+I test di sistema (acceptance) sono scritti con **Codeception**. Prima di eseguirli assicurarsi che siano attivi:
+
+1. **Il server Laravel** (`php artisan serve`)
+2. **Il database MySQL**
+3. **ChromeDriver** — il driver si trova in `tests/resources/driver/`, scegliere l'eseguibile corretto per il proprio sistema operativo (`.exe` per Windows, senza estensione per Mac/Linux) e avviarlo sulla porta `9515`:
+```bash
+# Windows
+tests\resources\driver\chromedriver.exe --port=9515
+
+# Mac / Linux
+./tests/resources/driver/chromedriver --port=9515
+```
+
+Solo una volta che tutti e tre i servizi sono attivi, avviare i test con:
+```bash
+vendor\bin\codecept run acceptance
+```
+
+> ⚠️ **Nota:** Non tutti i test di accettazione potrebbero essere eseguiti correttamente in sequenza. Alcuni test modificano lo stato del database portandolo in una condizione incompatibile con l'esecuzione dei test successivi. In caso di fallimenti inattesi, è sufficiente ripristinare il database allo stato corretto e rieseguire i test.
 
