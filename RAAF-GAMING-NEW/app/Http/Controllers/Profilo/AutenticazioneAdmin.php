@@ -30,19 +30,13 @@ class AutenticazioneAdmin extends Controller
         // Trova admin
        $admin = $gestoreService->ricercaPerChiave($email);
         //dd($utente);
-        if (!$admin) {
-            return view('PresentazioneProfilo.admin', [
-                'message' => '',
-                'visita' => ''
-            ]);
-        }
+        if (!$admin)
+            return back()->with('message', 'Email/Password errata!');
 
         // Controllo password
         if (!$gestoreService->checkPassword($password,$admin)) {
-            return view('PresentazioneProfilo.admin', [
-                'message' => '',
-                'visita' => ''
-            ]);
+            $gestoreService->logoutUtente();
+            return back()->with('message', 'Email/Password errata!');
         }
 
         //dd(Session::get('Cliente');

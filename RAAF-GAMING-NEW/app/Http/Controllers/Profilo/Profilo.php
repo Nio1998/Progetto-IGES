@@ -41,7 +41,7 @@ class Profilo extends Controller
 
         // 1. VALIDAZIONE INPUT
         $validator = Validator::make($request->all(), [
-            'passwordNuova' => 'nullable|min:8',
+            'passwordNuova' => 'nullable',
             'cartaNuova'    => 'nullable|size:16',
             'codiceNuovo'   => 'nullable|integer|between:100,999',
             'dataScadNuova' => 'nullable|date|after:today',
@@ -63,11 +63,13 @@ class Profilo extends Controller
         if ($request->filled('passwordNuova')) {
             $newPassword = $request->passwordNuova;
             
-            if ($clienteService->checkPassword($newPassword,$cliente)) {
+            if (strlen($newPassword) < 8) {
+                $passwordChanged = false;
+            } else if ($clienteService->checkPassword($newPassword,$cliente)) {
                 return response()->json(['errorMessage' => "LA PASSWORD COINCIDE CON QUELLO GIA' IN USO"]);
+            } else {
+                $passwordChanged = true;
             }
-
-            $passwordChanged = true;
         }
 
         // Preparo i dati della carta

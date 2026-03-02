@@ -131,7 +131,7 @@
                                    class="form-control" 
                                    id="inputCarta2" 
                                    placeholder="123"
-                                   maxlength="3">
+                                   >
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="inputCarta3">Scadenza</label>
@@ -235,9 +235,8 @@
                     return false;
                 }
             } else {
-                alert("Password non valida (minimo 8 caratteri)");
+                alert("password non valida");
                 pass1.style.border = "2px solid red";
-                return false;
             }
         } else if (pass1.value.length > 0 && pass2.value.length == 0) {
             alert("Conferma la password");
@@ -258,7 +257,7 @@
             if (codiceCarta.value.length == 16) {
                 codiceCarta.style.border = "2px solid green";
             } else {
-                alert("Numero carta non valido (16 cifre)");
+                alert("Hai inserito una carta non valida");
                 codiceCarta.value = "";
                 codiceCarta.style.border = "2px solid red";
                 return false;
@@ -268,7 +267,7 @@
             if (cvv.value.length == 3) {
                 cvv.style.border = "2px solid green";
             } else {
-                alert("CVV non valido (3 cifre)");
+                alert("Hai inserito un cvv non valido");
                 cvv.value = "";
                 cvv.style.border = "2px solid red";
                 return false;

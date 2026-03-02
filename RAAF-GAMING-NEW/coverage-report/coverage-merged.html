@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coverage Report &mdash; coverage-merged.xml</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Sora:wght@300;400;600;700&display=swap');
+:root{--bg:#0d0f14;--surface:#151820;--border:#1e2330;--text:#c8cdd8;--muted:#5a6070;--accent:#4f8ef7;--green:#2ecc71;--orange:#f39c12;--red:#e74c3c;--radius:10px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Sora',sans-serif;font-size:14px;line-height:1.6;min-height:100vh}
+header{background:linear-gradient(135deg,#0d0f14 0%,#111520 100%);border-bottom:1px solid var(--border);padding:40px 48px 32px;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(79,142,247,0.08) 0%,transparent 70%);pointer-events:none}
+header h1{font-size:26px;font-weight:700;color:#fff;letter-spacing:-.5px;margin-bottom:4px}
+header h1 span{color:var(--accent)}
+header p{color:var(--muted);font-size:13px;font-family:'JetBrains Mono',monospace}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:32px 48px;max-width:900px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;position:relative;overflow:hidden;transition:border-color .2s}
+.card:hover{border-color:var(--accent)}
+.card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
+.card.green::after{background:var(--green)}
+.card.orange::after{background:var(--orange)}
+.card.red::after{background:var(--red)}
+.card-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px}
+.card-pct{font-size:36px;font-weight:700;font-family:'JetBrains Mono',monospace;color:#fff;line-height:1;margin-bottom:10px}
+.card-detail{font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.card-bar{margin-top:12px;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.card-bar-fill{height:100%;border-radius:2px}
+main{padding:0 48px 60px}
+.section-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin:32px 0 16px;display:flex;align-items:center;gap:10px}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.pkg{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;overflow:hidden}
+.pkg-header{display:grid;grid-template-columns:1fr 180px 180px 100px;align-items:center;padding:14px 20px;cursor:pointer;background:rgba(255,255,255,0.02);border-bottom:1px solid var(--border);user-select:none;transition:background .15s}
+.pkg-header:hover{background:rgba(255,255,255,0.04)}
+.pkg-name{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);font-weight:600}
+.pkg-arrow{color:var(--muted);font-size:10px;text-align:right;transition:transform .2s}
+.pkg.open .pkg-arrow{transform:rotate(180deg)}
+.pkg-files{display:none}
+.pkg.open .pkg-files{display:block}
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--muted);padding:10px 20px;text-align:left;border-bottom:1px solid var(--border);background:rgba(0,0,0,0.2)}
+th.right,td.right{text-align:right}
+tr.file-row{transition:background .1s}
+tr.file-row:hover{background:rgba(255,255,255,0.03)}
+td{padding:11px 20px;border-bottom:1px solid rgba(30,35,48,0.5);font-size:13px}
+tr:last-child td{border-bottom:none}
+.file-name{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text)}
+.file-name .path{color:var(--muted)}
+.bar-wrap{width:100%;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px}
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600;font-family:'JetBrains Mono',monospace;color:#fff}
+.num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted)}
+footer{text-align:center;padding:24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;font-family:'JetBrains Mono',monospace}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Coverage Report <span>//</span> coverage-merged.xml</h1>
+  <p>Generato il 28/02/2026 18:24:36</p>
+</header>
+
+<div class="summary">
+  <div class="card orange">
+    <div class="card-label">Lines</div>
+    <div class="card-pct">78.4%</div>
+    <div class="card-detail">1.037 / 1.322</div>
+    <div class="card-bar"><div class="card-bar-fill" style="width:78.4%;background:#f39c12"></div></div>
+  </div>
+  <div class="card green">
+    <div class="card-label">Methods</div>
+    <div class="card-pct">84.2%</div>
+    <div class="card-detail">128 / 152</div>
+    <div class="card-bar"><div class="card-bar-fill" style="width:84.2%;background:#2ecc71"></div></div>
+  </div>
+  <div class="card orange">
+    <div class="card-label">Classes</div>
+    <div class="card-pct">78.4%</div>
+    <div class="card-detail">40 / 51</div>
+    <div class="card-bar"><div class="card-bar-fill" style="width:78.4%;background:#f39c12"></div></div>
+  </div>
+</div>
+
+<main>
+  <div class="section-title">Dettaglio per package</div>
+
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Http\Controllers</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">1 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 0%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 0%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#e74c3c'>0%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Http/Controllers/</span>Controller.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td class="right num">0</td>
+            <td class="right num">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Models\Acquisto</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">4 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:11.1%;background:#e74c3c'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 11.1%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:11.1%;background:#e74c3c'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 11.1%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#e74c3c'>11.1%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Acquisto/</span>CorriereEspresso.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td class="right num">0</td>
+            <td class="right num">1</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Acquisto/</span>Riguarda.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td class="right num">0</td>
+            <td class="right num">2</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Acquisto/</span>Spedito.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td class="right num">0</td>
+            <td class="right num">2</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Acquisto/</span>Ordine.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:25%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">25%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:25%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">25%</div>
+            </td>
+            <td class="right num">1</td>
+            <td class="right num">4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Models\Prodotto</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">10 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:47.6%;background:#e74c3c'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 47.6%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:47.6%;background:#e74c3c'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 47.6%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#e74c3c'>47.6%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Prodotto/</span>Abbonamento.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td class="right num">0</td>
+            <td class="right num">1</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Prodotto/</span>Console.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td class="right num">0</td>
+            <td class="right num">1</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Prodotto/</span>Dlc.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td class="right num">0</td>
+            <td class="right num">1</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Prodotto/</span>Fornitore.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td class="right num">0</td>
+            <td class="right num">1</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Prodotto/</span>Recensisce.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td class="right num">0</td>
+            <td class="right num">2</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Prodotto/</span>SoftwareHouse.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td class="right num">0</td>
+            <td class="right num">1</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Prodotto/</span>Videogioco.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:33.3%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">33.3%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:33.3%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">33.3%</div>
+            </td>
+            <td class="right num">1</td>
+            <td class="right num">3</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Prodotto/</span>ParteDi.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:50%;background:#f39c12'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">50%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:50%;background:#f39c12'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">50%</div>
+            </td>
+            <td class="right num">1</td>
+            <td class="right num">2</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Prodotto/</span>Prodotto.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:87.5%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">87.5%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:87.5%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">87.5%</div>
+            </td>
+            <td class="right num">7</td>
+            <td class="right num">8</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Prodotto/</span>Categoria.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">1</td>
+            <td class="right num">1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Models\Magazzino</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">2 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:66.7%;background:#f39c12'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 66.7%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:66.7%;background:#f39c12'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 66.7%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#f39c12'>66.7%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Magazzino/</span>PresenteIn.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:50%;background:#f39c12'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">50%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:50%;background:#f39c12'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">50%</div>
+            </td>
+            <td class="right num">1</td>
+            <td class="right num">2</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Magazzino/</span>Magazzino.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">1</td>
+            <td class="right num">1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Http\Controllers\Prodotto</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">2 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:70.2%;background:#f39c12'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 70.2%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:90%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 90%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#f39c12'>70.2%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Http/Controllers/Prodotto/</span>Prodotto.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:41.3%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">41.3%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:85.7%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">85.7%</div>
+            </td>
+            <td class="right num">45</td>
+            <td class="right num">109</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Http/Controllers/Prodotto/</span>GestioneProdottiAdmin.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:92.3%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">92.3%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">132</td>
+            <td class="right num">143</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Http\Middleware\Profilo</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">4 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:73.7%;background:#f39c12'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 73.7%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 100%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#f39c12'>73.7%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Http/Middleware/Profilo/</span>RedirectAdminIfAuthenticated.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:42.9%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">42.9%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">3</td>
+            <td class="right num">7</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Http/Middleware/Profilo/</span>RedirectIfAuthenticated.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:75%;background:#f39c12'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">75%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">3</td>
+            <td class="right num">4</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Http/Middleware/Profilo/</span>IsAuthenticated.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">4</td>
+            <td class="right num">4</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Http/Middleware/Profilo/</span>IsAuthenticatedAdmin.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">4</td>
+            <td class="right num">4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Http\Controllers\Profilo</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">3 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:74.9%;background:#f39c12'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 74.9%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:90%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 90%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#f39c12'>74.9%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Http/Controllers/Profilo/</span>AutenticazioneAdmin.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:68.2%;background:#f39c12'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">68.2%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:66.7%;background:#f39c12'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">66.7%</div>
+            </td>
+            <td class="right num">15</td>
+            <td class="right num">22</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Http/Controllers/Profilo/</span>Autenticazione.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:74.8%;background:#f39c12'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">74.8%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">101</td>
+            <td class="right num">135</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Http/Controllers/Profilo/</span>Profilo.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:77.1%;background:#f39c12'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">77.1%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">54</td>
+            <td class="right num">70</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Http\Middleware\Acquisto</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">1 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:80%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 80%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 100%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#2ecc71'>80%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Http/Middleware/Acquisto/</span>GestoreOrdiniMiddleware.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:80%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">80%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">4</td>
+            <td class="right num">5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Http\Middleware\Prodotto</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">1 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:80%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 80%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 100%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#2ecc71'>80%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Http/Middleware/Prodotto/</span>GestoreProdottiMiddleware.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:80%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">80%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">4</td>
+            <td class="right num">5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Services\Prodotto</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">7 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:80%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 80%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 100%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#2ecc71'>80%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Services/Prodotto/</span>FornitoreService.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:70.4%;background:#f39c12'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">70.4%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">19</td>
+            <td class="right num">27</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Services/Prodotto/</span>RecensisceService.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:70.7%;background:#f39c12'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">70.7%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">29</td>
+            <td class="right num">41</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Services/Prodotto/</span>ProdottoService.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:78.4%;background:#f39c12'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">78.4%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">160</td>
+            <td class="right num">204</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Services/Prodotto/</span>ParteDiService.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:81.5%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">81.5%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">22</td>
+            <td class="right num">27</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Services/Prodotto/</span>CarrelloService.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">16</td>
+            <td class="right num">16</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Services/Prodotto/</span>CategoriaService.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">15</td>
+            <td class="right num">15</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Services/Prodotto/</span>SoftwareHouseService.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">15</td>
+            <td class="right num">15</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Services\Profilo</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">4 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:83.2%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 83.2%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 100%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#2ecc71'>83.2%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Services/Profilo/</span>ClienteService.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:70.6%;background:#f39c12'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">70.6%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">48</td>
+            <td class="right num">68</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Services/Profilo/</span>CartaFedeltaService.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:90.7%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">90.7%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">39</td>
+            <td class="right num">43</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Services/Profilo/</span>CartaDiCreditoService.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:95.5%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">95.5%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">21</td>
+            <td class="right num">22</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Services/Profilo/</span>GestoreService.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">16</td>
+            <td class="right num">16</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Models\Profilo</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">4 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:84.6%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 84.6%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:77.8%;background:#f39c12'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 77.8%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#2ecc71'>84.6%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Profilo/</span>Gestore.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:0%;background:#e74c3c'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">0%</div>
+            </td>
+            <td class="right num">0</td>
+            <td class="right num">1</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Profilo/</span>Cliente.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:85.7%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">85.7%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:80%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">80%</div>
+            </td>
+            <td class="right num">6</td>
+            <td class="right num">7</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Profilo/</span>CartaDiCredito.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">4</td>
+            <td class="right num">4</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Models/Profilo/</span>CartaFedelta.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">1</td>
+            <td class="right num">1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Http\Controllers\Acquisto</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">3 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:86.7%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 86.7%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 100%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#2ecc71'>86.7%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Http/Controllers/Acquisto/</span>Carrello.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:86.2%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">86.2%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">50</td>
+            <td class="right num">58</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Http/Controllers/Acquisto/</span>GestioneOrdiniAdmin.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:86.2%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">86.2%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">25</td>
+            <td class="right num">29</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Http/Controllers/Acquisto/</span>Ordini.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">3</td>
+            <td class="right num">3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Services\Magazzino</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">2 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:89.6%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 89.6%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 100%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#2ecc71'>89.6%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Services/Magazzino/</span>MagazzinoService.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:80%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">80%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">20</td>
+            <td class="right num">25</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Services/Magazzino/</span>PresenteInServices.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:91.7%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">91.7%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">100</td>
+            <td class="right num">109</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Services\Acquisto</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">2 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:91.7%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 91.7%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 100%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#2ecc71'>91.7%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Services/Acquisto/</span>CorriereEspressoService.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:81%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">81%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">17</td>
+            <td class="right num">21</td>
+          </tr>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Services/Acquisto/</span>OrdineService.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">27</td>
+            <td class="right num">27</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pkg">
+    <div class="pkg-header" onclick="toggle(this.parentElement)">
+      <div>
+        <div class="pkg-name">App\Providers</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">1 file</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Lines 100%</div>
+      </div>
+      <div style="padding-right:16px">
+        <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace">Methods 100%</div>
+      </div>
+      <div style="text-align:right">
+        <span class='badge' style='background:#2ecc71'>100%</span>
+        <div class="pkg-arrow">&#9660;</div>
+      </div>
+    </div>
+    <div class="pkg-files">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Lines</th>
+            <th>Methods</th>
+            <th class="right">Covered</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="file-row">
+            <td>
+              <div class="file-name">
+                <span class="path">app/Providers/</span>AppServiceProvider.php
+              </div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td style="width:160px">
+              <div class='bar-wrap'><div class='bar-fill' style='width:100%;background:#2ecc71'></div></div>
+              <div style="font-size:11px;color:var(--muted);margin-top:3px;font-family:'JetBrains Mono',monospace">100%</div>
+            </td>
+            <td class="right num">2</td>
+            <td class="right num">2</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<footer>
+  coverage-report.php &mdash; generato da coverage-merged.xml &mdash; 28/02/2026 18:24:36
+</footer>
+
+<script>
+function toggle(el) { el.classList.toggle('open'); }
+document.querySelectorAll('.pkg').forEach(p => p.classList.add('open'));
+</script>
+</body>
+</html>

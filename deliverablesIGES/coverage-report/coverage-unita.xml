@@ -1,0 +1,1818 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1772206210">
+  <project timestamp="1772206210" name="Clover Coverage">
+    <package name="App\Http\Controllers\Acquisto">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Http\Controllers\Acquisto\Carrello.php">
+        <class name="App\Http\Controllers\Acquisto\Carrello" namespace="App\Http\Controllers\Acquisto">
+          <metrics complexity="12" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="58" coveredstatements="0" elements="61" coveredelements="0"/>
+        </class>
+        <line num="17" type="method" name="carrello" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="29" type="method" name="eliminaCarrello" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="47" type="method" name="confermaAcquisto" visibility="public" complexity="7" crap="56" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="71" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="73" type="stmt" count="0"/>
+        <line num="75" type="stmt" count="0"/>
+        <line num="79" type="stmt" count="0"/>
+        <line num="80" type="stmt" count="0"/>
+        <line num="83" type="stmt" count="0"/>
+        <line num="84" type="stmt" count="0"/>
+        <line num="85" type="stmt" count="0"/>
+        <line num="86" type="stmt" count="0"/>
+        <line num="87" type="stmt" count="0"/>
+        <line num="88" type="stmt" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="91" type="stmt" count="0"/>
+        <line num="94" type="stmt" count="0"/>
+        <line num="95" type="stmt" count="0"/>
+        <line num="96" type="stmt" count="0"/>
+        <line num="97" type="stmt" count="0"/>
+        <line num="98" type="stmt" count="0"/>
+        <line num="99" type="stmt" count="0"/>
+        <line num="102" type="stmt" count="0"/>
+        <line num="104" type="stmt" count="0"/>
+        <line num="105" type="stmt" count="0"/>
+        <line num="107" type="stmt" count="0"/>
+        <line num="108" type="stmt" count="0"/>
+        <line num="110" type="stmt" count="0"/>
+        <line num="112" type="stmt" count="0"/>
+        <line num="113" type="stmt" count="0"/>
+        <metrics loc="117" ncloc="113" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="58" coveredstatements="0" elements="61" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Http\Controllers\Acquisto\GestioneOrdiniAdmin.php">
+        <class name="App\Http\Controllers\Acquisto\GestioneOrdiniAdmin" namespace="App\Http\Controllers\Acquisto">
+          <metrics complexity="7" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="31" coveredelements="0"/>
+        </class>
+        <line num="14" type="method" name="homeOrdine" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="30" type="method" name="formOrdiniAdmin" visibility="public" complexity="6" crap="42" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <metrics loc="67" ncloc="63" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="31" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Http\Controllers\Acquisto\Ordini.php">
+        <class name="App\Http\Controllers\Acquisto\Ordini" namespace="App\Http\Controllers\Acquisto">
+          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
+        </class>
+        <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="12" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <metrics loc="20" ncloc="20" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="App\Http\Controllers">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Http\Controllers\Controller.php">
+        <class name="App\Http\Controllers\Controller" namespace="App\Http\Controllers">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="9" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="App\Http\Controllers\Prodotto">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Http\Controllers\Prodotto\GestioneProdottiAdmin.php">
+        <class name="App\Http\Controllers\Prodotto\GestioneProdottiAdmin" namespace="App\Http\Controllers\Prodotto">
+          <metrics complexity="20" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="143" coveredstatements="0" elements="146" coveredelements="0"/>
+        </class>
+        <line num="24" type="method" name="homeProdotto" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="52" type="method" name="formProdNuovoAdmin" visibility="public" complexity="11" crap="132" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="73" type="stmt" count="0"/>
+        <line num="74" type="stmt" count="0"/>
+        <line num="75" type="stmt" count="0"/>
+        <line num="76" type="stmt" count="0"/>
+        <line num="77" type="stmt" count="0"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="82" type="stmt" count="0"/>
+        <line num="83" type="stmt" count="0"/>
+        <line num="84" type="stmt" count="0"/>
+        <line num="85" type="stmt" count="0"/>
+        <line num="88" type="stmt" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="93" type="stmt" count="0"/>
+        <line num="94" type="stmt" count="0"/>
+        <line num="96" type="stmt" count="0"/>
+        <line num="98" type="stmt" count="0"/>
+        <line num="99" type="stmt" count="0"/>
+        <line num="103" type="stmt" count="0"/>
+        <line num="104" type="stmt" count="0"/>
+        <line num="105" type="stmt" count="0"/>
+        <line num="106" type="stmt" count="0"/>
+        <line num="107" type="stmt" count="0"/>
+        <line num="108" type="stmt" count="0"/>
+        <line num="109" type="stmt" count="0"/>
+        <line num="110" type="stmt" count="0"/>
+        <line num="111" type="stmt" count="0"/>
+        <line num="112" type="stmt" count="0"/>
+        <line num="113" type="stmt" count="0"/>
+        <line num="116" type="stmt" count="0"/>
+        <line num="117" type="stmt" count="0"/>
+        <line num="118" type="stmt" count="0"/>
+        <line num="119" type="stmt" count="0"/>
+        <line num="120" type="stmt" count="0"/>
+        <line num="121" type="stmt" count="0"/>
+        <line num="122" type="stmt" count="0"/>
+        <line num="123" type="stmt" count="0"/>
+        <line num="124" type="stmt" count="0"/>
+        <line num="126" type="stmt" count="0"/>
+        <line num="127" type="stmt" count="0"/>
+        <line num="129" type="stmt" count="0"/>
+        <line num="130" type="stmt" count="0"/>
+        <line num="131" type="stmt" count="0"/>
+        <line num="132" type="stmt" count="0"/>
+        <line num="134" type="stmt" count="0"/>
+        <line num="135" type="stmt" count="0"/>
+        <line num="136" type="stmt" count="0"/>
+        <line num="137" type="stmt" count="0"/>
+        <line num="138" type="stmt" count="0"/>
+        <line num="139" type="stmt" count="0"/>
+        <line num="140" type="stmt" count="0"/>
+        <line num="141" type="stmt" count="0"/>
+        <line num="142" type="stmt" count="0"/>
+        <line num="144" type="stmt" count="0"/>
+        <line num="145" type="stmt" count="0"/>
+        <line num="147" type="stmt" count="0"/>
+        <line num="148" type="stmt" count="0"/>
+        <line num="149" type="stmt" count="0"/>
+        <line num="150" type="stmt" count="0"/>
+        <line num="152" type="stmt" count="0"/>
+        <line num="153" type="stmt" count="0"/>
+        <line num="154" type="stmt" count="0"/>
+        <line num="155" type="stmt" count="0"/>
+        <line num="156" type="stmt" count="0"/>
+        <line num="158" type="stmt" count="0"/>
+        <line num="159" type="stmt" count="0"/>
+        <line num="161" type="stmt" count="0"/>
+        <line num="162" type="stmt" count="0"/>
+        <line num="163" type="stmt" count="0"/>
+        <line num="164" type="stmt" count="0"/>
+        <line num="165" type="stmt" count="0"/>
+        <line num="167" type="stmt" count="0"/>
+        <line num="168" type="stmt" count="0"/>
+        <line num="170" type="stmt" count="0"/>
+        <line num="171" type="stmt" count="0"/>
+        <line num="172" type="stmt" count="0"/>
+        <line num="173" type="stmt" count="0"/>
+        <line num="174" type="stmt" count="0"/>
+        <line num="176" type="stmt" count="0"/>
+        <line num="177" type="stmt" count="0"/>
+        <line num="181" type="stmt" count="0"/>
+        <line num="182" type="stmt" count="0"/>
+        <line num="183" type="stmt" count="0"/>
+        <line num="184" type="stmt" count="0"/>
+        <line num="185" type="stmt" count="0"/>
+        <line num="186" type="stmt" count="0"/>
+        <line num="189" type="stmt" count="0"/>
+        <line num="192" type="method" name="formProdEsistentiAdmin" visibility="public" complexity="7" crap="56" count="0"/>
+        <line num="194" type="stmt" count="0"/>
+        <line num="195" type="stmt" count="0"/>
+        <line num="198" type="stmt" count="0"/>
+        <line num="199" type="stmt" count="0"/>
+        <line num="202" type="stmt" count="0"/>
+        <line num="203" type="stmt" count="0"/>
+        <line num="207" type="stmt" count="0"/>
+        <line num="209" type="stmt" count="0"/>
+        <line num="210" type="stmt" count="0"/>
+        <line num="214" type="stmt" count="0"/>
+        <line num="216" type="stmt" count="0"/>
+        <line num="217" type="stmt" count="0"/>
+        <line num="221" type="stmt" count="0"/>
+        <line num="222" type="stmt" count="0"/>
+        <line num="224" type="stmt" count="0"/>
+        <line num="226" type="stmt" count="0"/>
+        <line num="227" type="stmt" count="0"/>
+        <line num="228" type="stmt" count="0"/>
+        <line num="232" type="stmt" count="0"/>
+        <line num="233" type="stmt" count="0"/>
+        <line num="234" type="stmt" count="0"/>
+        <line num="235" type="stmt" count="0"/>
+        <line num="236" type="stmt" count="0"/>
+        <line num="240" type="stmt" count="0"/>
+        <metrics loc="244" ncloc="230" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="143" coveredstatements="0" elements="146" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Http\Controllers\Prodotto\Prodotto.php">
+        <class name="App\Http\Controllers\Prodotto\Prodotto" namespace="App\Http\Controllers\Prodotto">
+          <metrics complexity="28" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="0" elements="116" coveredelements="0"/>
+        </class>
+        <line num="15" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="23" type="method" name="ricercaProdotto" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="32" type="method" name="show" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="43" type="method" name="aggiungiRecensione" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="71" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="73" type="stmt" count="0"/>
+        <line num="74" type="stmt" count="0"/>
+        <line num="78" type="method" name="getImmagine" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="80" type="stmt" count="0"/>
+        <line num="81" type="stmt" count="0"/>
+        <line num="82" type="stmt" count="0"/>
+        <line num="84" type="stmt" count="0"/>
+        <line num="85" type="stmt" count="0"/>
+        <line num="88" type="stmt" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="92" type="method" name="ricercaPerCategoria" visibility="public" complexity="16" crap="272" count="0"/>
+        <line num="94" type="stmt" count="0"/>
+        <line num="96" type="stmt" count="0"/>
+        <line num="97" type="stmt" count="0"/>
+        <line num="98" type="stmt" count="0"/>
+        <line num="100" type="stmt" count="0"/>
+        <line num="101" type="stmt" count="0"/>
+        <line num="103" type="stmt" count="0"/>
+        <line num="105" type="stmt" count="0"/>
+        <line num="106" type="stmt" count="0"/>
+        <line num="108" type="stmt" count="0"/>
+        <line num="110" type="stmt" count="0"/>
+        <line num="111" type="stmt" count="0"/>
+        <line num="112" type="stmt" count="0"/>
+        <line num="113" type="stmt" count="0"/>
+        <line num="116" type="stmt" count="0"/>
+        <line num="118" type="stmt" count="0"/>
+        <line num="120" type="stmt" count="0"/>
+        <line num="121" type="stmt" count="0"/>
+        <line num="123" type="stmt" count="0"/>
+        <line num="125" type="stmt" count="0"/>
+        <line num="126" type="stmt" count="0"/>
+        <line num="127" type="stmt" count="0"/>
+        <line num="128" type="stmt" count="0"/>
+        <line num="131" type="stmt" count="0"/>
+        <line num="133" type="stmt" count="0"/>
+        <line num="135" type="stmt" count="0"/>
+        <line num="136" type="stmt" count="0"/>
+        <line num="138" type="stmt" count="0"/>
+        <line num="140" type="stmt" count="0"/>
+        <line num="141" type="stmt" count="0"/>
+        <line num="142" type="stmt" count="0"/>
+        <line num="143" type="stmt" count="0"/>
+        <line num="146" type="stmt" count="0"/>
+        <line num="148" type="stmt" count="0"/>
+        <line num="150" type="stmt" count="0"/>
+        <line num="151" type="stmt" count="0"/>
+        <line num="153" type="stmt" count="0"/>
+        <line num="155" type="stmt" count="0"/>
+        <line num="156" type="stmt" count="0"/>
+        <line num="157" type="stmt" count="0"/>
+        <line num="158" type="stmt" count="0"/>
+        <line num="161" type="stmt" count="0"/>
+        <line num="165" type="stmt" count="0"/>
+        <line num="166" type="stmt" count="0"/>
+        <line num="167" type="stmt" count="0"/>
+        <line num="168" type="stmt" count="0"/>
+        <line num="170" type="stmt" count="0"/>
+        <line num="171" type="stmt" count="0"/>
+        <line num="172" type="stmt" count="0"/>
+        <line num="173" type="stmt" count="0"/>
+        <line num="177" type="method" name="aggiungiCarrello" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="179" type="stmt" count="0"/>
+        <line num="180" type="stmt" count="0"/>
+        <line num="182" type="stmt" count="0"/>
+        <line num="185" type="stmt" count="0"/>
+        <line num="187" type="stmt" count="0"/>
+        <line num="188" type="stmt" count="0"/>
+        <line num="189" type="stmt" count="0"/>
+        <line num="190" type="stmt" count="0"/>
+        <line num="194" type="stmt" count="0"/>
+        <line num="196" type="stmt" count="0"/>
+        <line num="197" type="stmt" count="0"/>
+        <line num="198" type="stmt" count="0"/>
+        <line num="199" type="stmt" count="0"/>
+        <line num="201" type="stmt" count="0"/>
+        <line num="202" type="stmt" count="0"/>
+        <line num="203" type="stmt" count="0"/>
+        <metrics loc="207" ncloc="205" classes="1" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="0" elements="116" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="App\Http\Controllers\Profilo">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Http\Controllers\Profilo\Autenticazione.php">
+        <class name="App\Http\Controllers\Profilo\Autenticazione" namespace="App\Http\Controllers\Profilo">
+          <metrics complexity="31" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="135" coveredstatements="0" elements="140" coveredelements="0"/>
+        </class>
+        <line num="17" type="method" name="loginFirst" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="21" type="method" name="login" visibility="public" complexity="5" crap="30" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="57" type="method" name="registrazione" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="61" type="method" name="registrazioneStore" visibility="public" complexity="22" crap="506" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="73" type="stmt" count="0"/>
+        <line num="74" type="stmt" count="0"/>
+        <line num="75" type="stmt" count="0"/>
+        <line num="76" type="stmt" count="0"/>
+        <line num="77" type="stmt" count="0"/>
+        <line num="81" type="stmt" count="0"/>
+        <line num="82" type="stmt" count="0"/>
+        <line num="83" type="stmt" count="0"/>
+        <line num="84" type="stmt" count="0"/>
+        <line num="85" type="stmt" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="91" type="stmt" count="0"/>
+        <line num="92" type="stmt" count="0"/>
+        <line num="93" type="stmt" count="0"/>
+        <line num="95" type="stmt" count="0"/>
+        <line num="96" type="stmt" count="0"/>
+        <line num="97" type="stmt" count="0"/>
+        <line num="98" type="stmt" count="0"/>
+        <line num="99" type="stmt" count="0"/>
+        <line num="100" type="stmt" count="0"/>
+        <line num="101" type="stmt" count="0"/>
+        <line num="102" type="stmt" count="0"/>
+        <line num="106" type="stmt" count="0"/>
+        <line num="107" type="stmt" count="0"/>
+        <line num="108" type="stmt" count="0"/>
+        <line num="109" type="stmt" count="0"/>
+        <line num="110" type="stmt" count="0"/>
+        <line num="114" type="stmt" count="0"/>
+        <line num="115" type="stmt" count="0"/>
+        <line num="116" type="stmt" count="0"/>
+        <line num="117" type="stmt" count="0"/>
+        <line num="118" type="stmt" count="0"/>
+        <line num="121" type="stmt" count="0"/>
+        <line num="122" type="stmt" count="0"/>
+        <line num="123" type="stmt" count="0"/>
+        <line num="124" type="stmt" count="0"/>
+        <line num="125" type="stmt" count="0"/>
+        <line num="126" type="stmt" count="0"/>
+        <line num="130" type="stmt" count="0"/>
+        <line num="131" type="stmt" count="0"/>
+        <line num="132" type="stmt" count="0"/>
+        <line num="133" type="stmt" count="0"/>
+        <line num="134" type="stmt" count="0"/>
+        <line num="138" type="stmt" count="0"/>
+        <line num="139" type="stmt" count="0"/>
+        <line num="140" type="stmt" count="0"/>
+        <line num="141" type="stmt" count="0"/>
+        <line num="142" type="stmt" count="0"/>
+        <line num="146" type="stmt" count="0"/>
+        <line num="147" type="stmt" count="0"/>
+        <line num="148" type="stmt" count="0"/>
+        <line num="149" type="stmt" count="0"/>
+        <line num="150" type="stmt" count="0"/>
+        <line num="154" type="stmt" count="0"/>
+        <line num="155" type="stmt" count="0"/>
+        <line num="157" type="stmt" count="0"/>
+        <line num="158" type="stmt" count="0"/>
+        <line num="159" type="stmt" count="0"/>
+        <line num="160" type="stmt" count="0"/>
+        <line num="161" type="stmt" count="0"/>
+        <line num="162" type="stmt" count="0"/>
+        <line num="167" type="stmt" count="0"/>
+        <line num="168" type="stmt" count="0"/>
+        <line num="169" type="stmt" count="0"/>
+        <line num="170" type="stmt" count="0"/>
+        <line num="171" type="stmt" count="0"/>
+        <line num="174" type="stmt" count="0"/>
+        <line num="175" type="stmt" count="0"/>
+        <line num="176" type="stmt" count="0"/>
+        <line num="177" type="stmt" count="0"/>
+        <line num="178" type="stmt" count="0"/>
+        <line num="179" type="stmt" count="0"/>
+        <line num="180" type="stmt" count="0"/>
+        <line num="183" type="stmt" count="0"/>
+        <line num="184" type="stmt" count="0"/>
+        <line num="185" type="stmt" count="0"/>
+        <line num="186" type="stmt" count="0"/>
+        <line num="187" type="stmt" count="0"/>
+        <line num="190" type="stmt" count="0"/>
+        <line num="191" type="stmt" count="0"/>
+        <line num="192" type="stmt" count="0"/>
+        <line num="193" type="stmt" count="0"/>
+        <line num="196" type="stmt" count="0"/>
+        <line num="197" type="stmt" count="0"/>
+        <line num="198" type="stmt" count="0"/>
+        <line num="199" type="stmt" count="0"/>
+        <line num="200" type="stmt" count="0"/>
+        <line num="201" type="stmt" count="0"/>
+        <line num="202" type="stmt" count="0"/>
+        <line num="203" type="stmt" count="0"/>
+        <line num="204" type="stmt" count="0"/>
+        <line num="207" type="stmt" count="0"/>
+        <line num="208" type="stmt" count="0"/>
+        <line num="209" type="stmt" count="0"/>
+        <line num="210" type="stmt" count="0"/>
+        <line num="213" type="stmt" count="0"/>
+        <line num="214" type="stmt" count="0"/>
+        <line num="216" type="stmt" count="0"/>
+        <line num="217" type="stmt" count="0"/>
+        <line num="218" type="stmt" count="0"/>
+        <line num="220" type="stmt" count="0"/>
+        <line num="221" type="stmt" count="0"/>
+        <line num="222" type="stmt" count="0"/>
+        <line num="223" type="stmt" count="0"/>
+        <line num="227" type="method" name="logout" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="230" type="stmt" count="0"/>
+        <line num="231" type="stmt" count="0"/>
+        <line num="233" type="stmt" count="0"/>
+        <line num="234" type="stmt" count="0"/>
+        <line num="237" type="stmt" count="0"/>
+        <line num="239" type="stmt" count="0"/>
+        <metrics loc="242" ncloc="219" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="135" coveredstatements="0" elements="140" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Http\Controllers\Profilo\AutenticazioneAdmin.php">
+        <class name="App\Http\Controllers\Profilo\AutenticazioneAdmin" namespace="App\Http\Controllers\Profilo">
+          <metrics complexity="8" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="0" elements="25" coveredelements="0"/>
+        </class>
+        <line num="11" type="method" name="loginFirstAdmin" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="12" type="stmt" count="0"/>
+        <line num="15" type="method" name="loginAdmin" visibility="public" complexity="6" crap="42" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="51" type="method" name="logoutAdmin" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <metrics loc="61" ncloc="53" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="0" elements="25" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Http\Controllers\Profilo\Profilo.php">
+        <class name="App\Http\Controllers\Profilo\Profilo" namespace="App\Http\Controllers\Profilo">
+          <metrics complexity="18" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="70" coveredstatements="0" elements="72" coveredelements="0"/>
+        </class>
+        <line num="15" type="method" name="mostraProfilo" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="27" type="method" name="modificaProfilo" visibility="public" complexity="17" crap="306" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="71" type="stmt" count="0"/>
+        <line num="76" type="stmt" count="0"/>
+        <line num="77" type="stmt" count="0"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="80" type="stmt" count="0"/>
+        <line num="81" type="stmt" count="0"/>
+        <line num="84" type="stmt" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="91" type="stmt" count="0"/>
+        <line num="92" type="stmt" count="0"/>
+        <line num="96" type="stmt" count="0"/>
+        <line num="99" type="stmt" count="0"/>
+        <line num="100" type="stmt" count="0"/>
+        <line num="102" type="stmt" count="0"/>
+        <line num="103" type="stmt" count="0"/>
+        <line num="104" type="stmt" count="0"/>
+        <line num="105" type="stmt" count="0"/>
+        <line num="108" type="stmt" count="0"/>
+        <line num="111" type="stmt" count="0"/>
+        <line num="113" type="stmt" count="0"/>
+        <line num="116" type="stmt" count="0"/>
+        <line num="118" type="stmt" count="0"/>
+        <line num="119" type="stmt" count="0"/>
+        <line num="120" type="stmt" count="0"/>
+        <line num="123" type="stmt" count="0"/>
+        <line num="124" type="stmt" count="0"/>
+        <line num="125" type="stmt" count="0"/>
+        <line num="130" type="stmt" count="0"/>
+        <line num="131" type="stmt" count="0"/>
+        <line num="132" type="stmt" count="0"/>
+        <line num="136" type="stmt" count="0"/>
+        <line num="138" type="stmt" count="0"/>
+        <line num="141" type="stmt" count="0"/>
+        <metrics loc="144" ncloc="133" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="70" coveredstatements="0" elements="72" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="App\Http\Middleware\Acquisto">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Http\Middleware\Acquisto\GestoreOrdiniMiddleware.php">
+        <class name="App\Http\Middleware\Acquisto\GestoreOrdiniMiddleware" namespace="App\Http\Middleware\Acquisto">
+          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="6" coveredelements="0"/>
+        </class>
+        <line num="17" type="method" name="handle" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <metrics loc="30" ncloc="22" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="6" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="App\Http\Middleware\Prodotto">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Http\Middleware\Prodotto\GestoreProdottiMiddleware.php">
+        <class name="App\Http\Middleware\Prodotto\GestoreProdottiMiddleware" namespace="App\Http\Middleware\Prodotto">
+          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="6" coveredelements="0"/>
+        </class>
+        <line num="17" type="method" name="handle" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <metrics loc="30" ncloc="22" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="6" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="App\Http\Middleware\Profilo">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Http\Middleware\Profilo\IsAuthenticated.php">
+        <class name="App\Http\Middleware\Profilo\IsAuthenticated" namespace="App\Http\Middleware\Profilo">
+          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="5" coveredelements="0"/>
+        </class>
+        <line num="13" type="method" name="handle" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <metrics loc="24" ncloc="22" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="5" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Http\Middleware\Profilo\IsAuthenticatedAdmin.php">
+        <class name="App\Http\Middleware\Profilo\IsAuthenticatedAdmin" namespace="App\Http\Middleware\Profilo">
+          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="5" coveredelements="0"/>
+        </class>
+        <line num="12" type="method" name="handle" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <metrics loc="25" ncloc="22" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="5" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Http\Middleware\Profilo\RedirectAdminIfAuthenticated.php">
+        <class name="App\Http\Middleware\Profilo\RedirectAdminIfAuthenticated" namespace="App\Http\Middleware\Profilo">
+          <metrics complexity="3" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="8" coveredelements="0"/>
+        </class>
+        <line num="12" type="method" name="handle" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <metrics loc="28" ncloc="26" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="8" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Http\Middleware\Profilo\RedirectIfAuthenticated.php">
+        <class name="App\Http\Middleware\Profilo\RedirectIfAuthenticated" namespace="App\Http\Middleware\Profilo">
+          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="5" coveredelements="0"/>
+        </class>
+        <line num="12" type="method" name="handle" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <metrics loc="24" ncloc="21" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="5" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="App\Models\Acquisto">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Acquisto\CorriereEspresso.php">
+        <class name="App\Models\Acquisto\CorriereEspresso" namespace="App\Models\Acquisto">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        </class>
+        <line num="26" type="method" name="getspedito" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <metrics loc="30" ncloc="29" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Acquisto\Ordine.php">
+        <class name="App\Models\Acquisto\Ordine" namespace="App\Models\Acquisto">
+          <metrics complexity="4" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="8" coveredelements="0"/>
+        </class>
+        <line num="40" type="method" name="getGestore" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="45" type="method" name="getCliente" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="50" type="method" name="getSpedito" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="55" type="method" name="getRiguarda" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <metrics loc="59" ncloc="58" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="8" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Acquisto\Riguarda.php">
+        <class name="App\Models\Acquisto\Riguarda" namespace="App\Models\Acquisto">
+          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+        </class>
+        <line num="30" type="method" name="getOrdine" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="35" type="method" name="getProdotto" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <metrics loc="39" ncloc="39" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Acquisto\Spedito.php">
+        <class name="App\Models\Acquisto\Spedito" namespace="App\Models\Acquisto">
+          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+        </class>
+        <line num="29" type="method" name="getOrdine" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="34" type="method" name="getCorriereEspresso" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <metrics loc="38" ncloc="37" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="App\Models\Magazzino">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Magazzino\Magazzino.php">
+        <class name="App\Models\Magazzino\Magazzino" namespace="App\Models\Magazzino">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+        </class>
+        <line num="29" type="method" name="presenteIn" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="31" type="stmt" count="1"/>
+        <metrics loc="33" ncloc="31" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Magazzino\PresenteIn.php">
+        <class name="App\Models\Magazzino\PresenteIn" namespace="App\Models\Magazzino">
+          <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+        </class>
+        <line num="29" type="method" name="getMagazzino" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="31" type="stmt" count="3"/>
+        <line num="34" type="method" name="getProdotto" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <metrics loc="38" ncloc="36" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+      </file>
+    </package>
+    <package name="App\Models\Prodotto">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Prodotto\Abbonamento.php">
+        <class name="App\Models\Prodotto\Abbonamento" namespace="App\Models\Prodotto">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        </class>
+        <line num="34" type="method" name="getProdotto" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <metrics loc="38" ncloc="36" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Prodotto\Categoria.php">
+        <class name="App\Models\Prodotto\Categoria" namespace="App\Models\Prodotto">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        </class>
+        <line num="26" type="method" name="parteDi" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <metrics loc="30" ncloc="29" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Prodotto\Console.php">
+        <class name="App\Models\Prodotto\Console" namespace="App\Models\Prodotto">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        </class>
+        <line num="33" type="method" name="prodotto" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <metrics loc="37" ncloc="35" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Prodotto\Dlc.php">
+        <class name="App\Models\Prodotto\Dlc" namespace="App\Models\Prodotto">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        </class>
+        <line num="34" type="method" name="prodotto" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <metrics loc="38" ncloc="36" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Prodotto\Fornitore.php">
+        <class name="App\Models\Prodotto\Fornitore" namespace="App\Models\Prodotto">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        </class>
+        <line num="58" type="method" name="prodotti" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <metrics loc="62" ncloc="34" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Prodotto\ParteDi.php">
+        <class name="App\Models\Prodotto\ParteDi" namespace="App\Models\Prodotto">
+          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+        </class>
+        <line num="33" type="method" name="getVideogioco" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="38" type="method" name="getCategoria" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <metrics loc="42" ncloc="40" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Prodotto\Prodotto.php">
+        <class name="App\Models\Prodotto\Prodotto" namespace="App\Models\Prodotto">
+          <metrics complexity="8" methods="8" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="7" elements="16" coveredelements="14"/>
+        </class>
+        <line num="47" type="method" name="presenteIn" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="49" type="stmt" count="4"/>
+        <line num="52" type="method" name="abbonamento" visibility="public" complexity="1" crap="1" count="9"/>
+        <line num="54" type="stmt" count="9"/>
+        <line num="57" type="method" name="console" visibility="public" complexity="1" crap="1" count="11"/>
+        <line num="59" type="stmt" count="11"/>
+        <line num="62" type="method" name="dlc" visibility="public" complexity="1" crap="1" count="11"/>
+        <line num="64" type="stmt" count="11"/>
+        <line num="67" type="method" name="videogioco" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="69" type="stmt" count="3"/>
+        <line num="72" type="method" name="getFornitore" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="74" type="stmt" count="2"/>
+        <line num="77" type="method" name="recensioni" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="79" type="stmt" count="1"/>
+        <line num="82" type="method" name="getGestore" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="84" type="stmt" count="0"/>
+        <metrics loc="86" ncloc="85" classes="1" methods="8" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="7" elements="16" coveredelements="14"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Prodotto\Recensisce.php">
+        <class name="App\Models\Prodotto\Recensisce" namespace="App\Models\Prodotto">
+          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+        </class>
+        <line num="54" type="method" name="cliente" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="59" type="method" name="prodotto" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <metrics loc="63" ncloc="43" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Prodotto\SoftwareHouse.php">
+        <class name="App\Models\Prodotto\SoftwareHouse" namespace="App\Models\Prodotto">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        </class>
+        <line num="27" type="method" name="videogiochi" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <metrics loc="33" ncloc="31" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Prodotto\Videogioco.php">
+        <class name="App\Models\Prodotto\Videogioco" namespace="App\Models\Prodotto">
+          <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="6" coveredelements="0"/>
+        </class>
+        <line num="43" type="method" name="getProdotto" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="48" type="method" name="softwareHouse" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="53" type="method" name="parteDi" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <metrics loc="57" ncloc="55" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="6" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="App\Models\Profilo">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Profilo\CartaDiCredito.php">
+        <class name="App\Models\Profilo\CartaDiCredito" namespace="App\Models\Profilo">
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
+        </class>
+        <line num="47" type="method" name="casts" visibility="protected" complexity="1" crap="1" count="14"/>
+        <line num="49" type="stmt" count="14"/>
+        <line num="50" type="stmt" count="14"/>
+        <line num="51" type="stmt" count="14"/>
+        <line num="56" type="method" name="cliente" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="58" type="stmt" count="3"/>
+        <metrics loc="60" ncloc="38" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Profilo\CartaFedelta.php">
+        <class name="App\Models\Profilo\CartaFedelta" namespace="App\Models\Profilo">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+        </class>
+        <line num="43" type="method" name="cliente" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="45" type="stmt" count="3"/>
+        <metrics loc="48" ncloc="31" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Profilo\Cliente.php">
+        <class name="App\Models\Profilo\Cliente" namespace="App\Models\Profilo">
+          <metrics complexity="5" methods="5" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="5" elements="12" coveredelements="8"/>
+        </class>
+        <line num="66" type="method" name="casts" visibility="protected" complexity="1" crap="1" count="30"/>
+        <line num="68" type="stmt" count="30"/>
+        <line num="69" type="stmt" count="30"/>
+        <line num="70" type="stmt" count="30"/>
+        <line num="75" type="method" name="cartacredito" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="77" type="stmt" count="3"/>
+        <line num="80" type="method" name="cartafedelta" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="82" type="stmt" count="2"/>
+        <line num="85" type="method" name="effettua" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="87" type="stmt" count="0"/>
+        <line num="90" type="method" name="recensisce" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="92" type="stmt" count="0"/>
+        <metrics loc="95" ncloc="68" classes="1" methods="5" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="5" elements="12" coveredelements="8"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Models\Profilo\Gestore.php">
+        <class name="App\Models\Profilo\Gestore" namespace="App\Models\Profilo">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        </class>
+        <line num="63" type="method" name="prodotti" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <metrics loc="67" ncloc="36" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="App\Providers">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Providers\AppServiceProvider.php">
+        <class name="App\Providers\AppServiceProvider" namespace="App\Providers">
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+        </class>
+        <line num="12" type="method" name="register" visibility="public" complexity="1" crap="1" count="236"/>
+        <line num="15" type="stmt" count="236"/>
+        <line num="20" type="method" name="boot" visibility="public" complexity="1" crap="1" count="236"/>
+        <line num="23" type="stmt" count="236"/>
+        <metrics loc="25" ncloc="17" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+      </file>
+    </package>
+    <package name="App\Services\Acquisto">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Services\Acquisto\CorriereEspressoService.php">
+        <class name="App\Services\Acquisto\CorriereEspressoService" namespace="App\Services\Acquisto">
+          <metrics complexity="10" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="16" elements="24" coveredelements="17"/>
+        </class>
+        <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="17" type="stmt" count="5"/>
+        <line num="24" type="method" name="loadCorrieri" visibility="private" complexity="1" crap="1.04" count="3"/>
+        <line num="26" type="stmt" count="3"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="3"/>
+        <line num="38" type="method" name="allElements" visibility="public" complexity="8" crap="8.83" count="5"/>
+        <line num="40" type="stmt" count="5"/>
+        <line num="41" type="stmt" count="2"/>
+        <line num="43" type="stmt" count="3"/>
+        <line num="47" type="stmt" count="3"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="2"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="52" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="1"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="1"/>
+        <line num="63" type="stmt" count="2"/>
+        <metrics loc="65" ncloc="52" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="16" elements="24" coveredelements="17"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Services\Acquisto\OrdineService.php">
+        <class name="App\Services\Acquisto\OrdineService" namespace="App\Services\Acquisto">
+          <metrics complexity="12" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="27" elements="32" coveredelements="32"/>
+        </class>
+        <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="14"/>
+        <line num="19" type="stmt" count="14"/>
+        <line num="28" type="method" name="getOrdiniNonConsegnati" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="30" type="stmt" count="2"/>
+        <line num="41" type="method" name="generaCodiceOrdine" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="44" type="stmt" count="1"/>
+        <line num="45" type="stmt" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="75" type="method" name="newInsert" visibility="public" complexity="6" crap="6" count="6"/>
+        <line num="77" type="stmt" count="6"/>
+        <line num="78" type="stmt" count="1"/>
+        <line num="80" type="stmt" count="5"/>
+        <line num="81" type="stmt" count="2"/>
+        <line num="83" type="stmt" count="3"/>
+        <line num="84" type="stmt" count="3"/>
+        <line num="86" type="stmt" count="2"/>
+        <line num="87" type="stmt" count="2"/>
+        <line num="88" type="stmt" count="1"/>
+        <line num="90" type="stmt" count="1"/>
+        <line num="91" type="stmt" count="1"/>
+        <line num="93" type="stmt" count="3"/>
+        <line num="106" type="method" name="doUpdate" visibility="public" complexity="3" crap="3" count="5"/>
+        <line num="108" type="stmt" count="5"/>
+        <line num="109" type="stmt" count="1"/>
+        <line num="111" type="stmt" count="4"/>
+        <line num="112" type="stmt" count="1"/>
+        <line num="114" type="stmt" count="3"/>
+        <line num="115" type="stmt" count="3"/>
+        <line num="117" type="stmt" count="3"/>
+        <line num="118" type="stmt" count="3"/>
+        <line num="119" type="stmt" count="3"/>
+        <metrics loc="122" ncloc="70" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="27" elements="32" coveredelements="32"/>
+      </file>
+    </package>
+    <package name="App\Services\Magazzino">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Services\Magazzino\MagazzinoService.php">
+        <class name="App\Services\Magazzino\MagazzinoService" namespace="App\Services\Magazzino">
+          <metrics complexity="13" methods="4" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="20" elements="29" coveredelements="22"/>
+        </class>
+        <line num="18" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="9"/>
+        <line num="21" type="stmt" count="9"/>
+        <line num="29" type="method" name="loadMagazzini" visibility="private" complexity="1" crap="1.04" count="5"/>
+        <line num="31" type="stmt" count="5"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="5"/>
+        <line num="44" type="method" name="ricercaPerChiave" visibility="public" complexity="3" crap="3" count="4"/>
+        <line num="46" type="stmt" count="4"/>
+        <line num="47" type="stmt" count="2"/>
+        <line num="49" type="stmt" count="2"/>
+        <line num="51" type="stmt" count="2"/>
+        <line num="62" type="method" name="allElements" visibility="public" complexity="8" crap="8.83" count="5"/>
+        <line num="64" type="stmt" count="5"/>
+        <line num="65" type="stmt" count="2"/>
+        <line num="67" type="stmt" count="3"/>
+        <line num="71" type="stmt" count="3"/>
+        <line num="72" type="stmt" count="1"/>
+        <line num="73" type="stmt" count="1"/>
+        <line num="74" type="stmt" count="2"/>
+        <line num="75" type="stmt" count="1"/>
+        <line num="76" type="stmt" count="1"/>
+        <line num="77" type="stmt" count="1"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="79" type="stmt" count="0"/>
+        <line num="80" type="stmt" count="1"/>
+        <line num="81" type="stmt" count="0"/>
+        <line num="82" type="stmt" count="0"/>
+        <line num="84" type="stmt" count="1"/>
+        <line num="87" type="stmt" count="2"/>
+        <metrics loc="90" ncloc="64" classes="1" methods="4" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="20" elements="29" coveredelements="22"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Services\Magazzino\PresenteInServices.php">
+        <class name="App\Services\Magazzino\PresenteInServices" namespace="App\Services\Magazzino">
+          <metrics complexity="50" methods="9" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="84" elements="118" coveredelements="91"/>
+        </class>
+        <line num="18" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="37"/>
+        <line num="21" type="stmt" count="37"/>
+        <line num="31" type="method" name="ricercaPerChiave" visibility="public" complexity="4" crap="4" count="6"/>
+        <line num="33" type="stmt" count="6"/>
+        <line num="34" type="stmt" count="3"/>
+        <line num="36" type="stmt" count="3"/>
+        <line num="37" type="stmt" count="3"/>
+        <line num="38" type="stmt" count="3"/>
+        <line num="53" type="method" name="getMagazziniDaRifornire" visibility="public" complexity="17" crap="30.68" count="7"/>
+        <line num="55" type="stmt" count="7"/>
+        <line num="56" type="stmt" count="4"/>
+        <line num="58" type="stmt" count="3"/>
+        <line num="59" type="stmt" count="3"/>
+        <line num="60" type="stmt" count="3"/>
+        <line num="61" type="stmt" count="3"/>
+        <line num="63" type="stmt" count="3"/>
+        <line num="65" type="stmt" count="3"/>
+        <line num="67" type="stmt" count="3"/>
+        <line num="68" type="stmt" count="3"/>
+        <line num="69" type="stmt" count="3"/>
+        <line num="71" type="stmt" count="3"/>
+        <line num="72" type="stmt" count="3"/>
+        <line num="74" type="stmt" count="3"/>
+        <line num="75" type="stmt" count="1"/>
+        <line num="77" type="stmt" count="2"/>
+        <line num="78" type="stmt" count="2"/>
+        <line num="80" type="stmt" count="2"/>
+        <line num="81" type="stmt" count="2"/>
+        <line num="82" type="stmt" count="2"/>
+        <line num="83" type="stmt" count="2"/>
+        <line num="84" type="stmt" count="2"/>
+        <line num="85" type="stmt" count="2"/>
+        <line num="87" type="stmt" count="2"/>
+        <line num="90" type="stmt" count="2"/>
+        <line num="92" type="stmt" count="1"/>
+        <line num="93" type="stmt" count="1"/>
+        <line num="94" type="stmt" count="1"/>
+        <line num="96" type="stmt" count="1"/>
+        <line num="98" type="stmt" count="0"/>
+        <line num="100" type="stmt" count="0"/>
+        <line num="101" type="stmt" count="0"/>
+        <line num="102" type="stmt" count="0"/>
+        <line num="104" type="stmt" count="0"/>
+        <line num="105" type="stmt" count="0"/>
+        <line num="107" type="stmt" count="0"/>
+        <line num="108" type="stmt" count="0"/>
+        <line num="110" type="stmt" count="0"/>
+        <line num="111" type="stmt" count="0"/>
+        <line num="113" type="stmt" count="0"/>
+        <line num="114" type="stmt" count="0"/>
+        <line num="115" type="stmt" count="0"/>
+        <line num="116" type="stmt" count="0"/>
+        <line num="117" type="stmt" count="0"/>
+        <line num="118" type="stmt" count="0"/>
+        <line num="120" type="stmt" count="0"/>
+        <line num="123" type="stmt" count="1"/>
+        <line num="138" type="method" name="getDisponibilita" visibility="public" complexity="8" crap="8" count="6"/>
+        <line num="140" type="stmt" count="6"/>
+        <line num="141" type="stmt" count="3"/>
+        <line num="143" type="stmt" count="3"/>
+        <line num="144" type="stmt" count="1"/>
+        <line num="146" type="stmt" count="2"/>
+        <line num="147" type="stmt" count="2"/>
+        <line num="149" type="stmt" count="2"/>
+        <line num="151" type="stmt" count="2"/>
+        <line num="153" type="stmt" count="2"/>
+        <line num="155" type="stmt" count="2"/>
+        <line num="157" type="stmt" count="2"/>
+        <line num="158" type="stmt" count="2"/>
+        <line num="159" type="stmt" count="2"/>
+        <line num="160" type="stmt" count="2"/>
+        <line num="162" type="stmt" count="2"/>
+        <line num="166" type="stmt" count="2"/>
+        <line num="176" type="method" name="quantitaTotaleProdotto" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="178" type="stmt" count="2"/>
+        <line num="179" type="stmt" count="2"/>
+        <line num="189" type="method" name="newInsert" visibility="public" complexity="2" crap="2" count="3"/>
+        <line num="191" type="stmt" count="3"/>
+        <line num="192" type="stmt" count="1"/>
+        <line num="194" type="stmt" count="2"/>
+        <line num="205" type="method" name="rifornitura" visibility="public" complexity="2" crap="2" count="3"/>
+        <line num="207" type="stmt" count="3"/>
+        <line num="208" type="stmt" count="1"/>
+        <line num="210" type="stmt" count="2"/>
+        <line num="221" type="method" name="doUpdate" visibility="public" complexity="5" crap="5" count="5"/>
+        <line num="223" type="stmt" count="5"/>
+        <line num="224" type="stmt" count="1"/>
+        <line num="226" type="stmt" count="4"/>
+        <line num="227" type="stmt" count="1"/>
+        <line num="229" type="stmt" count="3"/>
+        <line num="231" type="stmt" count="3"/>
+        <line num="232" type="stmt" count="1"/>
+        <line num="234" type="stmt" count="2"/>
+        <line num="235" type="stmt" count="1"/>
+        <line num="237" type="stmt" count="1"/>
+        <line num="246" type="method" name="allElements" visibility="public" complexity="10" crap="14.81" count="5"/>
+        <line num="248" type="stmt" count="5"/>
+        <line num="249" type="stmt" count="2"/>
+        <line num="253" type="stmt" count="3"/>
+        <line num="254" type="stmt" count="1"/>
+        <line num="255" type="stmt" count="1"/>
+        <line num="256" type="stmt" count="2"/>
+        <line num="257" type="stmt" count="1"/>
+        <line num="258" type="stmt" count="1"/>
+        <line num="259" type="stmt" count="1"/>
+        <line num="260" type="stmt" count="0"/>
+        <line num="261" type="stmt" count="0"/>
+        <line num="262" type="stmt" count="1"/>
+        <line num="263" type="stmt" count="0"/>
+        <line num="264" type="stmt" count="0"/>
+        <line num="265" type="stmt" count="1"/>
+        <line num="266" type="stmt" count="0"/>
+        <line num="267" type="stmt" count="0"/>
+        <line num="268" type="stmt" count="1"/>
+        <line num="269" type="stmt" count="0"/>
+        <line num="270" type="stmt" count="0"/>
+        <line num="272" type="stmt" count="1"/>
+        <line num="275" type="stmt" count="2"/>
+        <metrics loc="278" ncloc="202" classes="1" methods="9" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="84" elements="118" coveredelements="91"/>
+      </file>
+    </package>
+    <package name="App\Services\Prodotto">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Services\Prodotto\CarrelloService.php">
+        <class name="App\Services\Prodotto\CarrelloService" namespace="App\Services\Prodotto">
+          <metrics complexity="7" methods="5" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="15" elements="21" coveredelements="19"/>
+        </class>
+        <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="10"/>
+        <line num="16" type="stmt" count="10"/>
+        <line num="29" type="method" name="aggiungiAlCarrello" visibility="public" complexity="2" crap="2" count="7"/>
+        <line num="31" type="stmt" count="7"/>
+        <line num="33" type="stmt" count="7"/>
+        <line num="34" type="stmt" count="5"/>
+        <line num="35" type="stmt" count="7"/>
+        <line num="37" type="stmt" count="7"/>
+        <line num="38" type="stmt" count="7"/>
+        <line num="39" type="stmt" count="7"/>
+        <line num="42" type="stmt" count="7"/>
+        <line num="50" type="method" name="svuotaCarrello" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="53" type="stmt" count="2"/>
+        <line num="63" type="method" name="getProdottiCarrello" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="66" type="stmt" count="2"/>
+        <line num="75" type="method" name="rimuoviDalCarrello" visibility="public" complexity="2" crap="2.03" count="2"/>
+        <line num="77" type="stmt" count="2"/>
+        <line num="79" type="stmt" count="2"/>
+        <line num="81" type="stmt" count="2"/>
+        <line num="82" type="stmt" count="0"/>
+        <line num="84" type="stmt" count="2"/>
+        <metrics loc="87" ncloc="52" classes="1" methods="5" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="15" elements="21" coveredelements="19"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Services\Prodotto\CategoriaService.php">
+        <class name="App\Services\Prodotto\CategoriaService" namespace="App\Services\Prodotto">
+          <metrics complexity="8" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="14" elements="18" coveredelements="16"/>
+        </class>
+        <line num="31" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="34" type="stmt" count="5"/>
+        <line num="41" type="method" name="loadCategorie" visibility="private" complexity="1" crap="1.04" count="3"/>
+        <line num="43" type="stmt" count="3"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="3"/>
+        <line num="56" type="method" name="allElements" visibility="public" complexity="6" crap="6" count="5"/>
+        <line num="58" type="stmt" count="5"/>
+        <line num="59" type="stmt" count="2"/>
+        <line num="62" type="stmt" count="3"/>
+        <line num="65" type="stmt" count="3"/>
+        <line num="66" type="stmt" count="1"/>
+        <line num="67" type="stmt" count="1"/>
+        <line num="68" type="stmt" count="2"/>
+        <line num="69" type="stmt" count="1"/>
+        <line num="70" type="stmt" count="1"/>
+        <line num="72" type="stmt" count="1"/>
+        <line num="75" type="stmt" count="2"/>
+        <metrics loc="78" ncloc="47" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="14" elements="18" coveredelements="16"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Services\Prodotto\FornitoreService.php">
+        <class name="App\Services\Prodotto\FornitoreService" namespace="App\Services\Prodotto">
+          <metrics complexity="12" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="18" elements="30" coveredelements="19"/>
+        </class>
+        <line num="31" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="34" type="stmt" count="5"/>
+        <line num="41" type="method" name="loadFornitori" visibility="private" complexity="1" crap="1.04" count="3"/>
+        <line num="43" type="stmt" count="3"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="3"/>
+        <line num="56" type="method" name="allElements" visibility="public" complexity="10" crap="14.21" count="5"/>
+        <line num="58" type="stmt" count="5"/>
+        <line num="59" type="stmt" count="2"/>
+        <line num="62" type="stmt" count="3"/>
+        <line num="65" type="stmt" count="3"/>
+        <line num="66" type="stmt" count="1"/>
+        <line num="67" type="stmt" count="1"/>
+        <line num="68" type="stmt" count="2"/>
+        <line num="69" type="stmt" count="1"/>
+        <line num="70" type="stmt" count="1"/>
+        <line num="71" type="stmt" count="1"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="73" type="stmt" count="0"/>
+        <line num="74" type="stmt" count="1"/>
+        <line num="75" type="stmt" count="0"/>
+        <line num="76" type="stmt" count="0"/>
+        <line num="77" type="stmt" count="1"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="79" type="stmt" count="0"/>
+        <line num="80" type="stmt" count="1"/>
+        <line num="81" type="stmt" count="0"/>
+        <line num="82" type="stmt" count="0"/>
+        <line num="84" type="stmt" count="1"/>
+        <line num="87" type="stmt" count="2"/>
+        <metrics loc="90" ncloc="59" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="18" elements="30" coveredelements="19"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Services\Prodotto\ParteDiService.php">
+        <class name="App\Services\Prodotto\ParteDiService" namespace="App\Services\Prodotto">
+          <metrics complexity="16" methods="4" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="22" elements="31" coveredelements="24"/>
+        </class>
+        <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="15"/>
+        <line num="14" type="stmt" count="15"/>
+        <line num="26" type="method" name="ricercaPerChiave" visibility="public" complexity="5" crap="5" count="7"/>
+        <line num="28" type="stmt" count="7"/>
+        <line num="29" type="stmt" count="2"/>
+        <line num="30" type="stmt" count="5"/>
+        <line num="31" type="stmt" count="2"/>
+        <line num="33" type="stmt" count="3"/>
+        <line num="34" type="stmt" count="3"/>
+        <line num="35" type="stmt" count="3"/>
+        <line num="44" type="method" name="allElements" visibility="public" complexity="8" crap="9.00" count="5"/>
+        <line num="46" type="stmt" count="5"/>
+        <line num="47" type="stmt" count="2"/>
+        <line num="51" type="stmt" count="3"/>
+        <line num="52" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="2"/>
+        <line num="55" type="stmt" count="1"/>
+        <line num="56" type="stmt" count="1"/>
+        <line num="57" type="stmt" count="1"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="1"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="1"/>
+        <line num="67" type="stmt" count="2"/>
+        <line num="76" type="method" name="newInsert" visibility="public" complexity="2" crap="2.15" count="2"/>
+        <line num="78" type="stmt" count="2"/>
+        <line num="79" type="stmt" count="0"/>
+        <line num="81" type="stmt" count="2"/>
+        <metrics loc="84" ncloc="62" classes="1" methods="4" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="22" elements="31" coveredelements="24"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Services\Prodotto\ProdottoService.php">
+        <class name="App\Services\Prodotto\ProdottoService" namespace="App\Services\Prodotto">
+          <metrics complexity="63" methods="9" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="204" coveredstatements="148" elements="213" coveredelements="152"/>
+        </class>
+        <line num="17" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="34"/>
+        <line num="20" type="stmt" count="34"/>
+        <line num="29" type="method" name="ricercaPerChiave" visibility="public" complexity="5" crap="5" count="4"/>
+        <line num="31" type="stmt" count="4"/>
+        <line num="32" type="stmt" count="2"/>
+        <line num="34" type="stmt" count="2"/>
+        <line num="35" type="stmt" count="2"/>
+        <line num="36" type="stmt" count="2"/>
+        <line num="37" type="stmt" count="2"/>
+        <line num="38" type="stmt" count="2"/>
+        <line num="39" type="stmt" count="2"/>
+        <line num="40" type="stmt" count="2"/>
+        <line num="41" type="stmt" count="2"/>
+        <line num="42" type="stmt" count="2"/>
+        <line num="44" type="stmt" count="2"/>
+        <line num="45" type="stmt" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="2"/>
+        <line num="61" type="method" name="ricercaPerSottostringa" visibility="public" complexity="3" crap="3.01" count="3"/>
+        <line num="63" type="stmt" count="3"/>
+        <line num="64" type="stmt" count="1"/>
+        <line num="66" type="stmt" count="2"/>
+        <line num="69" type="stmt" count="2"/>
+        <line num="72" type="stmt" count="2"/>
+        <line num="74" type="stmt" count="1"/>
+        <line num="75" type="stmt" count="0"/>
+        <line num="76" type="stmt" count="1"/>
+        <line num="79" type="stmt" count="1"/>
+        <line num="82" type="stmt" count="1"/>
+        <line num="84" type="stmt" count="1"/>
+        <line num="85" type="stmt" count="2"/>
+        <line num="95" type="method" name="ricercaPerNome" visibility="public" complexity="4" crap="4.01" count="3"/>
+        <line num="97" type="stmt" count="3"/>
+        <line num="98" type="stmt" count="1"/>
+        <line num="100" type="stmt" count="2"/>
+        <line num="101" type="stmt" count="2"/>
+        <line num="102" type="stmt" count="2"/>
+        <line num="105" type="stmt" count="2"/>
+        <line num="107" type="stmt" count="1"/>
+        <line num="110" type="stmt" count="1"/>
+        <line num="111" type="stmt" count="1"/>
+        <line num="112" type="stmt" count="0"/>
+        <line num="115" type="stmt" count="2"/>
+        <line num="123" type="method" name="getMax" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="125" type="stmt" count="2"/>
+        <line num="134" type="method" name="allElements" visibility="public" complexity="22" crap="103.29" count="5"/>
+        <line num="136" type="stmt" count="5"/>
+        <line num="137" type="stmt" count="2"/>
+        <line num="140" type="stmt" count="3"/>
+        <line num="141" type="stmt" count="1"/>
+        <line num="142" type="stmt" count="1"/>
+        <line num="143" type="stmt" count="2"/>
+        <line num="144" type="stmt" count="1"/>
+        <line num="145" type="stmt" count="1"/>
+        <line num="147" type="stmt" count="1"/>
+        <line num="148" type="stmt" count="0"/>
+        <line num="149" type="stmt" count="0"/>
+        <line num="150" type="stmt" count="1"/>
+        <line num="151" type="stmt" count="0"/>
+        <line num="152" type="stmt" count="0"/>
+        <line num="154" type="stmt" count="1"/>
+        <line num="155" type="stmt" count="0"/>
+        <line num="156" type="stmt" count="0"/>
+        <line num="157" type="stmt" count="1"/>
+        <line num="158" type="stmt" count="0"/>
+        <line num="159" type="stmt" count="0"/>
+        <line num="161" type="stmt" count="1"/>
+        <line num="162" type="stmt" count="0"/>
+        <line num="163" type="stmt" count="0"/>
+        <line num="164" type="stmt" count="1"/>
+        <line num="165" type="stmt" count="0"/>
+        <line num="166" type="stmt" count="0"/>
+        <line num="168" type="stmt" count="1"/>
+        <line num="169" type="stmt" count="0"/>
+        <line num="170" type="stmt" count="0"/>
+        <line num="171" type="stmt" count="1"/>
+        <line num="172" type="stmt" count="0"/>
+        <line num="173" type="stmt" count="0"/>
+        <line num="175" type="stmt" count="1"/>
+        <line num="176" type="stmt" count="0"/>
+        <line num="177" type="stmt" count="0"/>
+        <line num="178" type="stmt" count="1"/>
+        <line num="179" type="stmt" count="0"/>
+        <line num="180" type="stmt" count="0"/>
+        <line num="182" type="stmt" count="1"/>
+        <line num="183" type="stmt" count="0"/>
+        <line num="184" type="stmt" count="0"/>
+        <line num="185" type="stmt" count="1"/>
+        <line num="186" type="stmt" count="0"/>
+        <line num="187" type="stmt" count="0"/>
+        <line num="189" type="stmt" count="1"/>
+        <line num="190" type="stmt" count="0"/>
+        <line num="191" type="stmt" count="0"/>
+        <line num="192" type="stmt" count="1"/>
+        <line num="193" type="stmt" count="0"/>
+        <line num="194" type="stmt" count="0"/>
+        <line num="196" type="stmt" count="1"/>
+        <line num="197" type="stmt" count="0"/>
+        <line num="198" type="stmt" count="0"/>
+        <line num="199" type="stmt" count="1"/>
+        <line num="200" type="stmt" count="0"/>
+        <line num="201" type="stmt" count="0"/>
+        <line num="204" type="stmt" count="1"/>
+        <line num="207" type="stmt" count="2"/>
+        <line num="229" type="method" name="getTop6Home" visibility="public" complexity="5" crap="5" count="5"/>
+        <line num="231" type="stmt" count="5"/>
+        <line num="234" type="stmt" count="4"/>
+        <line num="235" type="stmt" count="4"/>
+        <line num="236" type="stmt" count="4"/>
+        <line num="237" type="stmt" count="4"/>
+        <line num="238" type="stmt" count="4"/>
+        <line num="239" type="stmt" count="4"/>
+        <line num="240" type="stmt" count="4"/>
+        <line num="242" type="stmt" count="4"/>
+        <line num="243" type="stmt" count="1"/>
+        <line num="246" type="stmt" count="3"/>
+        <line num="247" type="stmt" count="3"/>
+        <line num="248" type="stmt" count="3"/>
+        <line num="249" type="stmt" count="3"/>
+        <line num="250" type="stmt" count="3"/>
+        <line num="252" type="stmt" count="3"/>
+        <line num="253" type="stmt" count="1"/>
+        <line num="256" type="stmt" count="2"/>
+        <line num="257" type="stmt" count="2"/>
+        <line num="258" type="stmt" count="2"/>
+        <line num="259" type="stmt" count="2"/>
+        <line num="260" type="stmt" count="2"/>
+        <line num="261" type="stmt" count="2"/>
+        <line num="262" type="stmt" count="2"/>
+        <line num="264" type="stmt" count="2"/>
+        <line num="265" type="stmt" count="1"/>
+        <line num="268" type="stmt" count="1"/>
+        <line num="270" type="stmt" count="1"/>
+        <line num="271" type="stmt" count="1"/>
+        <line num="272" type="stmt" count="1"/>
+        <line num="274" type="stmt" count="1"/>
+        <line num="275" type="stmt" count="1"/>
+        <line num="276" type="stmt" count="1"/>
+        <line num="278" type="stmt" count="1"/>
+        <line num="279" type="stmt" count="1"/>
+        <line num="281" type="stmt" count="1"/>
+        <line num="283" type="stmt" count="1"/>
+        <line num="284" type="stmt" count="1"/>
+        <line num="285" type="stmt" count="5"/>
+        <line num="297" type="method" name="newInsert" visibility="public" complexity="11" crap="15.48" count="5"/>
+        <line num="300" type="stmt" count="5"/>
+        <line num="301" type="stmt" count="1"/>
+        <line num="305" type="stmt" count="4"/>
+        <line num="307" type="stmt" count="4"/>
+        <line num="308" type="stmt" count="3"/>
+        <line num="309" type="stmt" count="4"/>
+        <line num="310" type="stmt" count="0"/>
+        <line num="311" type="stmt" count="4"/>
+        <line num="312" type="stmt" count="0"/>
+        <line num="313" type="stmt" count="4"/>
+        <line num="314" type="stmt" count="1"/>
+        <line num="317" type="stmt" count="4"/>
+        <line num="318" type="stmt" count="2"/>
+        <line num="322" type="stmt" count="2"/>
+        <line num="324" type="stmt" count="2"/>
+        <line num="327" type="stmt" count="1"/>
+        <line num="328" type="stmt" count="1"/>
+        <line num="329" type="stmt" count="1"/>
+        <line num="330" type="stmt" count="1"/>
+        <line num="333" type="stmt" count="1"/>
+        <line num="334" type="stmt" count="0"/>
+        <line num="335" type="stmt" count="0"/>
+        <line num="336" type="stmt" count="0"/>
+        <line num="338" type="stmt" count="1"/>
+        <line num="339" type="stmt" count="0"/>
+        <line num="340" type="stmt" count="0"/>
+        <line num="341" type="stmt" count="0"/>
+        <line num="343" type="stmt" count="1"/>
+        <line num="344" type="stmt" count="0"/>
+        <line num="345" type="stmt" count="0"/>
+        <line num="346" type="stmt" count="0"/>
+        <line num="348" type="stmt" count="2"/>
+        <line num="352" type="stmt" count="1"/>
+        <line num="366" type="method" name="doUpdate" visibility="public" complexity="11" crap="15.48" count="7"/>
+        <line num="369" type="stmt" count="7"/>
+        <line num="370" type="stmt" count="1"/>
+        <line num="374" type="stmt" count="6"/>
+        <line num="376" type="stmt" count="6"/>
+        <line num="377" type="stmt" count="5"/>
+        <line num="378" type="stmt" count="6"/>
+        <line num="379" type="stmt" count="0"/>
+        <line num="380" type="stmt" count="6"/>
+        <line num="381" type="stmt" count="0"/>
+        <line num="382" type="stmt" count="6"/>
+        <line num="383" type="stmt" count="1"/>
+        <line num="386" type="stmt" count="6"/>
+        <line num="387" type="stmt" count="2"/>
+        <line num="391" type="stmt" count="4"/>
+        <line num="393" type="stmt" count="4"/>
+        <line num="396" type="stmt" count="4"/>
+        <line num="397" type="stmt" count="4"/>
+        <line num="398" type="stmt" count="4"/>
+        <line num="399" type="stmt" count="4"/>
+        <line num="401" type="stmt" count="4"/>
+        <line num="402" type="stmt" count="0"/>
+        <line num="403" type="stmt" count="0"/>
+        <line num="404" type="stmt" count="0"/>
+        <line num="406" type="stmt" count="4"/>
+        <line num="407" type="stmt" count="0"/>
+        <line num="408" type="stmt" count="0"/>
+        <line num="409" type="stmt" count="0"/>
+        <line num="411" type="stmt" count="4"/>
+        <line num="412" type="stmt" count="0"/>
+        <line num="413" type="stmt" count="0"/>
+        <line num="414" type="stmt" count="0"/>
+        <line num="416" type="stmt" count="4"/>
+        <line num="420" type="stmt" count="4"/>
+        <metrics loc="424" ncloc="321" classes="1" methods="9" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="204" coveredstatements="148" elements="213" coveredelements="152"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Services\Prodotto\RecensisceService.php">
+        <class name="App\Services\Prodotto\RecensisceService" namespace="App\Services\Prodotto">
+          <metrics complexity="15" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="41" coveredstatements="29" elements="44" coveredelements="31"/>
+        </class>
+        <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="13" type="stmt" count="13"/>
+        <line num="26" type="method" name="pubblicaRecensione" visibility="public" complexity="2" crap="2" count="4"/>
+        <line num="30" type="stmt" count="4"/>
+        <line num="31" type="stmt" count="4"/>
+        <line num="32" type="stmt" count="4"/>
+        <line num="34" type="stmt" count="4"/>
+        <line num="36" type="stmt" count="1"/>
+        <line num="41" type="stmt" count="3"/>
+        <line num="42" type="stmt" count="3"/>
+        <line num="43" type="stmt" count="3"/>
+        <line num="44" type="stmt" count="3"/>
+        <line num="45" type="stmt" count="3"/>
+        <line num="46" type="stmt" count="3"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="59" type="method" name="allElements" visibility="public" complexity="12" crap="23.34" count="5"/>
+        <line num="61" type="stmt" count="5"/>
+        <line num="62" type="stmt" count="2"/>
+        <line num="66" type="stmt" count="3"/>
+        <line num="67" type="stmt" count="1"/>
+        <line num="68" type="stmt" count="1"/>
+        <line num="69" type="stmt" count="2"/>
+        <line num="70" type="stmt" count="1"/>
+        <line num="71" type="stmt" count="1"/>
+        <line num="72" type="stmt" count="1"/>
+        <line num="73" type="stmt" count="0"/>
+        <line num="74" type="stmt" count="0"/>
+        <line num="75" type="stmt" count="1"/>
+        <line num="76" type="stmt" count="0"/>
+        <line num="77" type="stmt" count="0"/>
+        <line num="78" type="stmt" count="1"/>
+        <line num="79" type="stmt" count="0"/>
+        <line num="80" type="stmt" count="0"/>
+        <line num="81" type="stmt" count="1"/>
+        <line num="82" type="stmt" count="0"/>
+        <line num="83" type="stmt" count="0"/>
+        <line num="84" type="stmt" count="1"/>
+        <line num="85" type="stmt" count="0"/>
+        <line num="86" type="stmt" count="0"/>
+        <line num="87" type="stmt" count="1"/>
+        <line num="88" type="stmt" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="91" type="stmt" count="1"/>
+        <line num="94" type="stmt" count="2"/>
+        <metrics loc="97" ncloc="73" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="41" coveredstatements="29" elements="44" coveredelements="31"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Services\Prodotto\SoftwareHouseService.php">
+        <class name="App\Services\Prodotto\SoftwareHouseService" namespace="App\Services\Prodotto">
+          <metrics complexity="8" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="14" elements="18" coveredelements="16"/>
+        </class>
+        <line num="31" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="34" type="stmt" count="5"/>
+        <line num="41" type="method" name="loadSoftwareHouse" visibility="private" complexity="1" crap="1.04" count="3"/>
+        <line num="43" type="stmt" count="3"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="3"/>
+        <line num="57" type="method" name="allElements" visibility="public" complexity="6" crap="6" count="5"/>
+        <line num="59" type="stmt" count="5"/>
+        <line num="60" type="stmt" count="2"/>
+        <line num="63" type="stmt" count="3"/>
+        <line num="66" type="stmt" count="3"/>
+        <line num="67" type="stmt" count="1"/>
+        <line num="68" type="stmt" count="1"/>
+        <line num="69" type="stmt" count="2"/>
+        <line num="70" type="stmt" count="1"/>
+        <line num="71" type="stmt" count="1"/>
+        <line num="73" type="stmt" count="1"/>
+        <line num="76" type="stmt" count="2"/>
+        <metrics loc="79" ncloc="49" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="14" elements="18" coveredelements="16"/>
+      </file>
+    </package>
+    <package name="App\Services\Profilo">
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Services\Profilo\CartaDiCreditoService.php">
+        <class name="App\Services\Profilo\CartaDiCreditoService" namespace="App\Services\Profilo">
+          <metrics complexity="13" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="21" elements="26" coveredelements="24"/>
+        </class>
+        <line num="15" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="11"/>
+        <line num="18" type="stmt" count="11"/>
+        <line num="27" type="method" name="ricercaPerChiave" visibility="public" complexity="3" crap="3" count="4"/>
+        <line num="29" type="stmt" count="4"/>
+        <line num="30" type="stmt" count="2"/>
+        <line num="32" type="stmt" count="2"/>
+        <line num="42" type="method" name="newInsert" visibility="public" complexity="2" crap="2.15" count="2"/>
+        <line num="44" type="stmt" count="2"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="2"/>
+        <line num="58" type="method" name="doUpdate" visibility="public" complexity="7" crap="7" count="5"/>
+        <line num="60" type="stmt" count="5"/>
+        <line num="61" type="stmt" count="2"/>
+        <line num="63" type="stmt" count="3"/>
+        <line num="65" type="stmt" count="3"/>
+        <line num="66" type="stmt" count="2"/>
+        <line num="67" type="stmt" count="2"/>
+        <line num="68" type="stmt" count="2"/>
+        <line num="69" type="stmt" count="2"/>
+        <line num="70" type="stmt" count="2"/>
+        <line num="72" type="stmt" count="2"/>
+        <line num="74" type="stmt" count="2"/>
+        <line num="76" type="stmt" count="2"/>
+        <line num="78" type="stmt" count="1"/>
+        <line num="79" type="stmt" count="1"/>
+        <line num="80" type="stmt" count="1"/>
+        <metrics loc="85" ncloc="59" classes="1" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="21" elements="26" coveredelements="24"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Services\Profilo\CartaFedeltaService.php">
+        <class name="App\Services\Profilo\CartaFedeltaService" namespace="App\Services\Profilo">
+          <metrics complexity="22" methods="6" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="43" coveredstatements="29" elements="49" coveredelements="32"/>
+        </class>
+        <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="17"/>
+        <line num="17" type="stmt" count="17"/>
+        <line num="26" type="method" name="ricercaPerChiave" visibility="public" complexity="3" crap="3" count="4"/>
+        <line num="28" type="stmt" count="4"/>
+        <line num="29" type="stmt" count="2"/>
+        <line num="31" type="stmt" count="2"/>
+        <line num="41" type="method" name="allElements" visibility="public" complexity="8" crap="9.00" count="5"/>
+        <line num="43" type="stmt" count="5"/>
+        <line num="44" type="stmt" count="2"/>
+        <line num="48" type="stmt" count="3"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="51" type="stmt" count="2"/>
+        <line num="52" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="1"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="57" type="stmt" count="1"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="1"/>
+        <line num="64" type="stmt" count="2"/>
+        <line num="74" type="method" name="newInsert" visibility="public" complexity="2" crap="2" count="3"/>
+        <line num="76" type="stmt" count="3"/>
+        <line num="77" type="stmt" count="1"/>
+        <line num="79" type="stmt" count="2"/>
+        <line num="89" type="method" name="doUpdate" visibility="public" complexity="7" crap="7.60" count="5"/>
+        <line num="91" type="stmt" count="5"/>
+        <line num="92" type="stmt" count="1"/>
+        <line num="94" type="stmt" count="4"/>
+        <line num="95" type="stmt" count="4"/>
+        <line num="96" type="stmt" count="2"/>
+        <line num="97" type="stmt" count="2"/>
+        <line num="98" type="stmt" count="2"/>
+        <line num="100" type="stmt" count="2"/>
+        <line num="102" type="stmt" count="2"/>
+        <line num="104" type="stmt" count="1"/>
+        <line num="106" type="stmt" count="0"/>
+        <line num="107" type="stmt" count="0"/>
+        <line num="108" type="stmt" count="0"/>
+        <line num="117" type="method" name="generaCodiceFedelta" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="119" type="stmt" count="0"/>
+        <line num="121" type="stmt" count="0"/>
+        <line num="123" type="stmt" count="0"/>
+        <line num="127" type="stmt" count="0"/>
+        <line num="128" type="stmt" count="0"/>
+        <line num="130" type="stmt" count="0"/>
+        <line num="132" type="stmt" count="0"/>
+        <metrics loc="134" ncloc="97" classes="1" methods="6" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="43" coveredstatements="29" elements="49" coveredelements="32"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Services\Profilo\ClienteService.php">
+        <class name="App\Services\Profilo\ClienteService" namespace="App\Services\Profilo">
+          <metrics complexity="38" methods="9" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="68" coveredstatements="48" elements="77" coveredelements="56"/>
+        </class>
+        <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="37"/>
+        <line num="19" type="stmt" count="37"/>
+        <line num="28" type="method" name="ricercaPerChiave" visibility="public" complexity="7" crap="7" count="6"/>
+        <line num="30" type="stmt" count="6"/>
+        <line num="31" type="stmt" count="2"/>
+        <line num="34" type="stmt" count="4"/>
+        <line num="36" type="stmt" count="4"/>
+        <line num="37" type="stmt" count="1"/>
+        <line num="38" type="stmt" count="1"/>
+        <line num="40" type="stmt" count="3"/>
+        <line num="42" type="stmt" count="3"/>
+        <line num="43" type="stmt" count="1"/>
+        <line num="45" type="stmt" count="3"/>
+        <line num="61" type="method" name="getUtenteAutenticato" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="63" type="stmt" count="5"/>
+        <line num="78" type="method" name="logoutUtente" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="80" type="stmt" count="4"/>
+        <line num="90" type="method" name="getCryptedPassword" visibility="public" complexity="3" crap="3" count="3"/>
+        <line num="92" type="stmt" count="3"/>
+        <line num="93" type="stmt" count="2"/>
+        <line num="95" type="stmt" count="1"/>
+        <line num="106" type="method" name="checkPassword" visibility="public" complexity="3" crap="3" count="4"/>
+        <line num="108" type="stmt" count="4"/>
+        <line num="109" type="stmt" count="2"/>
+        <line num="111" type="stmt" count="2"/>
+        <line num="121" type="method" name="allElements" visibility="public" complexity="16" crap="48.00" count="5"/>
+        <line num="123" type="stmt" count="5"/>
+        <line num="124" type="stmt" count="2"/>
+        <line num="128" type="stmt" count="3"/>
+        <line num="129" type="stmt" count="1"/>
+        <line num="130" type="stmt" count="1"/>
+        <line num="131" type="stmt" count="2"/>
+        <line num="132" type="stmt" count="1"/>
+        <line num="133" type="stmt" count="1"/>
+        <line num="134" type="stmt" count="1"/>
+        <line num="135" type="stmt" count="0"/>
+        <line num="136" type="stmt" count="0"/>
+        <line num="137" type="stmt" count="1"/>
+        <line num="138" type="stmt" count="0"/>
+        <line num="139" type="stmt" count="0"/>
+        <line num="140" type="stmt" count="1"/>
+        <line num="141" type="stmt" count="0"/>
+        <line num="142" type="stmt" count="0"/>
+        <line num="143" type="stmt" count="1"/>
+        <line num="144" type="stmt" count="0"/>
+        <line num="145" type="stmt" count="0"/>
+        <line num="146" type="stmt" count="1"/>
+        <line num="147" type="stmt" count="0"/>
+        <line num="148" type="stmt" count="0"/>
+        <line num="149" type="stmt" count="1"/>
+        <line num="150" type="stmt" count="0"/>
+        <line num="151" type="stmt" count="0"/>
+        <line num="152" type="stmt" count="1"/>
+        <line num="153" type="stmt" count="0"/>
+        <line num="154" type="stmt" count="0"/>
+        <line num="155" type="stmt" count="1"/>
+        <line num="156" type="stmt" count="0"/>
+        <line num="157" type="stmt" count="0"/>
+        <line num="158" type="stmt" count="1"/>
+        <line num="159" type="stmt" count="0"/>
+        <line num="160" type="stmt" count="0"/>
+        <line num="161" type="stmt" count="1"/>
+        <line num="162" type="stmt" count="0"/>
+        <line num="163" type="stmt" count="0"/>
+        <line num="164" type="stmt" count="1"/>
+        <line num="167" type="stmt" count="2"/>
+        <line num="177" type="method" name="newInsert" visibility="public" complexity="4" crap="4" count="5"/>
+        <line num="179" type="stmt" count="5"/>
+        <line num="180" type="stmt" count="3"/>
+        <line num="182" type="stmt" count="2"/>
+        <line num="184" type="stmt" count="1"/>
+        <line num="185" type="stmt" count="1"/>
+        <line num="193" type="method" name="doUpdate" visibility="public" complexity="2" crap="2" count="5"/>
+        <line num="195" type="stmt" count="5"/>
+        <line num="196" type="stmt" count="1"/>
+        <line num="198" type="stmt" count="4"/>
+        <line num="199" type="stmt" count="4"/>
+        <metrics loc="202" ncloc="134" classes="1" methods="9" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="68" coveredstatements="48" elements="77" coveredelements="56"/>
+      </file>
+      <file name="C:\Users\Utente\Desktop\francesco\PROGETTO-IGES\RAAF-GAMING-NEW\app\Services\Profilo\GestoreService.php">
+        <class name="App\Services\Profilo\GestoreService" namespace="App\Services\Profilo">
+          <metrics complexity="13" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="21" coveredelements="21"/>
+        </class>
+        <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="19"/>
+        <line num="16" type="stmt" count="19"/>
+        <line num="26" type="method" name="ricercaPerChiave" visibility="public" complexity="7" crap="7" count="7"/>
+        <line num="28" type="stmt" count="7"/>
+        <line num="29" type="stmt" count="2"/>
+        <line num="31" type="stmt" count="5"/>
+        <line num="33" type="stmt" count="5"/>
+        <line num="34" type="stmt" count="2"/>
+        <line num="35" type="stmt" count="2"/>
+        <line num="37" type="stmt" count="3"/>
+        <line num="39" type="stmt" count="3"/>
+        <line num="40" type="stmt" count="1"/>
+        <line num="42" type="stmt" count="3"/>
+        <line num="57" type="method" name="getUtenteAutenticato" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="59" type="stmt" count="4"/>
+        <line num="74" type="method" name="logoutUtente" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="76" type="stmt" count="4"/>
+        <line num="87" type="method" name="checkPassword" visibility="public" complexity="3" crap="3" count="4"/>
+        <line num="89" type="stmt" count="4"/>
+        <line num="90" type="stmt" count="2"/>
+        <line num="92" type="stmt" count="2"/>
+        <metrics loc="95" ncloc="51" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="21" coveredelements="21"/>
+      </file>
+    </package>
+    <metrics files="51" loc="4300" ncloc="3415" classes="50" methods="152" coveredmethods="68" conditionals="0" coveredconditionals="0" statements="1323" coveredstatements="542" elements="1475" coveredelements="610"/>
+  </project>
+</coverage>

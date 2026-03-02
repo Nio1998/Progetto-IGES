@@ -88,7 +88,7 @@
 
                                 @if($prodotto->disponibile)
                                     <button class="btn ml-auto" style="background:transparent;" onclick="aggiungiCarrello()">
-                                        <i id="sostituisciCarrello" class='fas fa-shopping-cart' style='font-size:35px; color:black;'></i>
+                                        <i id="Carrello" class='fas fa-shopping-cart' style='font-size:35px; color:black;'></i>
                                     </button>
                                 @else
                                     <button class="btn ml-auto" style="background:transparent;" onclick="nonPuoiAcquistare()">
@@ -206,7 +206,7 @@ function recensione() {
         dataType: "json",
         success: function(data) {
             if(data.success) {
-                alert("Recensione pubblicata con successo!");
+                alert("Recensione effettuata con voto " + voto);
                 
                 // Aggiungi recensione alla lista (evita duplicati)
                 if(flag == 0) {

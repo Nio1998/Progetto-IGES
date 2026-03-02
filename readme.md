@@ -60,4 +60,63 @@ La piattaforma distingue nettamente le funzionalità per quattro tipologie di ru
 | **Gestori Backoffice (Magazzino)** | Gestione Logistica, **Restock** (approvvigionamento stock), Inserimento Nuovi Prodotti. |
 | **Gestori Backoffice (Ordini)** | Gestione del ciclo di vita degli ordini e gestione delle **Spedizioni**. |
 
+## 🧪 Testing
 
+### Test di Unità (Pest)
+
+I test di unità sono scritti con **Pest** e si avviano tramite Artisan:
+```bash
+php artisan test
+```
+
+### Test di Sistema (Codeception)
+
+I test di sistema (acceptance) sono scritti con **Codeception**. Prima di eseguirli assicurarsi che siano attivi:
+
+1. **Il server Laravel** (`php artisan serve`)
+2. **Il database MySQL**
+3. **ChromeDriver** — il driver si trova in `tests/resources/driver/`, scegliere l'eseguibile corretto per il proprio sistema operativo (`.exe` per Windows, senza estensione per Mac/Linux) e avviarlo sulla porta `9515`:
+```bash
+# Windows
+tests\resources\driver\chromedriver.exe --port=9515
+
+# Mac / Linux
+./tests/resources/driver/chromedriver --port=9515
+```
+
+Solo una volta che tutti e tre i servizi sono attivi, avviare i test con:
+```bash
+vendor\bin\codecept run acceptance
+```
+
+> ⚠️ **Nota:** Non tutti i test di accettazione potrebbero essere eseguiti correttamente in sequenza. Alcuni test modificano lo stato del database portandolo in una condizione incompatibile con l'esecuzione dei test successivi. In caso di fallimenti inattesi, è sufficiente ripristinare il database allo stato corretto e rieseguire i test.
+
+## 📊 Code Coverage
+
+### Coverage Test di Unità (Pest)
+
+Per generare il file di coverage XML per i test di unità, è necessario avere **Xdebug** installato (nel nostro caso installato su XAMPP). Avviare il server in modalità coverage e successivamente lanciare i test con il flag apposito:
+```bash
+php -d xdebug.mode=coverage artisan serve
+```
+```bash
+php artisan test --coverage-clover=nome.xml
+```
+
+### Coverage Test di Sistema (Codeception)
+
+Per i test di sistema, avviare il server con Xdebug abilitato al tracciamento delle richieste:
+```bash
+php -d xdebug.mode=coverage -d xdebug.start_with_request=yes artisan serve
+```
+```bash
+vendor\bin\codecept run acceptance --coverage-xml
+```
+
+> ⚠️ **Nota:** Prima di eseguire i test di sistema con coverage, ricordarsi di **decommentare** la riga `include c3.php` in `public/index.php` (viene lasciata commentata in produzione poiché necessaria esclusivamente durante i test).
+
+### Merge e Visualizzazione della Coverage
+
+Sono stati predisposti due script dedicati:
+- **Merge XML:** unisce il file di coverage dei test di unità e quello dei test di sistema in un unico XML complessivo, secondo la logica documentata nella documentazione di progetto.
+- **Conversione HTML:** converte il file XML risultante in formato HTML per una più agevole lettura e consultazione.
